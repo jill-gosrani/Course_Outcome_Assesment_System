@@ -1,0 +1,1598 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 25, 2021 at 07:26 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `college_db1`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignment_co`
+--
+
+CREATE TABLE `assignment_co` (
+  `co_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) NOT NULL,
+  `A1_1` int(10) NOT NULL,
+  `A1_2` int(10) NOT NULL,
+  `A1_3` int(10) NOT NULL,
+  `A1_4` int(10) NOT NULL,
+  `A1_5` int(10) NOT NULL,
+  `A2_1` int(10) NOT NULL,
+  `A2_2` int(10) NOT NULL,
+  `A2_3` int(10) NOT NULL,
+  `A2_4` int(10) NOT NULL,
+  `A2_5` int(10) NOT NULL,
+  `total` int(10) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assignment_co`
+--
+
+INSERT INTO `assignment_co` (`co_id`, `course_id`, `A1_1`, `A1_2`, `A1_3`, `A1_4`, `A1_5`, `A2_1`, `A2_2`, `A2_3`, `A2_4`, `A2_5`, `total`, `term`) VALUES
+('ITC502.1', 'ITC502', 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.2', 'ITC502', 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.3', 'ITC502', 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.4', 'ITC502', 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.5', 'ITC502', 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.6', 'ITC502', 0, 0, 0, 0, 0, 50, 10, 10, 20, 10, 100, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branch`
+--
+
+CREATE TABLE `branch` (
+  `branch_id` int(1) NOT NULL,
+  `branch_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`branch_id`, `branch_name`) VALUES
+(1, 'Electronics Engineering'),
+(2, 'Computer Engineering'),
+(3, 'Information Technology'),
+(4, 'Electronics and Telecommunication Engineering');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `class_code` varchar(3) DEFAULT NULL,
+  `branch_id` int(1) DEFAULT NULL,
+  `sem` int(1) DEFAULT NULL,
+  `term` varchar(7) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`class_code`, `branch_id`, `sem`, `term`) VALUES
+('FE5', 3, 1, 'SH-2019'),
+('FE6', 3, 1, 'SH-2019'),
+('SE5', 3, 3, 'SH-2019'),
+('SE6', 3, 3, 'SH-2019'),
+('TE5', 3, 5, 'SH-2019'),
+('TE6', 3, 5, 'SH-2019'),
+('BE5', 3, 7, 'SH-2019'),
+('BE6', 3, 7, 'SH-2019'),
+('FE5', 3, 2, 'FH-2020'),
+('FE6', 3, 2, 'FH-2020'),
+('SE5', 3, 4, 'FH-2020'),
+('SE6', 3, 4, 'FH-2020'),
+('TE5', 3, 6, 'FH-2020'),
+('TE6', 3, 6, 'FH-2020'),
+('BE5', 3, 8, 'FH-2020'),
+('BE6', 3, 8, 'FH-2020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `course_id` varchar(15) NOT NULL,
+  `branch_id` int(1) NOT NULL,
+  `sem` int(2) NOT NULL,
+  `course_name` varchar(200) NOT NULL,
+  `course_type` varchar(10) NOT NULL,
+  `domain_id` varchar(10) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`course_id`, `branch_id`, `sem`, `course_name`, `course_type`, `domain_id`, `term`) VALUES
+('FEC101', 3, 1, 'Engineering Mathematics-I', 'Theory', 'ITD1', 'SH-2019'),
+('FEC102', 3, 1, 'Engineering Physics-I', 'Theory', 'ITD1', 'SH-2019'),
+('FEC103', 3, 1, 'Engineering Chemistry-I', 'Theory', 'ITD1', 'SH-2019'),
+('FEC104', 3, 1, 'Engineering Mechanics', 'Theory', 'ITD1', 'SH-2019'),
+('FEC105', 3, 1, 'Basic Electrical Engineering', 'Theory', 'ITD1', 'SH-2019'),
+('FEL101', 3, 1, 'Engineering Physics-I', 'Lab', 'ITD1', 'SH-2019'),
+('FEL102', 3, 1, 'Engineering Chemistry-I', 'Lab', 'ITD1', 'SH-2019'),
+('FEL103', 3, 1, 'Engineering Mechanics', 'Lab', 'ITD1', 'SH-2019'),
+('FEL104', 3, 1, 'Basic Electrical Engineering', 'Lab', 'ITD1', 'SH-2019'),
+('FEL105', 3, 1, 'Basic Workshop practice-I', 'Lab', 'ITD1', 'SH-2019'),
+('FEC201', 3, 2, 'Engineering Mathematics-II', 'Theory', 'ITD1', 'FH-2020'),
+('FEC202', 3, 2, 'Engineering Physics-II', 'Theory', 'ITD1', 'FH-2020'),
+('FEC203', 3, 2, 'Engineering Chemistry-II', 'Theory', 'ITD1', 'FH-2020'),
+('FEC204', 3, 2, 'Engineering Graphics', 'Theory', 'ITD1', 'FH-2020'),
+('FEC205', 3, 2, 'C programming', 'Theory', 'ITD1', 'FH-2020'),
+('FEC206', 3, 2, 'Professional Communication and Ethics- I', 'Theory', 'ITD1', 'FH-2020'),
+('FEL201', 3, 2, 'Engineering Physics-II', 'Lab', 'ITD1', 'FH-2020'),
+('FEL202', 3, 2, 'Engineering Chemistry-II', 'Lab', 'ITD1', 'FH-2020'),
+('FEL203', 3, 2, 'Engineering Graphics', 'Lab', 'ITD1', 'FH-2020'),
+('FEL204', 3, 2, 'C programming', 'Lab', 'ITD1', 'FH-2020'),
+('FEL205', 3, 2, 'Professional Communication and Ethics- I', 'Lab', 'ITD1', 'FH-2020'),
+('FEL206', 3, 2, 'Basic Workshop practice-II', 'Lab', 'ITD1', 'FH-2020'),
+('ITC301', 3, 3, 'Applied Mathematics III', 'Theory', 'ITD1', 'SH-2019'),
+('ITC302', 3, 3, 'Logic Design', 'Theory', 'ITD6', 'SH-2019'),
+('ITC303', 3, 3, 'Data Structures & Analysis', 'Theory', 'ITD2', 'SH-2019'),
+('ITC304', 3, 3, 'Database Management System', 'Theory', 'ITD3', 'SH-2019'),
+('ITC305', 3, 3, 'Principle of Communications', 'Theory', 'ITD6', 'SH-2019'),
+('ITL301', 3, 3, 'Digital Design Lab', 'Lab', 'ITD6', 'SH-2019'),
+('ITL302', 3, 3, 'Data Structures Lab', 'Lab', 'ITD2', 'SH-2019'),
+('ITL303', 3, 3, 'SQL Lab', 'Lab', 'ITD3', 'SH-2019'),
+('ITL304', 3, 3, 'Java Programming Lab', 'Lab', 'ITD2', 'SH-2019'),
+('ITC401', 3, 4, 'Applied Mathematics-IV', 'Theory', 'ITD1', 'FH-2020'),
+('ITC402', 3, 4, 'Computer Networks', 'Theory', 'ITD5', 'FH-2020'),
+('ITC403', 3, 4, 'Operating Systems', 'Theory', 'ITD8', 'FH-2020'),
+('ITC404', 3, 4, 'Computer Organization and Architecture', 'Theory', 'ITD8', 'FH-2020'),
+('ITC405', 3, 4, 'Automata Theory', 'Theory', 'ITD2', 'FH-2020'),
+('ITL401', 3, 4, 'Networking Lab', 'Lab', 'ITD5', 'FH-2020'),
+('ITL402', 3, 4, 'Unix Lab', 'Lab', 'ITD8', 'FH-2020'),
+('ITL403', 3, 4, 'Microprocessor Programming Lab', 'Lab', 'ITD8', 'FH-2020'),
+('ITL404', 3, 4, 'Python Lab', 'Lab', 'ITD2', 'FH-2020'),
+('ITC501', 3, 5, 'Microcontroller and Embedded Programming', 'Theory', 'ITD8', 'SH-2019'),
+('ITC502', 3, 5, 'Internet Programming', 'Theory', 'ITD4', 'SH-2019'),
+('ITC503', 3, 5, 'Advanced Data Management Technology', 'Theory', 'ITD3', 'SH-2019'),
+('ITC504', 3, 5, 'Cryptography & Network Security', 'Theory', 'ITD5', 'SH-2019'),
+('ITDLO5011', 3, 5, 'Advanced Data Structures & Analysis of Algorithms', 'Theory', 'ITD2', 'SH-2019'),
+('ITDLO5012', 3, 5, 'Image Processing', 'Theory', 'ITD6', 'SH-2019'),
+('ITDLO5013', 3, 5, 'E-Commerce & E-Business', 'Theory', 'ITD4', 'SH-2019'),
+('ITDLO5014', 3, 5, 'IT Enabled Services', 'Theory', 'ITD9', 'SH-2019'),
+('ITDLO5015', 3, 5, 'Computer Graphics & Virtual Reality', 'Theory', 'ITD7', 'SH-2019'),
+('ITL501', 3, 5, 'Internet Programming Lab', 'Lab', 'ITD4', 'SH-2019'),
+('ITL502', 3, 5, 'Security Lab', 'Lab', 'ITD5', 'SH-2019'),
+('ITL503', 3, 5, 'OLAP Lab', 'Lab', 'ITD3', 'SH-2019'),
+('ITL504', 3, 5, 'IOT (Mini Project) Lab', 'Lab', 'ITD8', 'SH-2019'),
+('ITL505', 3, 5, 'Business Communication and Ethics', 'Lab', 'ITD9', 'SH-2019'),
+('ITC601', 3, 6, 'Software Engineering with Project Management', 'Theory', 'ITD9', 'FH-2020'),
+('ITC602', 3, 6, 'Data Mining and Business Intelligence', 'Theory', 'ITD3', 'FH-2020'),
+('ITC603', 3, 6, 'Cloud Computing & Services', 'Theory', 'ITD4', 'FH-2020'),
+('ITC604', 3, 6, 'Wireless Networks', 'Theory', 'ITD5', 'FH-2020'),
+('ITDLO6021', 3, 6, 'Advance Internet Programming', 'Theory', 'ITD4', 'FH-2020'),
+('ITDLO6022', 3, 6, 'Software Architecture', 'Theory', 'ITD9', 'FH-2020'),
+('ITDLO6023', 3, 6, 'Digital Forensics', 'Theory', 'ITD7', 'FH-2020'),
+('ITDLO6024', 3, 6, 'Multimedia Systems', 'Theory', 'ITD6', 'FH-2020'),
+('ITDLO6025', 3, 6, 'Green IT', 'Theory', 'ITD9', 'FH-2020'),
+('ITL601', 3, 6, 'Software Design Lab', 'Lab', 'ITD9', 'FH-2020'),
+('ITL602', 3, 6, 'Business Intelligence Lab', 'Lab', 'ITD3', 'FH-2020'),
+('ITL603', 3, 6, 'Cloud Service Design Lab', 'Lab', 'ITD4', 'FH-2020'),
+('ITL604', 3, 6, 'Sensor Network Lab', 'Lab', 'ITD5', 'FH-2020'),
+('ITM605', 3, 6, 'Mini-Project', 'Theory', 'ITD9', 'FH-2020'),
+('ITC701', 3, 7, 'Enterprise Network Design', 'Theory', 'ITD5', 'SH-2019'),
+('ITC702', 3, 7, 'Infrastructure Security', 'Theory', 'ITD5', 'SH-2019'),
+('ITC703', 3, 7, 'Artificial Intelligence', 'Theory', 'ITD7', 'SH-2019'),
+('ITDLO7031', 3, 7, 'Storage Area Networks', 'Theory', 'ITD5', 'SH-2019'),
+('ITDLO7032', 3, 7, 'Mobile Application Development', 'Theory', 'ITD4', 'SH-2019'),
+('ITDLO7033', 3, 7, 'High Performance Computing', 'Theory', 'ITD8', 'SH-2019'),
+('ITDLO7034', 3, 7, 'Software Testing and Quality Assurance', 'Theory', 'ITD9', 'SH-2019'),
+('ITDLO7035', 3, 7, 'Soft Computing', 'Theory', 'ITD7', 'SH-2019'),
+('ILO7011', 3, 7, 'Product Lifecycle Management', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7012', 3, 7, 'Reliability Engineering', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7013', 3, 7, 'Management Information System', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7014', 3, 7, 'Design of Experiments', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7015', 3, 7, 'Operation Research', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7016', 3, 7, 'Cyber Security and Laws', 'Theory', 'ITD7', 'SH-2019'),
+('ILO7017', 3, 7, 'Disaster Management and Mitigation Measures', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7018', 3, 7, 'Energy Audit and Management', 'Theory', 'ITD9', 'SH-2019'),
+('ILO7019', 3, 7, 'Development Engineering', 'Theory', 'ITD9', 'SH-2019'),
+('ITL701', 3, 7, 'Network Design Lab', 'Lab', 'ITD5', 'SH-2019'),
+('ITL702', 3, 7, 'Advanced Security Lab', 'Lab', 'ITD5', 'SH-2019'),
+('ITL703', 3, 7, 'Intelligence System Lab', 'Lab', 'ITD7', 'SH-2019'),
+('ITL704', 3, 7, 'Android Apps Development Lab', 'Lab', 'ITD2', 'SH-2019'),
+('ITM705', 3, 8, 'Project-I', 'Theory', 'ITD9', 'FH-2020'),
+('ITC801', 3, 8, 'Big Data Analytics', 'Theory', 'ITD3', 'FH-2020'),
+('ITC802', 3, 8, 'Internet of Everything', 'Theory', 'ITD5', 'FH-2020'),
+('ITDLO8041', 3, 8, 'User Interaction Design', 'Theory', 'ITD9', 'FH-2020'),
+('ITDLO8042', 3, 8, 'Information Retrieval System', 'Theory', 'ITD3', 'FH-2020'),
+('ITDLO8043', 3, 8, 'Knowledge Management', 'Theory', 'ITD9', 'FH-2020'),
+('ITDLO8044', 3, 8, 'Robotics', 'Theory', 'ITD7', 'FH-2020'),
+('ITDLO8045', 3, 8, 'Enterprise Resource Planning', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8021', 3, 8, 'Project Management', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8022', 3, 8, 'Finance Management', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8023', 3, 8, 'Entrepreneurship Development and Management', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8024', 3, 8, 'Human Resource Management', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8025', 3, 8, 'Professional Ethics and CSR', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8026', 3, 8, 'Research Methodology', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8027', 3, 8, 'IPR and Patenting', 'Theory', 'ITD9', 'FH-2020'),
+('ILO8028', 3, 8, 'Digital Business Management', 'Theory', 'ITD4', 'FH-2020'),
+('ILO8029', 3, 8, 'Environmental Management', 'Theory', 'ITD9', 'FH-2020'),
+('ITL801', 3, 8, 'Big Data Lab', 'Lab', 'ITD3', 'FH-2020'),
+('ITL802', 3, 8, 'Internet of Everything Lab', 'Lab', 'ITD5', 'FH-2020'),
+('ITL803', 3, 8, 'DevOps Lab', 'Lab', 'ITD9', 'FH-2020'),
+('ITL804', 3, 8, 'R Programming Lab', 'Lab', 'ITD2', 'FH-2020'),
+('ITM805', 3, 8, 'Project-II', 'Theory', 'ITD9', 'FH-2020'),
+('FEC101', 4, 1, 'Engineering Mathematics-I', 'Theory', '', 'SH-2019'),
+('FEC102', 4, 1, 'Engineering Physics-I', 'Theory', '', 'SH-2019'),
+('FEC103', 4, 1, 'Engineering Chemistry-I', 'Theory', '', 'SH-2019'),
+('FEC104', 4, 1, 'Engineering Mechanics', 'Theory', '', 'SH-2019'),
+('FEC105', 4, 1, 'Basic Electrical Engineering', 'Theory', '', 'SH-2019'),
+('FEL101', 4, 1, 'Engineering Physics-I', 'Lab', '', 'SH-2019'),
+('FEL102', 4, 1, 'Engineering Chemistry-I', 'Lab', '', 'SH-2019'),
+('FEL103', 4, 1, 'Engineering Mechanics', 'Lab', '', 'SH-2019'),
+('FEL104', 4, 1, 'Basic Electrical Engineering', 'Lab', '', 'SH-2019'),
+('FEL105', 4, 1, 'Basic Workshop practice-I', 'Lab', '', 'SH-2019'),
+('FEC201', 4, 2, 'Engineering Mathematics-II', 'Theory', '', 'FH-2020'),
+('FEC202', 4, 2, 'Engineering Physics-II', 'Theory', '', 'FH-2020'),
+('FEC203', 4, 2, 'Engineering Chemistry-II', 'Theory', '', 'FH-2020'),
+('FEC204', 4, 2, 'Engineering Graphics', 'Theory', '', 'FH-2020'),
+('FEC205', 4, 2, 'C programming', 'Theory', '', 'FH-2020'),
+('FEC206', 4, 2, 'Professional Communication and Ethics- I', 'Theory', '', 'FH-2020'),
+('FEL201', 4, 2, 'Engineering Physics-II', 'Lab', '', 'FH-2020'),
+('FEL202', 4, 2, 'Engineering Chemistry-II', 'Lab', '', 'FH-2020'),
+('FEL203', 4, 2, 'Engineering Graphics', 'Lab', '', 'FH-2020'),
+('FEL204', 4, 2, 'C programming', 'Lab', '', 'FH-2020'),
+('FEL205', 4, 2, 'Professional Communication and Ethics- I', 'Lab', '', 'FH-2020'),
+('FEL206', 4, 2, 'Basic Workshop practice-II', 'Lab', '', 'FH-2020'),
+('ECC301', 4, 3, 'Applied Mathematics- III', 'Theory', '', 'SH-2019'),
+('ECC302', 4, 3, 'Electronic Devices and Circuits I', 'Theory', '', 'SH-2019'),
+('ECC303', 4, 3, 'Digital System Design', 'Theory', '', 'SH-2019'),
+('ECC304', 4, 3, 'Circuit Theory and Networks', 'Theory', '', 'SH-2019'),
+('ECC305', 4, 3, 'Electronic Instrumentation and Control', 'Theory', '', 'SH-2019'),
+('ECL301', 4, 3, 'Electronic Devices and Circuits I Laboratory', 'Lab', '', 'SH-2019'),
+('ECL302', 4, 3, 'Digital System Design Laboratory', 'Lab', '', 'SH-2019'),
+('ECL303', 4, 3, 'OOP using JAVA Laboratory', 'Lab', '', 'SH-2019'),
+('ECC401', 4, 4, 'Applied Mathematics- IV', 'Theory', '', 'FH-2020'),
+('ECC402', 4, 4, 'Electronic Devices and Circuits II', 'Theory', '', 'FH-2020'),
+('ECC403', 4, 4, 'Linear Integrated Circuits', 'Theory', '', 'FH-2020'),
+('ECC404', 4, 4, 'Signals & Systems', 'Theory', '', 'FH-2020'),
+('ECC405', 4, 4, 'Principles of Communication Engineering', 'Theory', '', 'FH-2020'),
+('ECL401', 4, 4, 'Electronic Devices and Circuits II Laboratory', 'Lab', '', 'FH-2020'),
+('ECL402', 4, 4, 'Linear Integrated Circuits Laboratory', 'Lab', '', 'FH-2020'),
+('ECL403', 4, 4, 'Principles of Communication Engineering Laboratory', 'Lab', '', 'FH-2020'),
+('ECC501', 4, 5, 'Microprocessor & Peripherals Interfacing', 'Theory', '', 'SH-2019'),
+('ECC502', 4, 5, 'Digital Communication', 'Theory', '', 'SH-2019'),
+('ECC503', 4, 5, 'Electromagnetic Engineering', 'Theory', '', 'SH-2019'),
+('ECC504', 4, 5, 'Discrete Time Signal Processing', 'Theory', '', 'SH-2019'),
+('ECCDLO5011', 4, 5, 'Microelectronics', 'Theory', '', 'SH-2019'),
+('ECCDLO5012', 4, 5, 'TV & Video Engineering', 'Theory', '', 'SH-2019'),
+('ECCDLO5013', 4, 5, 'Finite Automata Theory', 'Theory', '', 'SH-2019'),
+('ECCDLO5014', 4, 5, 'Data Compression and Encryption', 'Theory', '', 'SH-2019'),
+('ECL501', 4, 5, 'Microprocessor & Peripherals Interfacing Lab', 'Lab', '', 'SH-2019'),
+('ECL502', 4, 5, 'Digital Communication Lab', 'Lab', '', 'SH-2019'),
+('ECL503', 4, 5, 'Business Communication & Ethics Lab', 'Lab', '', 'SH-2019'),
+('ECL504', 4, 5, 'Open Source Technology for Communication Lab', 'Lab', '', 'SH-2019'),
+('ECC601', 4, 6, 'Microcontrollers & Applications', 'Theory', '', 'FH-2020'),
+('ECC602', 4, 6, 'Computer Communication Networks', 'Theory', '', 'FH-2020'),
+('ECC603', 4, 6, 'Antenna & Radio Wave Propagation', 'Theory', '', 'FH-2020'),
+('ECC604', 4, 6, 'Image Processing and Machine Vision', 'Theory', '', 'FH-2020'),
+('ECCDLO6021', 4, 6, 'Digital VLSI Design', 'Theory', '', 'FH-2020'),
+('ECCDLO6022', 4, 6, 'Radar Engineering', 'Theory', '', 'FH-2020'),
+('ECCDLO6023', 4, 6, 'Database Management System', 'Theory', '', 'FH-2020'),
+('ECCDLO6024', 4, 6, 'Audio Processing', 'Theory', '', 'FH-2020'),
+('ECL601', 4, 6, 'Microcontroller & Applications Lab', 'Lab', '', 'FH-2020'),
+('ECL602', 4, 6, 'Computer Communication Network Lab', 'Lab', '', 'FH-2020'),
+('ECL603', 4, 6, 'Antenna & Radio Wave Propagation Lab', 'Lab', '', 'FH-2020'),
+('ECL604', 4, 6, 'Image Processing and Machine Vision Lab', 'Lab', '', 'FH-2020'),
+('ECC701', 4, 7, 'Microwave Engineering', 'Theory', '', 'SH-2019'),
+('ECC702', 4, 7, 'Mobile Communication System', 'Theory', '', 'SH-2019'),
+('ECC703', 4, 7, 'Optical Communication', 'Theory', '', 'SH-2019'),
+('ECCDLO7031', 4, 7, 'Neural Networks and Fuzzy Logic', 'Theory', '', 'SH-2019'),
+('ECCDLO7032', 4, 7, 'Big Data Analytics', 'Theory', '', 'SH-2019'),
+('ECCDLO7033', 4, 7, 'Internet Communication Engineering', 'Theory', '', 'SH-2019'),
+('ECCDLO7034', 4, 7, 'CMOS Mixed Signal VLSI', 'Theory', '', 'SH-2019'),
+('ECCDLO7035', 4, 7, 'Embedded System', 'Theory', '', 'SH-2019'),
+('ILO7011', 4, 7, 'Product Lifecycle Management', 'Theory', '', 'SH-2019'),
+('ILO7012', 4, 7, 'Reliability Engineering', 'Theory', '', 'SH-2019'),
+('ILO7013', 4, 7, 'Management Information System', 'Theory', '', 'SH-2019'),
+('ILO7014', 4, 7, 'Design of Experiments', 'Theory', '', 'SH-2019'),
+('ILO7015', 4, 7, 'Operation Research', 'Theory', '', 'SH-2019'),
+('ILO7016', 4, 7, 'Cyber Security and Laws', 'Theory', '', 'SH-2019'),
+('ILO7017', 4, 7, 'Disaster Management and Mitigation Measures', 'Theory', '', 'SH-2019'),
+('ILO7018', 4, 7, 'Energy Audit and Management', 'Theory', '', 'SH-2019'),
+('ILO7019', 4, 7, 'Development Engineering', 'Theory', '', 'SH-2019'),
+('ECL701', 4, 7, 'Microwave Engineering Lab', 'Lab', '', 'SH-2019'),
+('ECL702', 4, 7, 'Mobile Communication System Lab', 'Lab', '', 'SH-2019'),
+('ECL703', 4, 7, 'Optical Communication Lab', 'Lab', '', 'SH-2019'),
+('ECL704', 4, 7, 'Project-I', 'Lab', '', 'SH-2019'),
+('ECC801', 4, 8, 'RF Design', 'Theory', '', 'FH-2020'),
+('ECC802', 4, 8, 'Wireless Networks', 'Theory', '', 'FH-2020'),
+('ECCDLO8041', 4, 8, 'Optical Networks', 'Theory', '', 'FH-2020'),
+('ECCDLO8042', 4, 8, 'Advanced Digital Signal Processing', 'Theory', '', 'FH-2020'),
+('ECCDLO8043', 4, 8, 'Satellite Communication', 'Theory', '', 'FH-2020'),
+('ECCDLO8044', 4, 8, 'Network management in Telecommunication', 'Theory', '', 'FH-2020'),
+('ILO8021', 4, 8, 'Project Management', 'Theory', '', 'FH-2020'),
+('ILO8022', 4, 8, 'Finance Management', 'Theory', '', 'FH-2020'),
+('ILO8023', 4, 8, 'Entrepreneurship Development and Management', 'Theory', '', 'FH-2020'),
+('ILO8024', 4, 8, 'Human Resource Management', 'Theory', '', 'FH-2020'),
+('ILO8025', 4, 8, 'Professional Ethics and CSR', 'Theory', '', 'FH-2020'),
+('ILO8026', 4, 8, 'Research Methodology', 'Theory', '', 'FH-2020'),
+('ILO8027', 4, 8, 'IPR and Patenting', 'Theory', '', 'FH-2020'),
+('ILO8028', 4, 8, 'Digital Business Management', 'Theory', '', 'FH-2020'),
+('ILO8029', 4, 8, 'Environmental Management', 'Theory', '', 'FH-2020'),
+('ECL801', 4, 8, 'RF Design Lab', 'Lab', '', 'FH-2020'),
+('ECL802', 4, 8, 'Wireless Networks Lab', 'Lab', '', 'FH-2020'),
+('ECL803', 4, 8, 'Project-II', 'Lab', '', 'FH-2020'),
+('FEC101', 2, 1, 'Engineering Mathematics-I', 'Theory', '', 'SH-2019'),
+('FEC102', 2, 1, 'Engineering Physics-I', 'Theory', '', 'SH-2019'),
+('FEC103', 2, 1, 'Engineering Chemistry-I', 'Theory', '', 'SH-2019'),
+('FEC104', 2, 1, 'Engineering Mechanics', 'Theory', '', 'SH-2019'),
+('FEC105', 2, 1, 'Basic Electrical Engineering', 'Theory', '', 'SH-2019'),
+('FEL101', 2, 1, 'Engineering Physics-I', 'Lab', '', 'SH-2019'),
+('FEL102', 2, 1, 'Engineering Chemistry-I', 'Lab', '', 'SH-2019'),
+('FEL103', 2, 1, 'Engineering Mechanics', 'Lab', '', 'SH-2019'),
+('FEL104', 2, 1, 'Basic Electrical Engineering', 'Lab', '', 'SH-2019'),
+('FEL105', 2, 1, 'Basic Workshop practice-I', 'Lab', '', 'SH-2019'),
+('FEC201', 2, 2, 'Engineering Mathematics-II', 'Theory', '', 'FH-2020'),
+('FEC202', 2, 2, 'Engineering Physics-II', 'Theory', '', 'FH-2020'),
+('FEC203', 2, 2, 'Engineering Chemistry-II', 'Theory', '', 'FH-2020'),
+('FEC204', 2, 2, 'Engineering Graphics', 'Theory', '', 'FH-2020'),
+('FEC205', 2, 2, 'C programming', 'Theory', '', 'FH-2020'),
+('FEC206', 2, 2, 'Professional Communication and Ethics- I', 'Theory', '', 'FH-2020'),
+('FEL201', 2, 2, 'Engineering Physics-II', 'Lab', '', 'FH-2020'),
+('FEL202', 2, 2, 'Engineering Chemistry-II', 'Lab', '', 'FH-2020'),
+('FEL203', 2, 2, 'Engineering Graphics', 'Lab', '', 'FH-2020'),
+('FEL204', 2, 2, 'C programming', 'Lab', '', 'FH-2020'),
+('FEL205', 2, 2, 'Professional Communication and Ethics- I', 'Lab', '', 'FH-2020'),
+('FEL206', 2, 2, 'Basic Workshop practice-II', 'Lab', '', 'FH-2020'),
+('CSC301', 2, 3, 'Applied Mathematics -III', 'Theory', '', 'SH-2019'),
+('CSC302', 2, 3, 'Digital Logic Design and Analysis', 'Theory', '', 'SH-2019'),
+('CSC303', 2, 3, 'Discrete Mathematics', 'Theory', '', 'SH-2019'),
+('CSC304', 2, 3, 'Electronic Circuits and Communication Fundamentals', 'Theory', '', 'SH-2019'),
+('CSC305', 2, 3, 'Data Structures', 'Theory', '', 'SH-2019'),
+('CSL301', 2, 3, 'Digital System Lab', 'Lab', '', 'SH-2019'),
+('CSL302', 2, 3, 'Basic Electronics Lab', 'Lab', '', 'SH-2019'),
+('CSL303', 2, 3, 'Data structure Lab', 'Lab', '', 'SH-2019'),
+('CSL304', 2, 3, 'OOPM(Java) Lab', 'Lab', '', 'SH-2019'),
+('CSC401', 2, 4, 'Applied Mathematics- IV', 'Theory', '', 'FH-2020'),
+('CSC402', 2, 4, 'Analysis of Algorithms', 'Theory', '', 'FH-2020'),
+('CSC403', 2, 4, 'Computer Organization and Architecture', 'Theory', '', 'FH-2020'),
+('CSC404', 2, 4, 'Computer Graphics', 'Theory', '', 'FH-2020'),
+('CSC405', 2, 4, 'Operating System', 'Theory', '', 'FH-2020'),
+('CSL401', 2, 4, 'Analysis of Algorithms Lab', 'Lab', '', 'FH-2020'),
+('CSL402', 2, 4, 'Computer Graphics Lab', 'Lab', '', 'FH-2020'),
+('CSL403', 2, 4, 'Processor Architecture Lab', 'Lab', '', 'FH-2020'),
+('CSL404', 2, 4, 'Operating System Lab', 'Lab', '', 'FH-2020'),
+('CSL405', 2, 4, 'Open Source Tech Lab', 'Lab', '', 'FH-2020'),
+('CSC501', 2, 5, 'Microprocessor', 'Theory', '', 'SH-2019'),
+('CSC502', 2, 5, 'Database Management System', 'Theory', '', 'SH-2019'),
+('CSC503', 2, 5, 'Computer Network', 'Theory', '', 'SH-2019'),
+('CSC504', 2, 5, 'Theory of Computer Science', 'Theory', '', 'SH-2019'),
+('CSDLO5011', 2, 5, 'Multimedia System', 'Theory', '', 'SH-2019'),
+('CSDLO5012', 2, 5, 'Advance Operating System', 'Theory', '', 'SH-2019'),
+('CSDLO5013', 2, 5, 'Advance Algorithm', 'Theory', '', 'SH-2019'),
+('CSL501', 2, 5, 'Microprocessor Lab', 'Lab', '', 'SH-2019'),
+('CSL502', 2, 5, 'Computer Network Lab', 'Lab', '', 'SH-2019'),
+('CSL503', 2, 5, 'Database & Info. System Lab', 'Lab', '', 'SH-2019'),
+('CSL504', 2, 5, 'Web Design Lab', 'Lab', '', 'SH-2019'),
+('CSL505', 2, 5, 'Business Comm. & Ethics', 'Lab', '', 'SH-2019'),
+('CSC601', 2, 6, 'Software Engineering', 'Theory', '', 'FH-2020'),
+('CSC602', 2, 6, 'System Programming & Complier Construction', 'Theory', '', 'FH-2020'),
+('CSC603', 2, 6, 'Data Warehousing & Mining', 'Theory', '', 'FH-2020'),
+('CSC604', 2, 6, 'Cryptography & System Security', 'Theory', '', 'FH-2020'),
+('CSDLO6021', 2, 6, 'Machine Learning', 'Theory', '', 'FH-2020'),
+('CSDLO6022', 2, 6, 'Advance Database System', 'Theory', '', 'FH-2020'),
+('CSDLO6023', 2, 6, 'Enterprise Resource Planning', 'Theory', '', 'FH-2020'),
+('CSDLO6024', 2, 6, 'Advance Computer Network', 'Theory', '', 'FH-2020'),
+('CSL601', 2, 6, 'Software Engineering Lab', 'Lab', '', 'FH-2020'),
+('CSL602', 2, 6, 'System software Lab', 'Lab', '', 'FH-2020'),
+('CSL603', 2, 6, 'Data Warehousing & Mining Lab', 'Lab', '', 'FH-2020'),
+('CSL604', 2, 6, 'System Security Lab', 'Lab', '', 'FH-2020'),
+('CSP605', 2, 6, 'Mini-Project', 'Theory', '', 'FH-2020'),
+('CSC701', 2, 7, 'Digital Signal & Image Processing', 'Theory', '', 'SH-2019'),
+('CSC702', 2, 7, 'Mobile Communication & Computing', 'Theory', '', 'SH-2019'),
+('CSC703', 2, 7, 'Artificial Intelligence & Soft Computing', 'Theory', '', 'SH-2019'),
+('CSDLO7031', 2, 7, 'Advance System Security & Digital Forensics', 'Theory', '', 'SH-2019'),
+('CSDLO7032', 2, 7, 'CSDLO7032', 'Theory', '', 'SH-2019'),
+('CSDLO7033', 2, 7, 'Robotics', 'Theory', '', 'SH-2019'),
+('ILO7011', 2, 7, 'Product Lifecycle Management', 'Theory', '', 'SH-2019'),
+('ILO7012', 2, 7, 'Reliability Engineering', 'Theory', '', 'SH-2019'),
+('ILO7013', 2, 7, 'Management Information System', 'Theory', '', 'SH-2019'),
+('ILO7014', 2, 7, '. Design of Experiments', 'Theory', '', 'SH-2019'),
+('ILO7015', 2, 7, 'Operation Research', 'Theory', '', 'SH-2019'),
+('ILO7016', 2, 7, 'Cyber Security and Laws', 'Theory', '', 'SH-2019'),
+('ILO7017', 2, 7, 'Disaster Management & Mitigation Measures', 'Theory', '', 'SH-2019'),
+('ILO7018', 2, 7, 'Energy Audit and Management', 'Theory', '', 'SH-2019'),
+('ILO7019', 2, 7, 'Development Engineering', 'Theory', '', 'SH-2019'),
+('CSL701', 2, 7, 'Digital Signal & Image Processing Lab', 'Lab', '', 'SH-2019'),
+('CSL702', 2, 7, 'Mobile App. Development. Tech. Lab', 'Lab', '', 'SH-2019'),
+('CSL703', 2, 7, 'Artificial Intelligence & Soft Computing Lab', 'Lab', '', 'SH-2019'),
+('CSL704', 2, 7, 'Computational Lab-I', 'Lab', '', 'SH-2019'),
+('CSP705', 2, 7, 'Major Project-I', 'Theory', '', 'SH-2019'),
+('CSC801', 2, 8, 'Human MachineInteraction', 'Theory', '', 'FH-2020'),
+('CSC802', 2, 8, 'Distributed Computing', 'Theory', '', 'FH-2020'),
+('DLO8011', 2, 8, 'High Performance Computing', 'Theory', '', 'FH-2020'),
+('DLO8012', 2, 8, 'Natural Language Processing', 'Theory', '', 'FH-2020'),
+('DLO8013', 2, 8, 'Adhoc Wireless Network', 'Theory', '', 'FH-2020'),
+('ILO8021', 2, 8, 'Project Management', 'Theory', '', 'FH-2020'),
+('ILO8022', 2, 8, 'Finance Management', 'Theory', '', 'FH-2020'),
+('ILO8023', 2, 8, 'Entrepreneurship Development and Management', 'Theory', '', 'FH-2020'),
+('ILO8024', 2, 8, 'Human Resource Management', 'Theory', '', 'FH-2020'),
+('ILO8025', 2, 8, 'Professional Ethics and CSR', 'Theory', '', 'FH-2020'),
+('ILO8026', 2, 8, 'Research Methodology', 'Theory', '', 'FH-2020'),
+('ILO8027', 2, 8, 'IPR and Patenting', 'Theory', '', 'FH-2020'),
+('ILO8028', 2, 8, 'Digital Business Management', 'Theory', '', 'FH-2020'),
+('ILO8029', 2, 8, 'Environmental Management', 'Theory', '', 'FH-2020'),
+('CSC801', 2, 8, 'Human Machine Interaction Lab', 'Theory', '', 'FH-2020'),
+('CSC802', 2, 8, 'Distributed Computing Lab', 'Theory', '', 'FH-2020'),
+('CSC803', 2, 8, 'Cloud Computing Lab', 'Theory', '', 'FH-2020'),
+('CSC804', 2, 8, 'Computational Lab-II -', 'Theory', '', 'FH-2020'),
+('CSP805', 2, 8, 'Major Project-II', 'Theory', '', 'FH-2020'),
+('FEC101', 1, 1, 'Engineering Mathematics-I', 'Theory', '', 'SH-2019'),
+('FEC102', 1, 1, 'Engineering Physics-I', 'Theory', '', 'SH-2019'),
+('FEC103', 1, 1, 'Engineering Chemistry-I', 'Theory', '', 'SH-2019'),
+('FEC104', 1, 1, 'Engineering Mechanics', 'Theory', '', 'SH-2019'),
+('FEC105', 1, 1, 'Basic Electrical Engineering', 'Theory', '', 'SH-2019'),
+('FEL101', 1, 1, 'Engineering Physics-I', 'Lab', '', 'SH-2019'),
+('FEL102', 1, 1, 'Engineering Chemistry-I', 'Lab', '', 'SH-2019'),
+('FEL103', 1, 1, 'Engineering Mechanics', 'Lab', '', 'SH-2019'),
+('FEL104', 1, 1, 'Basic Electrical Engineering', 'Lab', '', 'SH-2019'),
+('FEL105', 1, 1, 'Basic Workshop practice-I', 'Lab', '', 'SH-2019'),
+('FEC201', 1, 2, 'Engineering Mathematics-II', 'Theory', '', 'FH-2020'),
+('FEC202', 1, 2, 'Engineering Physics-II', 'Theory', '', 'FH-2020'),
+('FEC203', 1, 2, 'Engineering Chemistry-II', 'Theory', '', 'FH-2020'),
+('FEC204', 1, 2, 'Engineering Graphics', 'Theory', '', 'FH-2020'),
+('FEC205', 1, 2, 'C programming', 'Theory', '', 'FH-2020'),
+('FEC206', 1, 2, 'Professional Communication and Ethics- I', 'Theory', '', 'FH-2020'),
+('FEL201', 1, 2, 'Engineering Physics-II', 'Lab', '', 'FH-2020'),
+('FEL202', 1, 2, 'Engineering Chemistry-II', 'Lab', '', 'FH-2020'),
+('FEL203', 1, 2, 'Engineering Graphics', 'Lab', '', 'FH-2020'),
+('FEL204', 1, 2, 'C programming', 'Lab', '', 'FH-2020'),
+('FEL205', 1, 2, 'Professional Communication and Ethics- I', 'Lab', '', 'FH-2020'),
+('FEL206', 1, 2, 'Basic Workshop practice-II', 'Lab', '', 'FH-2020'),
+('ELX301', 1, 3, 'Applied Mathematics III', 'Theory', '', 'SH-2019'),
+('ELX302', 1, 3, 'Electronic Devices and Circuits I', 'Theory', '', 'SH-2019'),
+('ELX303', 1, 3, 'Digital Circuit Design', 'Theory', '', 'SH-2019'),
+('ELX304', 1, 3, 'Electrical Network Analysis and Synthesis', 'Theory', '', 'SH-2019'),
+('ELX305', 1, 3, 'Electronics Instruments and Measurement', 'Theory', '', 'SH-2019'),
+('ELXL301', 1, 3, 'Electronic Devices and Circuits I Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL302', 1, 3, 'Digital Circuit Design Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL303', 1, 3, 'Electrical Network and Measurement Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL304', 1, 3, 'Object Oriented Programming Methodology Laboratory', 'Lab', '', 'SH-2019'),
+('ELX401', 1, 4, 'Applied Mathematics IV', 'Theory', '', 'FH-2020'),
+('ELX402', 1, 4, 'Electronic Devices and Circuits II', 'Theory', '', 'FH-2020'),
+('ELX403', 1, 4, 'Microprocessors and Applications', 'Theory', '', 'FH-2020'),
+('ELX404', 1, 4, 'Digital System Design', 'Theory', '', 'FH-2020'),
+('ELX405', 1, 4, 'Principles of Communication Engineering', 'Theory', '', 'FH-2020'),
+('ELX406', 1, 4, 'Linear Control Systems', 'Theory', '', 'FH-2020'),
+('ELXL 401', 1, 4, 'Electronic Devices and Circuits II Laboratory', 'Lab', '', 'FH-2020'),
+('ELXL 402', 1, 4, 'Microprocessors and Applications Laboratory', 'Lab', '', 'FH-2020'),
+('ELXL 403', 1, 4, 'Digital System Design Laboratory', 'Lab', '', 'FH-2020'),
+('ELXL 404', 1, 4, 'Principles of Communication Engineering Laboratory', 'Lab', '', 'FH-2020'),
+('ELX501', 1, 5, 'Micro-controllers and Applications', 'Theory', '', 'SH-2019'),
+('ELX502', 1, 5, 'Digital Communication', 'Theory', '', 'SH-2019'),
+('ELX503', 1, 5, 'Engineering Electromagnetics', 'Theory', '', 'SH-2019'),
+('ELX504', 1, 5, 'Design with Linear Integrated Circuits', 'Theory', '', 'SH-2019'),
+('ELX505', 1, 5, 'Business Communication & Ethics', 'Theory', '', 'SH-2019'),
+('ELXDLO5011', 1, 5, 'Database Management System', 'Theory', '', 'SH-2019'),
+('ELXDLO5012', 1, 5, 'Digital Control Systems', 'Theory', '', 'SH-2019'),
+('ELXDLO5013', 1, 5, 'ASIC Verification', 'Theory', '', 'SH-2019'),
+('ELXDLO5014', 1, 5, 'Biomedical Instrumentation', 'Theory', '', 'SH-2019'),
+('ELXL501', 1, 5, 'Micro-controllers and Applications Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL502', 1, 5, 'Digital Communication Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL503', 1, 5, 'Design with Linear Integrated Circuits Laboratory', 'Lab', '', 'SH-2019'),
+('ELXLDLO5011', 1, 5, 'Database Management System Laboratory', 'Lab', '', 'SH-2019'),
+('ELXLDLO5012', 1, 5, 'Digital Control Systems Laboratory', 'Lab', '', 'SH-2019'),
+('ELXLDLO5013', 1, 5, 'ASIC Verification Laboratory', 'Lab', '', 'SH-2019'),
+('ELXLDLO5014', 1, 5, 'Biomedical Instrumentation Laboratory', 'Lab', '', 'SH-2019'),
+('ELX601', 1, 6, 'Embedded System and RTOS', 'Theory', '', 'FH-2020'),
+('ELX602', 1, 6, 'Computer Communication Network', 'Theory', '', 'FH-2020'),
+('ELX603', 1, 6, 'VLSI Design', 'Theory', '', 'FH-2020'),
+('ELX604', 1, 6, 'Signals and systems', 'Theory', '', 'FH-2020'),
+('ELXDLO6021', 1, 6, 'Microwave Engineering', 'Theory', '', 'FH-2020'),
+('ELXDLO6022', 1, 6, 'Electronic Product Design', 'Theory', '', 'FH-2020'),
+('ELXDLO6023', 1, 6, 'Wireless Communication', 'Theory', '', 'FH-2020'),
+('ELXDLO6024', 1, 6, 'Computer Organization and Architecture', 'Theory', '', 'FH-2020'),
+('ELXL601', 1, 6, 'Embedded System and RTOS Laboratory', 'Lab', '', 'FH-2020'),
+('ELXL602', 1, 6, 'Computer Communication Network Laboratory', 'Lab', '', 'FH-2020'),
+('ELXL603', 1, 6, 'VLSI Design Laboratory', 'Lab', '', 'FH-2020'),
+('ELXLDLO6022', 1, 6, 'Electronic Product Design', 'Lab', '', 'FH-2020'),
+('ELXLDLO6023', 1, 6, 'Wireless Communication Laboratory', 'Lab', '', 'FH-2020'),
+('ELXLDLO6024', 1, 6, 'Computer Organization and Architecture', 'Lab', '', 'FH-2020'),
+('ELX701', 1, 7, 'Instrumentation System Design', 'Theory', '', 'SH-2019'),
+('ELX702', 1, 7, 'Power Electronics', 'Theory', '', 'SH-2019'),
+('ELX703', 1, 7, 'Digital signal processing', 'Theory', '', 'SH-2019'),
+('ELXDLO7031', 1, 7, 'Neural Network and Fuzzy Logic', 'Theory', '', 'SH-2019'),
+('ELXDLO7032', 1, 7, 'Advance Networking Technologies', 'Theory', '', 'SH-2019'),
+('ELXDLO7033', 1, 7, 'Robotics', 'Theory', '', 'SH-2019'),
+('ELXDLO7034', 1, 7, 'Integrated Circuit Technology', 'Theory', '', 'SH-2019'),
+('ILO7011', 1, 7, 'Product Life Cycle Management', 'Theory', '', 'SH-2019'),
+('ILO7012', 1, 7, 'Reliability Engineering', 'Theory', '', 'SH-2019'),
+('ILO7013', 1, 7, 'Management Information System', 'Theory', '', 'SH-2019'),
+('ILO7014', 1, 7, 'Design of Experiments', 'Theory', '', 'SH-2019'),
+('ILO7015', 1, 7, 'Operations Research', 'Theory', '', 'SH-2019'),
+('ILO7016', 1, 7, 'Cyber Security and Laws', 'Theory', '', 'SH-2019'),
+('ILO7017', 1, 7, 'Disaster Management and Mitigation Measures', 'Theory', '', 'SH-2019'),
+('ILO7018', 1, 7, 'Energy Audit and Management', 'Theory', '', 'SH-2019'),
+('ELXL701', 1, 7, 'Instrumentation System Design Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL702', 1, 7, 'Power Electronics Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL703', 1, 7, 'Digital signal processing Laboratory', 'Lab', '', 'SH-2019'),
+('ELXL704', 1, 7, 'Project-I', 'Lab', '', 'SH-2019'),
+('ELXDOLO7031', 1, 7, 'Neural Network and Fuzzy Logic Laboratory', 'Theory', '', 'SH-2019'),
+('ELXDOLO7032', 1, 7, 'Advance Networking Technologies Laboratory', 'Theory', '', 'SH-2019'),
+('ELXDOLO7033', 1, 7, 'Robotics Laboratory', 'Theory', '', 'SH-2019'),
+('ELXDOLO7034', 1, 7, 'Integrated Circuit Technology Laboratory', 'Theory', '', 'SH-2019'),
+('ELX 801', 1, 8, 'Internet of Things', 'Theory', '', 'FH-2020'),
+('ELX 802', 1, 8, 'Analog and Mixed VLSI Design', 'Theory', '', 'FH-2020'),
+('ELX DLO8041', 1, 8, 'Advanced Power Electronics', 'Theory', '', 'FH-2020'),
+('ELX DLO8042', 1, 8, 'MEMS Technology', 'Theory', '', 'FH-2020'),
+('ELX DLO8043', 1, 8, 'Virtual Instrumentation', 'Theory', '', 'FH-2020'),
+('ELX DLO8044', 1, 8, 'Digital Image Processing', 'Theory', '', 'FH-2020'),
+('ILO8021', 1, 8, 'Project Management', 'Theory', '', 'FH-2020'),
+('ILO8022', 1, 8, 'Finance Management', 'Theory', '', 'FH-2020'),
+('ILO8023', 1, 8, 'Entrepreneurship Development and Management', 'Theory', '', 'FH-2020'),
+('ILO8024', 1, 8, 'Human Resource Management', 'Theory', '', 'FH-2020'),
+('ILO8025', 1, 8, 'Professional Ethics and CSR', 'Theory', '', 'FH-2020'),
+('ILO8026', 1, 8, 'Research Methodology', 'Theory', '', 'FH-2020'),
+('ILO8027', 1, 8, 'IPR and Patenting', 'Theory', '', 'FH-2020'),
+('ILO8028', 1, 8, 'Digital Business Management', 'Theory', '', 'FH-2020'),
+('ILO8029', 1, 8, 'Environmental Management', 'Theory', '', 'FH-2020'),
+('ELXL 801', 1, 8, 'Internet of Things Lab.', 'Lab', '', 'FH-2020'),
+('ELXL 802', 1, 8, 'Analog and Mixed VLSI Design Lab.', 'Lab', '', 'FH-2020'),
+('ELXL803', 1, 8, 'Project-II', 'Lab', '', 'FH-2020'),
+('ELXLDLO8041', 1, 8, 'Advanced Power Electronics Laboratory', 'Lab', '', 'FH-2020'),
+('ELXLDLO8042', 1, 8, 'MEMS Technology Laboratory', 'Lab', '', 'FH-2020'),
+('ELXLDLO8043', 1, 8, 'Virtual Instrumentation Laboratory', 'Lab', '', 'FH-2020'),
+('ELXLDLO8044', 1, 8, 'Digital Image Processing Laboratory', 'Lab', '', 'FH-2020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_am`
+--
+
+CREATE TABLE `course_am` (
+  `course_id` varchar(15) NOT NULL,
+  `am1` varchar(100) DEFAULT NULL,
+  `am2` varchar(100) DEFAULT NULL,
+  `am3` varchar(100) DEFAULT NULL,
+  `am4` varchar(100) DEFAULT NULL,
+  `am5` varchar(100) DEFAULT NULL,
+  `am6` varchar(100) DEFAULT NULL,
+  `am7` varchar(100) DEFAULT NULL,
+  `am8` varchar(100) DEFAULT NULL,
+  `am9` varchar(100) DEFAULT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course_am`
+--
+
+INSERT INTO `course_am` (`course_id`, `am1`, `am2`, `am3`, `am4`, `am5`, `am6`, `am7`, `am8`, `am9`, `term`) VALUES
+('ITC303', 'Internal Assessment', 'Assignment', 'Tutorials', 'Quiz', NULL, 'Case Study', 'Mini Project', NULL, NULL, ''),
+('ITC501', 'Internal Assessment', 'Assignment', 'Tutorials', 'Quiz', NULL, NULL, NULL, NULL, NULL, ''),
+('ITC502', 'Internal Assessment', 'Assignment', 'Tutorials', NULL, NULL, NULL, NULL, NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_ic`
+--
+
+CREATE TABLE `course_ic` (
+  `course_id` varchar(15) NOT NULL,
+  `sem` int(2) NOT NULL,
+  `course_ic` varchar(4) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course_ic`
+--
+
+INSERT INTO `course_ic` (`course_id`, `sem`, `course_ic`, `term`) VALUES
+('ILO7011', 7, 'N697', 'SH-2019'),
+('ILO7012', 7, 'N713', 'SH-2019'),
+('ILO7013', 7, 'N697', 'SH-2019'),
+('ILO7014', 7, 'N578', 'SH-2019'),
+('ILO7015', 7, 'N713', 'SH-2019'),
+('ILO7016', 7, 'N713', 'SH-2019'),
+('ILO7017', 7, 'N617', 'SH-2019'),
+('ILO7018', 7, 'N676', 'SH-2019'),
+('ILO7019', 7, 'N682', 'SH-2019'),
+('ITC301', 3, 'N283', 'SH-2019'),
+('ITC302', 3, 'N310', 'SH-2019'),
+('ITC303', 3, 'N631', 'SH-2019'),
+('ITC304', 3, 'N399', 'SH-2019'),
+('ITC305', 3, 'N570', 'SH-2019'),
+('ITC501', 5, 'N631', 'SH-2019'),
+('ITC502', 5, 'N631', 'SH-2019'),
+('ITC503', 5, 'N556', 'SH-2019'),
+('ITC504', 5, 'N498', 'SH-2019'),
+('ITC701', 7, 'N718', 'SH-2019'),
+('ITC702', 7, 'N682', 'SH-2019'),
+('ITC703', 7, 'N713', 'SH-2019'),
+('ITDLO5011', 5, 'N479', 'SH-2019'),
+('ITDLO5012', 5, 'N342', 'SH-2019'),
+('ITDLO5013', 5, 'N385', 'SH-2019'),
+('ITDLO5014', 5, 'N556', 'SH-2019'),
+('ITDLO5015', 5, 'N479', 'SH-2019'),
+('ITDLO7031', 7, 'N697', 'SH-2019'),
+('ITDLO7032', 7, 'N637', 'SH-2019'),
+('ITDLO7033', 7, 'N681', 'SH-2019'),
+('ITDLO7034', 7, 'N676', 'SH-2019'),
+('ITDLO7035', 7, 'N681', 'SH-2019'),
+('ITL301', 3, 'N631', 'SH-2019'),
+('ITL302', 3, 'N569', 'SH-2019'),
+('ITL303', 3, 'N479', 'SH-2019'),
+('ITL304', 3, 'N479', 'SH-2019'),
+('ITL501', 5, 'N310', 'SH-2019'),
+('ITL502', 5, 'N556', 'SH-2019'),
+('ITL503', 5, 'N578', 'SH-2019'),
+('ITL504', 5, 'N617', 'SH-2019'),
+('ITL505', 5, 'N310', 'SH-2019'),
+('ITL701', 7, 'N713', 'SH-2019'),
+('ITL702', 7, 'N713', 'SH-2019'),
+('ITL703', 7, 'N697', 'SH-2019'),
+('ITL704', 7, 'N713', 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_tchr`
+--
+
+CREATE TABLE `course_tchr` (
+  `trans_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) NOT NULL,
+  `tchr_id` varchar(4) NOT NULL,
+  `class_code` varchar(3) NOT NULL,
+  `emailid` varchar(50) NOT NULL,
+  `mobile` bigint(20) NOT NULL,
+  `ext` int(11) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course_tchr`
+--
+
+INSERT INTO `course_tchr` (`trans_id`, `course_id`, `tchr_id`, `class_code`, `emailid`, `mobile`, `ext`, `term`) VALUES
+('sakec5fd5b2cf0b09a2.84095160', 'ITC303', 'N310', 'SE5', 'abc@test.com', 1234567890, 209, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `co_am`
+--
+
+CREATE TABLE `co_am` (
+  `co_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) NOT NULL,
+  `am1` float DEFAULT 0,
+  `am2` float DEFAULT 0,
+  `am3` float DEFAULT 0,
+  `am4` float DEFAULT 0,
+  `am5` float DEFAULT 0,
+  `am6` float DEFAULT 0,
+  `am7` float DEFAULT 0,
+  `am8` float DEFAULT 0,
+  `am9` float DEFAULT 0,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `co_am`
+--
+
+INSERT INTO `co_am` (`co_id`, `course_id`, `am1`, `am2`, `am3`, `am4`, `am5`, `am6`, `am7`, `am8`, `am9`, `term`) VALUES
+('ITC303.1', 'ITC303', 20, 20, 10, 10, 0, 20, 20, 0, 0, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `co_list`
+--
+
+CREATE TABLE `co_list` (
+  `trans_id` varchar(30) NOT NULL,
+  `co_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) DEFAULT NULL,
+  `co_no` varchar(3) DEFAULT NULL,
+  `sem` int(2) DEFAULT NULL,
+  `co_stmt` varchar(1000) DEFAULT NULL,
+  `bl_level` varchar(3) DEFAULT NULL,
+  `weightage` float DEFAULT NULL,
+  `syll_module` int(2) DEFAULT NULL,
+  `pso` varchar(50) DEFAULT NULL,
+  `pi_po` varchar(200) DEFAULT NULL,
+  `term` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `co_list`
+--
+
+INSERT INTO `co_list` (`trans_id`, `co_id`, `course_id`, `co_no`, `sem`, `co_stmt`, `bl_level`, `weightage`, `syll_module`, `pso`, `pi_po`, `term`) VALUES
+('sakec5fd5b3286a6948.50365846', 'ITC303.1', 'ITC303', 'CO1', 3, 'This is a CO1', '1', 30, 2, 'IT_PSO1', '1.1,1.2', 'SH-2019'),
+('sakec600b20f3ec0d14.03823151', 'ITC303.2', 'ITC303', 'CO2', 3, 'this is co2', '2', 20, 2, 'IT_PSO1, IT_PSO2', '1.1.1,1.1.2', 'SH-2019'),
+('sakec600b220745f8b7.82813285', 'ITC501.1', 'ITC501', 'CO1', 5, 'This is CO1', '1', 20, 3, 'IT_PSO2', '1.1.1', 'SH-2019'),
+('sakec600b221ea95ac8.89227204', 'ITC501.2', 'ITC501', 'CO2', 5, 'This is CO2', '3', 20, 1, 'IT_PSO1, IT_PSO2', '1.1.2', 'SH-2019'),
+('sakec600b22658e83d3.54212440', 'ITC502.1', 'ITC502', 'CO1', 5, 'CO1', '3', 20, 1, 'IT_PSO1', '1.1.1', 'SH-2019'),
+('sakec600b2274313026.46925187', 'ITC502.2', 'ITC502', 'CO2', 5, 'CO2', '2', 10, 2, 'IT_PSO2', '1.1.1', 'SH-2019'),
+('sakec600b22857465c2.52034389', 'ITC502.3', 'ITC502', 'CO3', 5, 'CO3', '2', 10, 5, 'IT_PSO1', '1.1.3', 'SH-2019'),
+('sakec600b22978b5fe1.35312137', 'ITC502.4', 'ITC502', 'CO4', 5, 'CO4', '2', 10, 2, 'IT_PSO2', '1.1.4', 'SH-2019'),
+('sakec600b22aad8fea1.25913920', 'ITC502.5', 'ITC502', 'CO5', 5, 'Co5', '2', 10, 5, 'IT_PSO2', '1.1.5', 'SH-2019'),
+('sakec600b22c1a3dbf6.62851959', 'ITC502.6', 'ITC502', 'CO6', 5, 'CO6', '3', 10, 4, 'IT_PSO1', '1.1.6', 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `domain`
+--
+
+CREATE TABLE `domain` (
+  `domain_id` varchar(10) NOT NULL,
+  `branch_id` int(1) DEFAULT NULL,
+  `domain_name` varchar(100) DEFAULT NULL,
+  `domain_ic` varchar(4) DEFAULT NULL,
+  `domain_coic` varchar(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `domain`
+--
+
+INSERT INTO `domain` (`domain_id`, `branch_id`, `domain_name`, `domain_ic`, `domain_coic`) VALUES
+('ITD1', 3, 'Engineering Science', 'N415', 'N433'),
+('ITD2', 3, 'Computer Programming Languages and Algorithms', 'N375', 'N620'),
+('ITD3', 3, 'Database Technologies', 'N342', 'N618'),
+('ITD4', 3, 'Web Technologies', 'N310', 'N570'),
+('ITD5', 3, 'Network and Security', 'N283', 'N498'),
+('ITD6', 3, 'Digital Design and Processing', 'N193', 'N473'),
+('ITD7', 3, 'Intelligent Systems and Cyber Security', 'N479', 'N575'),
+('ITD8', 3, 'Operating System and Distributed Computing', 'N385', 'N399'),
+('ITD9', 3, 'Project Design Development & Management', 'N556', 'N617');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ia_co`
+--
+
+CREATE TABLE `ia_co` (
+  `course_id` varchar(15) NOT NULL,
+  `co_id` varchar(30) NOT NULL,
+  `IA1_1a` int(10) NOT NULL,
+  `IA1_1b` int(10) NOT NULL,
+  `IA1_1c` int(10) NOT NULL,
+  `IA1_1d` int(10) NOT NULL,
+  `IA1_1e` int(10) NOT NULL,
+  `IA1_1f` int(10) NOT NULL,
+  `IA1_2a` int(10) NOT NULL,
+  `IA1_2b` int(10) NOT NULL,
+  `IA1_3a` int(10) NOT NULL,
+  `IA1_3b` int(10) NOT NULL,
+  `IA2_1a` int(10) NOT NULL,
+  `IA2_1b` int(10) NOT NULL,
+  `IA2_1c` int(10) NOT NULL,
+  `IA2_1d` int(10) NOT NULL,
+  `IA2_1e` int(10) NOT NULL,
+  `IA2_1f` int(10) NOT NULL,
+  `IA2_2a` int(10) NOT NULL,
+  `IA2_2b` int(10) NOT NULL,
+  `IA2_3a` int(10) NOT NULL,
+  `IA2_3b` int(10) NOT NULL,
+  `total` int(10) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ia_co`
+--
+
+INSERT INTO `ia_co` (`course_id`, `co_id`, `IA1_1a`, `IA1_1b`, `IA1_1c`, `IA1_1d`, `IA1_1e`, `IA1_1f`, `IA1_2a`, `IA1_2b`, `IA1_3a`, `IA1_3b`, `IA2_1a`, `IA2_1b`, `IA2_1c`, `IA2_1d`, `IA2_1e`, `IA2_1f`, `IA2_2a`, `IA2_2b`, `IA2_3a`, `IA2_3b`, `total`, `term`) VALUES
+('ITC303', 'ITC303.1', 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC303', 'ITC303.2', 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pso`
+--
+
+CREATE TABLE `pso` (
+  `pso_id` varchar(7) DEFAULT NULL,
+  `branch_id` int(1) DEFAULT NULL,
+  `pso_stmnt` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pso`
+--
+
+INSERT INTO `pso` (`pso_id`, `branch_id`, `pso_stmnt`) VALUES
+('CS_PSO1', 2, 'Analyze complex computer engineering problem to reach substantiated conclusion by applying the knowledge of basic sciences and computer engineering fundamental.'),
+('CS_PSO2', 2, 'Design and use modern tools and techniques for modeling and developing complex computer engineering solutions by using research based knowledge and research method for analysis and interpretation of data.'),
+('CS_PSO3', 2, 'Work individually or as a team in multidisciplinary environment and communicate effectively with engineering community and society at large and understand the impact of professional computer engineering solutions by assessing social and environmental issues by commitment towards professional ethics.'),
+('CS_PSO4', 2, 'Recognize the need for and acquire the ability to engage in independent and lifelong learning in the broadest context of technical change.'),
+('IT_PSO1', 3, 'To analyse, design, develop, test and apply management principles, mathematical foundations in the development of IT based solutions for real world and open-ended problems.'),
+('IT_PSO2', 3, 'To perform various roles in creating innovative career paths: to be an entrepreneur, a successful professional, pursue higher studies with realization of moral values & ethics.'),
+('ET_PSO1', 4, 'To exhibit a strong foundation in mathematics and basic sciences needed for Electronics & Telecommunication Engineering fields and will be able to formulate, analyze engineering problems considering social, economical, ethical and safety issues.'),
+('ET_PSO2', 4, 'To design Electronics & Communication systems appropriate for the industry and conduct experiments, analyze and interpret data by both the hardware, simulation tools and relevant application softwares.'),
+('ET_PSO3', 4, 'Keeping up themselves abreast with current cutting edge technology needed for graduate studies and successful career in the industry in Indian and International companies and to promote the willingness to contribute to industry, research and society.'),
+('ET_PSO4', 4, 'To work in teams on multidisciplinary projects, organize events and participate in activities of professional bodies so as to cultivate the ethics and codes of professional conduct.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_co`
+--
+
+CREATE TABLE `quiz_co` (
+  `co_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) NOT NULL,
+  `quiz_1` int(100) NOT NULL,
+  `quiz_2` int(100) NOT NULL,
+  `quiz_3` int(100) NOT NULL,
+  `quiz_4` int(100) NOT NULL,
+  `quiz_5` int(100) NOT NULL,
+  `total` int(100) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quiz_co`
+--
+
+INSERT INTO `quiz_co` (`co_id`, `course_id`, `quiz_1`, `quiz_2`, `quiz_3`, `quiz_4`, `quiz_5`, `total`, `term`) VALUES
+('ITC303.1', 'ITC303', 20, 10, 40, 30, 0, 100, 'SH-2019'),
+('ITC303.2', 'ITC303', 10, 10, 10, 10, 60, 100, 'SH-2019'),
+('ITC501.1', 'ITC501', 10, 20, 30, 40, 0, 100, 'SH-2019'),
+('ITC501.2', 'ITC501', 100, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC501.3', 'ITC501', 0, 100, 0, 0, 0, 100, 'SH-2019'),
+('ITC501.4', 'ITC501', 0, 0, 100, 0, 0, 100, 'SH-2019'),
+('ITC501.5', 'ITC501', 0, 0, 0, 100, 0, 100, 'SH-2019'),
+('ITC501.6', 'ITC501', 0, 0, 0, 0, 100, 100, 'SH-2019'),
+('ITC502.1', 'ITC502', 100, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC502.2', 'ITC502', 0, 20, 80, 0, 0, 100, 'SH-2019'),
+('ITC502.3', 'ITC502', 0, 0, 0, 100, 0, 100, 'SH-2019'),
+('ITC502.4', 'ITC502', 0, 0, 0, 0, 100, 100, 'SH-2019'),
+('ITC502.5', 'ITC502', 0, 0, 0, 0, 100, 100, 'SH-2019'),
+('ITC502.6', 'ITC502', 0, 100, 0, 0, 0, 100, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutorial_co`
+--
+
+CREATE TABLE `tutorial_co` (
+  `co_id` varchar(30) NOT NULL,
+  `course_id` varchar(15) NOT NULL,
+  `tut1` int(10) NOT NULL,
+  `tut2` int(10) NOT NULL,
+  `tut3` int(10) NOT NULL,
+  `tut4` int(10) NOT NULL,
+  `tut5` int(10) NOT NULL,
+  `tut6` int(10) NOT NULL,
+  `tut7` int(10) NOT NULL,
+  `tut8` int(10) NOT NULL,
+  `tut9` int(10) NOT NULL,
+  `tut10` int(10) NOT NULL,
+  `tut11` int(10) NOT NULL,
+  `tut12` int(10) NOT NULL,
+  `tut13` int(10) NOT NULL,
+  `total` int(10) NOT NULL,
+  `term` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tutorial_co`
+--
+
+INSERT INTO `tutorial_co` (`co_id`, `course_id`, `tut1`, `tut2`, `tut3`, `tut4`, `tut5`, `tut6`, `tut7`, `tut8`, `tut9`, `tut10`, `tut11`, `tut12`, `tut13`, `total`, `term`) VALUES
+('ITC303.1', 'ITC303', 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019'),
+('ITC303.2', 'ITC303', 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 100, 'SH-2019');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `e_no` varchar(10) NOT NULL,
+  `e_name` varchar(38) DEFAULT NULL,
+  `emailid` varchar(35) DEFAULT NULL,
+  `mobile` varchar(10) DEFAULT NULL,
+  `dept` varchar(31) DEFAULT NULL,
+  `designation` varchar(28) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `panno` varchar(12) DEFAULT NULL,
+  `aadharno` varchar(15) DEFAULT NULL,
+  `etype` varchar(20) DEFAULT NULL,
+  `role` varchar(20) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`e_no`, `e_name`, `emailid`, `mobile`, `dept`, `designation`, `dob`, `type`, `panno`, `aadharno`, `etype`, `role`) VALUES
+('it_admin', 'Department Admin', NULL, NULL, 'INFORMATION TECHNOLOGY', NULL, NULL, NULL, 'admin123', NULL, NULL, 'Department Admin'),
+('N001', 'PROF.M.L.DIWAN', '', '', 'ADMINISTRATION', 'Lecturer', '1930-05-05', '', '', '', 'Adhoc', 'user'),
+('N006', 'VINIT.C.KOTAK', 'vinit.kotak@sakec.ac.in', '9322211207', 'ELECTRONICS', 'Professor', '1966-11-01', 'Regular', 'ACGPK7475F', '', 'teaching', 'user'),
+('N009', 'S.D.VERNEKAR', '', '', 'ELECTRONICS', 'Lecturer (Sr. Scale)', '1966-07-23', '', 'ABOPV3471F', '', 'Regular', 'user'),
+('N010', 'PADMAKUMAR.V.S', '', '', 'ADMINISTRATION', 'Lecturer', '1968-05-30', '', '', '', 'Regular', 'user'),
+('N011', 'K.RAVI', '', '', 'NON-TEACHING', 'Lecturer', '1975-01-01', '', '', '', 'Regular', 'user'),
+('N012', 'ANIS.MOHEMMED.Q', '', '', 'ADMINISTRATION', 'C.O.E', '1975-01-01', '', '', '', 'Adhoc', 'user'),
+('N013', 'S.RAMKUMAR', '', '', 'ADMINISTRATION', 'Lecturer', '1975-01-01', '', '', '', 'Adhoc', 'user'),
+('N014', 'PROF.K.S.RAMAN', '', '', 'ADMINISTRATION', 'Lecturer', '1936-11-21', '', '', '', 'Regular', 'user'),
+('N015', 'ANIL.D.PATIL', '', '', 'ADMINISTRATION', 'C.O.E', '1975-01-01', '', '', '', 'Regular', 'user'),
+('N016', 'SAJI  DANIEL', 'saji.daniel@sakec.ac.in', '9892186057', 'ENGINEERING SCIENCE', 'Associate Professor', '1958-02-23', '', 'AASPD9644D', '9.59E+11', 'Regular', 'user'),
+('N017', 'R.V.PATIL', '', '', 'ADMINISTRATION', 'Lecturer', '1964-06-03', '', '', '', 'Regular', 'user'),
+('N018', 'K.C.RAMI', '', '', 'ADMINISTRATION', 'Lecturer', '1966-07-17', '', '', '', 'Regular', 'user'),
+('N019', 'U.K.PANDEY', '', '', 'CONSTRUCTION', 'Lecturer (Sr. Scale)', '1963-10-01', '', 'ADCPP 5655K', '', 'Regular', 'user'),
+('N020', 'J.P.SINGH', 'jayprakash.singh@sakec.ac.in', '9892561378', 'ENGINEERING SCIENCE', 'Professor', '1960-09-15', 'Regular', 'AROPS-9776-L', '', 'teaching', 'user'),
+('N024', 'ABDUL W.KHAN', 'abdul.khan@sakec.ac.in', '9821408645', 'ENGINEERING SCIENCE', 'Associate Professor', '1963-07-01', 'Regular', 'ADIPK8799F', '3.33E+11', 'teaching', 'admin'),
+('N027', 'SADASHIV PANDURANG DAHAKE', 'sadashiv.dahake@sakec.ac.in', '9869342363', 'ENGINEERING SCIENCE', 'Associate Professor', '1962-02-24', 'Regular', 'ABAPD9276A', '5.57E+11', 'teaching', 'user'),
+('N028', 'SHUBHALAXMI HEGDE', 'shubhalaxmi.hegde@sakec.ac.in', '9892233744', 'ENGINEERING SCIENCE', 'Associate Professor', '1962-06-07', 'Regular', 'AAUPH8525K', '', 'teaching', 'user'),
+('N030', 'DR. S.N.SINGH', '', '', 'HUMANITIES S.S.', 'Assistant Professor', '1951-08-01', '', 'ACJPS8568A', '', 'Regular', 'user'),
+('N033', 'N.K.GONSALVES', '', '', 'ADMINISTRATION', 'C.O.E', '1931-12-31', '', '', '', 'Adhoc', 'user'),
+('N034', 'ASHOK.DEVRAJ LATHIA', 'ashok.lathia@sakec.ac.in', '9821388789', 'ADMINISTRATION', 'Accountant', '1965-11-09', 'Regular', 'AAAPL 8657J', '8.46E+11', 'non-teaching', 'user'),
+('N035', 'KAMALA.R', 'kamala.r@sakec.ac.in', '9820844443', 'ADMINISTRATION', 'Deputy Registrar', '1954-11-11', '', 'ADSPR-4607-H', '', 'Adhoc', 'user'),
+('N036', 'REKHA KULKARNI', '', '', 'ADMINISTRATION', 'Clerk ', '1949-12-25', '', '', '', 'Regular', 'user'),
+('N037', 'MANJU PARITOSH.DESHPANDE', 'manju.deshpande@sakec.ac.in', '9869383003', 'ADMINISTRATION', 'Senior Clerk', '1965-07-07', 'Regular', 'AGSPD2777R', '9.74E+11', 'non-teaching', 'user'),
+('N038', 'DINESH KUMAR SINGH', '', '', 'ADMINISTRATION', 'Estate Officer', '1966-06-03', '', 'AQAPS5383G', '9.42E+11', 'Regular', 'user'),
+('N039', 'SHASHI SHARMA', '', '', 'ADMINISTRATION', 'Asst.Librarian', '1945-03-05', '', '', '', 'Regular', 'user'),
+('N041', 'MATHEW CHACKO', '', '', 'ADMINISTRATION', 'Lab Asst.Et', '1946-12-18', '', '', '', 'Regular', 'user'),
+('N042', 'MAHENDRA DATTATRAY DHURI', 'mahindra.dhuri@sakec.ac.in', '9869105619', 'ELECTRONICS', 'Electrician', '1964-02-11', 'Regular', 'AHNPD9513B', '3.38E+11', 'non-teaching', 'user'),
+('N047', 'R.R.MORE', '', '', 'ADMINISTRATION', 'M.O', '1931-09-11', '', '', '', 'Adhoc', 'user'),
+('N048', 'DEEPAK SHANKAR KOKATE', 'deepak.kokate@sakec.ac.in', '7021563293', 'ENGINEERING SCIENCE', 'Lab Asst.(A)', '1965-06-18', 'Regular', 'AHAPK1501D', '4.29E+11', 'non-teaching', 'user'),
+('N049', 'PRAKASH PATIL', 'prakash.patil@sakec.ac.in', '8082220506', 'ADMINISTRATION', 'W.I.(A)', '1959-05-10', '', 'AHCPP2043B', '4.28E+11', 'Regular', 'user'),
+('N050', 'SUNIL.RAGHUNATH YESHWANTRAO', 'sunil.yeshwantrao@sakec.ac.in', '7744845302', 'ENGINEERING SCIENCE', 'W.I.(A)', '1968-07-01', 'Regular', 'AAPPY8643J', '3.88E+11', 'non-teaching', 'user'),
+('N051', 'ASHOK PATIL', 'ashok.patil@sakec.ac.in', '7208434513', 'ENGINEERING SCIENCE', 'W.I.(B)', '1969-10-18', 'Regular', 'AVFPP0119D', '', 'non-teaching', 'user'),
+('N052', 'RAJU.KOLI', '', '', 'ADMINISTRATION', 'PEON', '1968-07-25', '', '', '', 'Regular', 'user'),
+('N053', 'NARENDRA  NAGESHWAR KOLI', '', '9221232572', 'ADMINISTRATION', 'Attendent', '1969-04-07', 'Regular', 'ALBPK6354K', '', 'non-teaching', 'user'),
+('N055', 'PRAMOD JOSEPH SHINDE', 'pramod.shinde@sakec.ac.in', '7972943866', 'ENGINEERING SCIENCE', 'Jr.Lab Asst.', '1963-09-12', 'Regular', 'BYFPS9146H', '2.83E+11', 'non-teaching', 'user'),
+('N056', 'SHARDA VADHEL', '', '9833234561', 'ADMINISTRATION', 'Library Attandent', '1957-05-10', '', 'AGGPV7268R', '', 'Regular', 'user'),
+('N073', 'DR. S S  MANECK', '', '', 'ELECTRONICS', 'Principal(V)', '1931-12-14', '', 'ACJPM-8799-F', '', 'Regular', 'user'),
+('N076', 'DILIP LAXMISHANKAR  JOSHI', 'dilip.joshi@sakec.ac.in', '9869142697', 'ADMINISTRATION', 'Senior Clerk', '1966-10-26', 'Regular', 'ACPPJ5481M', '7.31E+11', 'non-teaching', 'user'),
+('N083', 'RAMASHANKAR PANDEY', '', '9619030995', 'ADMINISTRATION', 'Watchmen', '1958-10-10', '', 'AZFPP4431Q', '9.20E+11', 'Regular', 'user'),
+('N084', 'C B MOHITE', '', '8652206901', 'ADMINISTRATION', 'Attendent', '1955-11-15', '', 'BBHPM2672R', '5.25E+11', 'Regular', 'user'),
+('N086', 'PROF. RAM M KAMATH', '', '', 'CONSTRUCTION', 'Asst. Professor(V)', '1946-10-09', '', 'AABPK0880D', '', 'Regular', 'user'),
+('N091', 'NALINI SHASTRI', '', '', 'ELECTRONICS', 'Assistant Professor (V)', '1962-12-29', '', '', '', 'Regular', 'user'),
+('N094', 'PROF.M.S.NAGESHA', '', '', 'CONSTRUCTION', 'Professor', '1963-06-20', '', 'AADPM4813C', '', 'Regular', 'user'),
+('N097', 'PRAMODKUMAR SINGH', 'pramodkumar.singh@sakec.ac.in', '9029918483', 'ADMINISTRATION', 'Stores Officer', '1965-06-20', 'Regular', 'CQJPS6009J', '', 'non-teaching', 'user'),
+('N098', 'PRAVEEN.SHIVABHAI PURABIA', 'praveen.purabiya@sakec.ac.in', '9967374312', 'ADMINISTRATION', 'O.S', '1967-01-03', 'Regular', 'APDPP5608K', '', 'non-teaching', 'user'),
+('N101', 'VINAYAK KASHIRAM', '', '', 'ADMINISTRATION', 'PEON', '1941-05-24', '', '', '', 'Adhoc', 'user'),
+('N102', 'ARVIND HANUMANT SATHE', '', '8928831416', 'ADMINISTRATION', 'Attendant', '1975-10-11', 'Regular', 'BZVPS8905B', '9.76E+11', 'non-teaching', 'user'),
+('N103', 'MANOJ SHANKAR SHINDE', 'manoj.shinde@sakec.ac.in', '7977864423', 'ADMINISTRATION', 'Jr.Clek', '1972-11-27', 'Regular', 'AUWPS7430E', '6.51E+11', 'non-teaching', 'user'),
+('N104', 'ARUN SHAMRAV SAMUDRE', '', '9167461476', 'ADMINISTRATION', 'Attendant', '1970-06-01', 'Regular', 'BNZPS5197R', '', 'non-teaching', 'user'),
+('N105', 'HARJINDER PREETAM  SINGH', '', '9702834548', 'ADMINISTRATION', 'PEON', '1961-04-15', 'Regular', 'CTYPS0695A', '8.60E+11', 'non-teaching', 'user'),
+('N106', 'MAHIPAT NARAYAN', '', '', 'ADMINISTRATION', 'Gardener', '1933-10-10', '', '', '', 'Adhoc', 'user'),
+('N107', 'RAVISHANKAR  GUPTESHWAR SINGH', '', '8268901517', 'ADMINISTRATION', 'Watchman', '1972-08-18', 'Regular', 'CWWPS1236G', '6.76E+11', 'non-teaching', 'user'),
+('N114', 'VRICHA CHAVAN', '', '', 'ELECTRONICS', 'Lecturer (Sr. Scale)', '1968-07-25', '', 'ADGPC0322C', '', 'Regular', 'user'),
+('N120', 'NARESH HARISHCHANDRA JHA', '', '9004008902', 'ADMINISTRATION', 'Attendant', '1971-05-04', 'Regular', 'AJPPJ8598N', '5.83E+11', 'non-teaching', 'user'),
+('N122', 'VIJAYA  ARUN DESHMUKH', '', '8108590114', 'ADMINISTRATION', 'PEON', '1960-10-10', 'Regular', 'AQXPD7914M', '', 'non-teaching', 'user'),
+('N123', 'RAMESH LEKURWALE', '', '', 'MECHANICALS', 'Senior Lecturer(Se.Grade)', '1970-12-23', '', 'AAPPL5079D', '', 'Regular', 'user'),
+('N125', 'SUSHMA SRIVASTAVA', 'sushma.srivastava@sakec.ac.in', '9821254462', 'ENGINEERING SCIENCE', 'Associate Professor', '1967-12-18', 'Regular', 'ACWPS-3904-M', '', 'teaching', 'user'),
+('N128', 'RACHANA SHAH', '', '', 'ELECTRONICS', 'Assistant Professor', '1969-05-17', '', 'AKYPS0753Q', '', 'Regular', 'user'),
+('N131', 'PRADEEP DANGAT', 'pradeep.dangat@sakec.ac.in', '9323483799', 'INFORMATION TECHNOLOGY', 'I.M', '1970-01-26', 'Regular', 'AHFPD2423A', '', 'non-teaching', 'user'),
+('N132', 'GOGATE VIDYA S.', 'vidya.gogate@sakec.ac.in', '9619037320', 'ELECTRONICS', 'Associate Professor', '1968-04-04', 'Regular', 'AEPPG1676K', '', 'teaching', 'user'),
+('N138', 'PROF B.RATHNAKARA BAIRI', '', '', 'ELECTRONICS', 'Professor', '1941-06-10', '', 'AAIPB8448H', '', 'Regular', 'user'),
+('N139', 'V.GANGADHARAN', '', '', 'ADMINISTRATION', 'Placement Supervisor', '1945-05-15', '', 'ACJPM4860H', '', 'Adhoc', 'user'),
+('N146', 'UDAY BHAVE', 'uday.bhave@sakec.ac.in', '9323839556', 'COMPUTER', 'Associate Professor', '1968-02-07', 'Regular', 'ACCPB8338E', '', 'teaching', 'user'),
+('N147', 'DR.UMA R. RAO', 'uma.rao@sakec.ac.in', '9869009747', 'ELECTRONICS', 'Professor', '1958-10-11', '', 'AEPPR3733Q', '9.22E+11', 'Regular', 'user'),
+('N153', 'ANITA SAMUEL', '', '', 'ELECTRONICS', 'Lecturer (Sr. Scale)', '1970-12-21', '', 'AEEPS3741N', '', 'Regular', 'user'),
+('N157', 'DR. D.G.THUSE', '', '', 'CONSTRUCTION', 'Vice Principal', '1936-10-07', '', 'AABPT1960B', '', 'Regular', 'user'),
+('N159', 'SHIKHA SHRIVASTAVA', 'shikha.shrivastava@sakec.ac.in', '9820925187', 'ELECTRONICS', 'Associate Professor', '1965-04-12', 'Regular', 'AAFPS-9464-H', '', 'teaching', 'user'),
+('N160', 'TRUPTI S.DAMLE', '', '9967590974', 'ADMINISTRATION', 'Technical Assistant', '1975-05-21', '', 'AVFPD7331R', '', 'Regular', 'user'),
+('N163', 'MUGALI SUNITA K', '', '', 'ADMINISTRATION', 'Lab.Instructor', '1972-12-07', '', 'AFSPM6711P', '', 'Regular', 'user'),
+('N164', 'USHA S.', '', '', 'CONSTRUCTION', 'Assistant Professor (V)', '1962-07-03', '', '', '', 'Regular', 'user'),
+('N165', 'DOMABAPU BRAHMANKAR', '', '', 'CONSTRUCTION', 'Lecturer (Sr. Scale)', '1971-07-16', '', 'AFTPB6580Q', '', 'Regular', 'user'),
+('N167', 'SATISH NAGTODE', '', '', 'CONSTRUCTION', 'Lecturer', '1971-05-26', '', '', '', 'Regular', 'user'),
+('N176', 'JAGDISH P.SARODE', '', '', 'ADMINISTRATION', 'Technical Assistant', '1970-07-19', '', 'BKMPS3549B', '', 'Regular', 'user'),
+('N177', 'DIVAKARAN B.', 'divakaran.balakrishnan@sakec.ac.in', '9757112232', 'ADMINISTRATION', 'Senior Clerk', '1966-05-20', 'Regular', 'AKQPB6876P', '', 'non-teaching', 'user'),
+('N178', 'SANDEEP SHRIDHAR KULYE', '', '8898999972', 'ADMINISTRATION', 'Library Attandent', '1974-06-12', 'Regular', 'ALBPK6353Q', '5.86E+11', 'non-teaching', 'user'),
+('N179', 'GOWRI PRASAD PULUMATHI', 'gowri.prasad@sakec.ac.in', '9833859658', 'LIBRARY', 'Librarian', '1973-10-15', 'Regular', 'AERPP9721N', '', 'teaching', 'user'),
+('N185', 'JANHAVI ARUN DESHPANDE', 'janhavi.deshpande@sakec.ac.in', '9819103391', 'ELECTRONICS', 'Technical Assistant', '1968-05-06', 'Regular', 'AQUPD0473C', '4.86E+11', 'non-teaching', 'user'),
+('N187', 'REKHA RAMESH ', 'rekha.ramesh@sakec.ac.in', '9869430961', 'COMPUTER', 'Associate Professor', '1972-03-06', 'Regular', 'AGSPR4270P', '9.26E+11', 'teaching', 'user'),
+('N188', 'DR.M.B.SHAH', '', '', 'HUMANITIES S.S.', 'Director', '1938-07-29', '', 'AAIPS3299K', '', 'Regular', 'user'),
+('N193', 'SWATI SUJIT NADKARNI', 'swati.deshpande@sakec.ac.in', '9870456370', 'INFORMATION TECHNOLOGY', 'Associate Professor', '1976-11-26', 'Regular', 'AECPD4370C', '', 'teaching', 'Department Admin'),
+('N194', 'SANJEEV SURENDRA  SINGH', '', '9819047165', 'ADMINISTRATION', 'Attendant', '1975-04-13', 'Regular', 'BAMPS6725D', '3.15E+11', 'non-teaching', 'user'),
+('N202', 'P.G.KHEDKAR', 'prashant.khedkar@sakec.ac.in', '9820759833', 'ELECTRONICS', 'Associate Professor', '1967-05-30', 'Regular', 'AMTPK1906A', '', 'teaching', 'user'),
+('N203', 'SURYAPAL RAMASHANKAR DHURIYA', '', '9757012067', 'ADMINISTRATION', 'Attendant', '1972-06-28', 'Regular', 'ARAPD1474A', '4.64E+11', 'non-teaching', 'user'),
+('N204', 'DINESH BHALERAO', '', '0', 'ADMINISTRATION', 'Attendant', '1977-11-20', '', 'APFPB6026F', '3.79E+11', 'Regular', 'user'),
+('N205', 'DATTARAM GOVIND  MANDAVAKAR', '', '9594035967', 'ADMINISTRATION', 'PEON', '1969-03-18', 'Regular', 'AYOPM8756D', '3.33E+11', 'non-teaching', 'user'),
+('N206', 'LAKHAN SINGH', '', '9969470149', 'ADMINISTRATION', 'Security', '1970-01-02', 'Regular', 'CERPS2972G', '5.98E+11', 'non-teaching', 'user'),
+('N207', 'GHARAT NAMRATA Y.', '', '', 'ELECTRONICS', 'Lecturer', '1976-10-03', '', '', '', 'Regular', 'user'),
+('N209', 'PACHURKAR PUSHKARAJ U.', '', '', 'CONSTRUCTION', 'Lecturer', '1975-04-21', '', 'AHDPP9893J', '', 'Regular', 'user'),
+('N210', 'NARKHEDE N.S.', 'nandkishor.narkhede@sakec.ac.in', '9869829359', 'ELECTRONICS', 'Associate Professor', '1973-04-13', 'Regular', 'ADEPN8662Q', '', 'teaching', 'user'),
+('N211', 'B.L.GUPTA', '', '', 'ELECTRONICS', 'Professor', '1931-10-14', '', '3451PV1321', '', 'Adhoc', 'user'),
+('N214', 'APARNA GUPTA', '', '', 'HUMANITIES S.S.', 'Lecturer', '1965-02-23', '', '', '', 'Regular', 'user'),
+('N215', 'ANSARI MOHD.F.', '', '', 'MECHANICALS', 'Lecturer', '1977-07-19', '', 'ADPPA5959A', '', 'Adhoc', 'user'),
+('N216', 'VAIJANTI SHARMA', '', '7039595281', 'ADMINISTRATION', 'PEONS', '1964-06-05', 'Regular', 'CIQPS6650A', '', 'non-teaching', 'user'),
+('N217', 'SHANKAR BHAGWAN JANGLE', '', '9867769751', 'ADMINISTRATION', 'Gardener', '1965-01-01', 'Regular', 'ARLPJ6800F', '5.55E+11', 'non-teaching', 'user'),
+('N219', 'SUVARNA BANKE', '', '', 'ADMINISTRATION', 'Lab Asst.(C)', '1979-06-29', '', '', '', 'Regular', 'user'),
+('N220', 'ASIF BARKATULLA SAYAD', '', '', 'COMPUTER', 'Lecturer', '1999-02-01', '', '', '', 'Regular', 'user'),
+('N221', 'TAYDE GIRISH R.', '', '', 'COMPUTER', 'Lecturer', '1999-02-01', '', '', '', 'Regular', 'user'),
+('N223', 'BAIKERIKAR JANHAVI A.', '', '', 'ELECTRONICS', 'Lecturer', '1999-02-01', '', '', '', 'Regular', 'user'),
+('N224', 'PATIL PRASHANT', '', '', 'ELECTRONICS', 'Lecturer', '1999-02-01', '', '', '', 'Regular', 'user'),
+('N225', 'BINU JAMES MATHEW', '', '', 'HUMANITIES S.S.', 'Lecturer', '1972-04-25', '', 'ACFPM4802P', '', 'Regular', 'user'),
+('N226', 'NAMBIAR ASHWINI', '', '', 'ELECTRONICS', 'Lecturer', '1975-12-14', '', '', '', 'Regular', 'user'),
+('N227', 'SOJA JAGTAP', '', '8422014882', 'ADMINISTRATION', 'Sweeper', '1960-01-01', '', '', '', 'Regular', 'user'),
+('N228', 'RANJANA  DATTARAM GURAV', '', '9619292157', 'ADMINISTRATION', 'Sweeper', '1963-08-24', 'Regular', 'ATSPG2037N', '2.21E+11', 'non-teaching', 'user'),
+('N229', 'KAVITA A GHUGE', '', '', 'ADMINISTRATION', 'Lab Asst.(C)', '1972-05-01', '', '', '', 'Regular', 'user'),
+('N230', 'SUNGADHA NARAYAN KADAM', '', '', 'ADMINISTRATION', 'Sweeper', '1960-06-01', 'Regular', 'DLRPK5953H', '4.35E+11', 'non-teaching', 'user'),
+('N231', 'SHIVANI MAHESH DEOSTHALE', 'shivani.deosthale@sakec.ac.in', '9820698801', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1977-01-07', '', 'AHAPG7280P', '', '', 'user'),
+('N232', 'SNEHAL DIVEKAR', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1973-10-24', '', 'ACUPD3643A', '', 'Regular', 'user'),
+('N233', 'DEVMANE VIDYULLATA V.', 'vidyullata.devmane@sakec.ac.in', '7666228939', 'COMPUTER', 'Associate Professor', '1977-12-12', 'Regular', 'AHDPD0142L', '8.20E+11', 'teaching', 'user'),
+('N234', 'NAGESH L. SHELKE', '', '', 'CONSTRUCTION', 'Lecturer', '1974-06-01', '', 'AMEPS6714M', '', 'Regular', 'user'),
+('N235', 'YOGESHKUMAR SIRPURAM', '', '', 'CONSTRUCTION', 'Lecturer', '1977-01-30', '', '', '', 'Regular', 'user'),
+('N236', 'SANJAY BABU KAMBLE', '', '9969677397', 'ADMINISTRATION', 'Attendant', '1967-06-01', 'Regular', 'AWWPK3799A', '7.15E+11', 'non-teaching', 'user'),
+('N237', 'BARNALI SAHA', '', '', 'ELECTRONICS', 'Lecturer', '1970-10-15', '', 'AUCPS6837K', '', 'Regular', 'user'),
+('N238', 'BHUSHAN JAGYASI', '', '', 'ELECTRONICS', 'Lecturer', '1979-05-28', '', '', '', 'Regular', 'user'),
+('N239', 'RANAWARE ANRADHA C.', '', '', 'ELECTRONICS', 'Lecturer', '1980-01-28', '', '', '', 'Regular', 'user'),
+('N240', 'GANDHI KHIMSY S.', '', '', 'COMPUTER', 'Lecturer', '1971-01-01', '', '', '', 'Regular', 'user'),
+('N241', 'GALIYA KALPESH P.', '', '', 'ELECTRONICS', 'Lecturer', '1980-01-02', '', 'AEQPG-6913-E', '', 'Regular', 'user'),
+('N243', 'SUNITA BORKER', '', '', 'ADMINISTRATION', 'Lab Asst.(C)', '1976-03-12', '', '', '', 'Regular', 'user'),
+('N244', 'SONALI VALANJU', '', '', 'COMPUTER', 'Lab Asst.(C)', '1970-04-01', '', '', '', 'Regular', 'user'),
+('N245', 'NIVRUTI RAM RONGE', '', '9594415801', 'ADMINISTRATION', 'PEON', '1979-02-15', 'Regular', 'ANFPR0558L', '5.71E+11', 'non-teaching', 'user'),
+('N246', 'KANAKAN BINESHKUMAR', '', '', 'ELECTRONICS', 'Lecturer', '1980-06-12', '', '', '', 'Regular', 'user'),
+('N247', 'KAUSHIK MAMANIA', '', '', 'COMPUTER', 'Lecturer', '1978-12-01', '', '', '', 'Regular', 'user'),
+('N248', 'DEEPAK SHRIPATI JAMBLE', '', '9819214427', 'ADMINISTRATION', 'Gardener', '1964-06-01', 'Regular', 'ANHPJ2923R', '3.97E+11', 'non-teaching', 'user'),
+('N249', 'BABUJI MURTUZA E', '', '', 'ELECTRONICS', 'Lecturer', '1977-10-18', '', '', '', 'Regular', 'user'),
+('N250', 'TIWARI RAVI D', '', '', 'COMPUTER', 'Lecturer', '1979-08-01', '', '', '', 'Regular', 'user'),
+('N251', 'ANTURKAR KAPIL D', '', '', 'COMPUTER', 'Lecturer', '1979-11-08', '', '', '', 'Regular', 'user'),
+('N252', 'VIDISHA ROY', '', '', 'ELECTRONICS', 'Lecturer', '1980-04-11', '', '', '', 'Regular', 'user'),
+('N253', 'SACHIN BHATT', '', '', 'MECHANICALS', 'Assistant Professor', '1980-11-10', '', 'AHEPB3250A', '', 'Regular', 'user'),
+('N254', 'TRIVEDI PURVI', '', '', 'ELECTRONICS', 'Lecturer', '1979-04-12', '', 'ADQPT0294E', '', 'Regular', 'user'),
+('N255', 'SWATI NATRAJAN', '', '', 'ELECTRONICS', 'Lecturer', '1979-10-24', '', '', '', 'Regular', 'user'),
+('N256', 'RAMULU VENKATRAJAM JANMANCHI', 'ramulu.janmanchi@sakec.ac.in', '9892189357', 'ADMINISTRATION', 'System Analyst', '1968-10-10', 'Regular', 'AEFPJ4531E', '9.49E+11', 'non-teaching', 'user'),
+('N257', 'BHAKTI MANEESH SONAWANE', 'bhakti.sonawane@sakec.ac.in', '9322307178', 'COMPUTER', 'Assistant Professor', '1978-12-21', 'Regular', 'BOKPS9051L', '3.02E+11', 'teaching', 'user'),
+('N258', 'PATKI BHAKTI RAGHUNATH', '', '', 'COMPUTER', 'Lecturer', '1978-11-05', '', '', '', 'Regular', 'user'),
+('N259', 'DESAI SHWETA HARSHAD', '', '', 'COMPUTER', 'Lecturer', '1977-10-24', '', 'AHCPB2909G', '', 'Regular', 'user'),
+('N260', 'ASARAWALA CHINMAY NIRANJAN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-08-28', '', '', '', 'Regular', 'user'),
+('N261', 'SHASHI BALA', '', '', 'ELECTRONICS', 'Lecturer', '1979-05-03', '', '', '', 'Regular', 'user'),
+('N262', 'SHARMA SANJEEVKUMAR', '', '', 'ELECTRONICS', 'Lecturer', '1980-09-28', '', '', '', 'Regular', 'user'),
+('N263', 'JAYA OJHA', '', '', 'ELECTRONICS', 'Lecturer', '1980-10-17', '', '', '', 'Regular', 'user'),
+('N264', 'JUPUDI V.S.P.MADHAVI', '', '', 'COMPUTER', 'Lecturer', '1981-08-17', '', '', '', 'Regular', 'user'),
+('N265', 'PATANKAR TANUJA MANOHAR', '', '', 'ELECTRONICS', 'Lecturer', '1980-11-05', '', '', '', 'Regular', 'user'),
+('N266', 'MEGHNA MAITI', '', '', 'ELECTRONICS', 'Lecturer', '1980-11-24', '', '', '', 'Regular', 'user'),
+('N267', 'ABOLI P.NAIK', '', '', 'COMPUTER', 'Lecturer', '1978-09-28', '', '', '', 'Regular', 'user'),
+('N268', 'SMITA NAIR', '', '', 'ELECTRONICS', 'Lecturer', '1979-06-30', '', 'ADKPN5737A', '', 'Regular', 'user'),
+('N269', 'B.A.CHIDRE', '', '', 'ELECTRONICS', 'Asst. Professor(V)', '1945-06-07', '', 'AACPC3496N', '', 'Regular', 'user'),
+('N270', 'SHAHZIA M.SAYYAD', 'shahzia.sayyad@sakec.ac.in', '9867984565', 'COMPUTER', 'Assistant Professor', '1980-02-01', 'Regular', 'BAQPS6179B', '', 'teaching', 'user'),
+('N271', 'DEEPTHI SHETTY', '', '', 'ELECTRONICS', 'Lecturer', '1980-02-15', '', '', '', 'Adhoc', 'user'),
+('N272', 'PALLAVI R.NAIK', '', '', 'ELECTRONICS', 'Lecturer', '1980-12-18', '', '', '', 'Adhoc', 'user'),
+('N273', 'SANDHAYA MAHARANA', '', '', 'ELECTRONICS', 'Lecturer', '1980-03-16', '', '', '', 'Adhoc', 'user'),
+('N274', 'HEMAL V.JOSHI', '', '', 'ELECTRONICS', 'Lecturer', '1980-05-26', '', '', '', 'Adhoc', 'user'),
+('N275', 'T.P.VINUTHA', 'vinutha.tp@sakec.ac.in', '9324605780', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1970-03-15', 'Regular', 'AHRPG4251H', '', 'teaching', 'user'),
+('N276', 'PRAMILA BABAR', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-01-14', '', 'AIEPB6555D', '', 'Regular', 'user'),
+('N277', 'SHAILEJA S.MOHITE', '', '', 'ELECTRONICS', 'Lecturer', '1982-01-10', '', '', '', 'Regular', 'user'),
+('N278', 'S.J.KHAN', '', '', 'COMPUTER', 'Lecturer', '1979-12-23', '', '', '', 'Regular', 'user'),
+('N279', 'RAMESH GUPTA', '', '', 'COMPUTER', 'Lecturer', '1978-08-30', '', 'AHRPG4249H', '', 'Regular', 'user'),
+('N280', 'P.G.GUNDU', '', '', 'COMPUTER', 'Lecturer', '1979-08-16', '', '', '', 'Regular', 'user'),
+('N281', 'SHALLU UPADHYAY', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-01-31', '', '', '', 'Regular', 'user'),
+('N282', 'DINA K.RAJPUT', '', '', 'COMPUTER', 'Lecturer', '1981-11-10', '', 'AGSPR4420K', '', 'Regular', 'user'),
+('N283', 'DHANASHREE KAUSHIK TORADMALLE', 'dhanashree.toradmalle@sakec.ac.in', '9152515807', 'INFORMATION TECHNOLOGY', 'Associate Professor', '1980-11-04', 'Regular', 'ABLPH4197D', '9.85E+11', 'teaching', 'user'),
+('N284', 'VARMA S.L.', '', '', 'COMPUTER', 'Lecturer', '1978-08-10', '', 'ACCPV0879J', '', 'Regular', 'user'),
+('N285', 'SEJAL SOMPURA', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-09-22', '', 'AXKPS0471N', '', 'Regular', 'user'),
+('N286', 'PANDEY ARVIND S', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1979-06-08', '', 'AHJPP2398E', '', 'Regular', 'user'),
+('N287', 'PATIL DEEPAK B', '', '', 'COMPUTER', 'Lecturer', '1981-04-30', '', 'AKXPP4469M', '', 'Regular', 'user'),
+('N288', 'ARUNA SHARMA', 'aruna.sharma@sakec.ac.in', '9920817956', 'ENGINEERING SCIENCE', 'Associate Professor', '1962-07-25', 'Regular', 'AILPS3683A', '', 'teaching', 'user'),
+('N289', 'VIJAYA RAMESH BALEL', '', '', 'COMPUTER', 'Lecturer', '1978-06-02', '', 'AIVPB6421H', '', 'Regular', 'user'),
+('N291', 'SANGHVI DARSHITA P', '', '', 'COMPUTER', 'senior Lab.Assistant', '1984-07-19', '', '', '', 'Regular', 'user'),
+('N292', 'M.N.MENON', '', '', 'ADMINISTRATION', 'Registrar', '1946-03-31', '', 'AAFPM0648H', '', 'Adhoc', 'user'),
+('N293', 'MADHAVI AREKAR', '', '', 'HUMANITIES S.S.', 'Lecturer', '1978-08-27', '', '', '', 'Adhoc', 'user'),
+('N294', 'ARUNA RAO', '', '', 'HUMANITIES S.S.', 'Lecturer', '1970-07-19', '', '', '', 'Adhoc', 'user'),
+('N295', 'PREETHI  S.WARRIER', 'preethi.warrier@sakec.ac.in', '9860269888', 'ELECTRONICS', 'Assistant Professor', '1981-06-13', 'Regular', 'ABAPW0962C', '', 'teaching', 'user'),
+('N296', 'CHHEDA KUNJAN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-12-30', '', 'ADHPC9251F', '', 'Regular', 'user'),
+('N297', 'SHERON FERNANDEZ', '', '', 'ELECTRONICS', 'Lecturer', '1970-06-13', '', '', '', 'Regular', 'user'),
+('N298', 'ANUPAM SARKAR', '', '', 'ELECTRONICS', 'Lecturer', '1981-01-21', '', '', '', 'Adhoc', 'user'),
+('N299', 'SHWETA TRIPATHI', '', '', 'ELECTRONICS', 'Lecturer', '1977-05-09', '', '', '', 'Adhoc', 'user'),
+('N300', 'VAISHALI V.HIRLEKAR', 'vaishali.hirlekar@sakec.ac.in', '8454844993', 'COMPUTER', 'Assistant Professor', '1979-09-21', 'Regular', 'AJIPK2010K', '', 'teaching', 'user'),
+('N301', 'ANAND JINDAL', '', '', 'ELECTRONICS', 'Lecturer', '1980-09-28', '', '', '', 'Adhoc', 'user'),
+('N302', 'DIVYA MOHANDAS', '', '', 'ELECTRONICS', 'Lecturer', '1982-04-10', '', '', '', 'Adhoc', 'user'),
+('N303', 'SHUBHANGI PREETAM KENI', 'shubhangi.keni@sakec.ac.in', '9769070754', 'INFORMATION TECHNOLOGY', 'senior Lab.Assistant', '1979-03-26', 'Regular', 'AYMPK4684L', '3.01E+11', 'non-teaching', 'user'),
+('N304', 'ADSUL SAVITA BHARAT', '', '', 'ELECTRONICS', 'senior Lab.Assistant', '1979-09-29', '', '', '', 'Regular', 'user'),
+('N305', 'PATIL PRASHANT B.', '', '', 'COMPUTER', 'Lab Asst.(C)', '1975-02-19', '', '', '', 'Regular', 'user'),
+('N306', 'MINAL M.PURANIK', 'minal.puranik@sakec.ac.in', '9323106641', 'ELECTRONICS', 'Assistant Professor', '1979-05-14', 'Regular', 'APTPP5993B', '', 'teaching', 'user'),
+('N307', 'MHATRE MADHURI V', '', '', 'COMPUTER', 'Lecturer', '1980-04-03', '', '', '', 'Regular', 'user'),
+('N308', 'KOCHAR INDERKUMAR M', '', '', 'ELECTRONICS', 'Lecturer', '1982-06-06', '', 'AOPPK7785M', '', 'Regular', 'user'),
+('N309', 'KHATRI SUPRIYA S', '', '', 'COMPUTER', 'Lecturer', '1983-04-30', '', 'AOOPK2494J', '', 'Regular', 'user'),
+('N310', 'MEHTA JALPA D', 'jalpa.mehta@sakec.ac.in', '9004913638', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1979-09-03', 'Regular', 'ACQPV2369H', '', 'teaching', 'user'),
+('N311', 'MANIMALA MAHATO', 'manimala.mahato@sakec.ac.in', '9967355848', 'COMPUTER', 'Assistant Professor', '1980-11-06', 'Regular', 'ALPPM7341G', '6.38E+11', 'teaching', 'user'),
+('N312', 'BABYCHEN KUNNEL MATHEW', 'babychen.mathew@sakec.ac.in', '9892939301', 'ELECTRONICS', 'Associate Professor', '1971-05-31', 'Regular', 'ALJPM3199E', '3.81E+11', 'teaching', 'user'),
+('N313', 'SUBHA SUBRAMANIAM', 'subha.subramaniam@sakec.ac.in', '9967013504', 'ELECTRONICS', 'Associate Professor', '1977-05-10', 'Regular', 'AGGPP3366A', '', 'teaching', 'user'),
+('N314', 'NEHETE PRACHI N', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-06-03', '', 'ADWPN9466G', '', 'Regular', 'user'),
+('N315', 'DHANDE MANOJ S', 'manoj.dhande@sakec.ac.in', '7738339960', 'COMPUTER', 'Assistant Professor', '1979-01-30', 'Regular', 'AHGPD9924P', '', 'teaching', 'user'),
+('N316', 'ASHA DURAFE', 'asha.durafe@sakec.ac.in', '9004048302', 'ELECTRONICS', 'Assistant Professor', '1980-10-17', 'Regular', 'AFUPC2547M', '', 'teaching', 'user'),
+('N317', 'JOGLEKAR JYOTI V', 'jyoti.joglekar@sakec.ac.in', '9594980587', 'COMPUTER', 'Associate Professor', '1968-04-26', '', 'AHCPJ4370R', '', 'Regular', 'user'),
+('N318', 'KAUL PRATIMA', '', '', 'ELECTRONICS', 'Lecturer', '1983-03-15', '', '', '', 'Adhoc', 'user'),
+('N319', 'SNEHA KARANI', '', '', 'ELECTRONICS', 'Lecturer', '1983-06-26', '', 'ALTPK8596R', '', 'Regular', 'user'),
+('N320', 'ESHWARI CHANDRASHEKHAR', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1983-11-21', '', '', '', 'Adhoc', 'user'),
+('N321', 'SANJAY CHUDAMAN PATIL', 'sanjay.patil@sakec.ac.in', '9322224846', 'ENGINEERING SCIENCE', 'Assistant Professor', '1968-03-19', 'Regular', 'AJTPP2161R', '9.77E+11', 'teaching', 'user'),
+('N322', 'BALI ANAND M.', '', '', 'COMPUTER', 'Lecturer', '1974-02-25', '', '', '', 'Regular', 'user'),
+('N323', 'SHASHIKANT SUDHAKARRAO RADKE', 'shashikant.radke@sakec.ac.in', '9870217383', 'COMPUTER', 'Assistant Professor', '1980-04-12', 'Regular', 'AHQPR5687K', '3.95E+11', 'teaching', 'user'),
+('N324', 'SALABHA JOY JACOB', 'salabha.jacob@sakec.ac.in', '9969286001', 'ELECTRONICS', 'Assistant Professor', '1974-05-25', 'Regular', 'AIGPJ2984G', '', 'teaching', 'user'),
+('N325', 'KHAIRNAR MILIND S.', 'milind.khairnar@sakec.ac.in', '9322319066', 'COMPUTER', 'Assistant Professor', '1973-04-25', 'Regular', 'APGPK1665L', '', 'teaching', 'user'),
+('N326', 'PITKAR YATIN J', '', '', 'PHYSICS', 'Lecturer', '1980-09-18', '', 'ANCPP2160P', '', 'Regular', 'user'),
+('N327', 'RAMESHWARI SACHIN MANE', 'rameshwari.mane@sakec.ac.in', '9892746193', 'ELECTRONICS', 'Assistant Professor', '1981-04-19', 'Regular', 'ALTPM2786P', '7.94E+11', 'teaching', 'user'),
+('N328', 'GUNDAPUNERI SHARMILA', 'sharmila.gundapuneri@sakec.ac.in', '9769324678', 'ENGINEERING SCIENCE', 'Assistant Professor', '1973-12-01', 'Regular', 'AJYPG3208K', '', 'teaching', 'user'),
+('N329', 'KARIA DEEPAK CHATRABHUJ', '', '', 'ELECTRONICS', 'Lecturer', '1977-08-31', '', 'APEPK5734N', '', 'Regular', 'user'),
+('N330', 'SHRIKRISHNA PREMCHAND DASARI', 'shrikrishna.dasari@sakec.ac.in', '9920765189', 'ENGINEERING SCIENCE', 'Associate Professor', '1970-11-08', 'Regular', 'AASPD9122C', '5.22E+11', 'teaching', 'user'),
+('N331', 'TANGIRALA SRIKANT', '', '', 'COMPUTER', 'Lecturer', '1980-07-26', '', 'AFAPT1568B', '', 'Regular', 'user'),
+('N332', 'GARALA KUNJAL M.', '', '', 'COMPUTER', 'Lecturer', '1983-09-30', '', '', '', 'Adhoc', 'user'),
+('N333', 'CHAVAN PRAJWALITA J', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1983-03-18', '', 'AHMPC1456H', '3.70E+11', 'Adhoc', 'user'),
+('N334', 'NAIK PREETAM A.', '', '', 'COMPUTER', 'Assistant Professor', '1981-04-16', '', 'AFEPN3601B', '', 'Regular', 'user'),
+('N335', 'KATKAR RUSHALI R.', '', '', 'COMPUTER', 'Lecturer', '1982-09-23', '', '', '', 'Adhoc', 'user'),
+('N336', 'CHAUDHARI JITENDRA V.', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-04-09', '', '', '', 'Adhoc', 'user'),
+('N337', 'VAISHALI MADHUKAR TUPE', 'vaishali.tupe@sakec.ac.in', '9833705897', 'COMPUTER', 'senior Lab.Assistant', '1978-10-27', 'Regular', 'AKDPT0449B', '3.02E+11', 'non-teaching', 'user'),
+('N338', 'PADHY NIKUNJBIHARI R.', '', '', 'COMPUTER', 'Lab Asst.(C)', '1986-05-28', '', '', '', 'Adhoc', 'user'),
+('N339', 'SONALI AMOL BHUTAD', 'sonali.bhutad@sakec.ac.in', '8369418325', 'COMPUTER', 'Assistant Professor', '1982-05-13', 'Regular', 'ALYPB2411R', '', 'teaching', 'user'),
+('N340', 'CHAWDE DINESH PADMAKARRAO,', '', '', 'MECHANICALS', 'Lecturer', '1982-05-13', '', 'AEPPC2095G', '', 'Regular', 'user'),
+('N341', 'RESMI S.R.', '', '', 'COMPUTER', 'Lecturer', '1975-03-03', '', '', '', 'Adhoc', 'user'),
+('N342', 'KRANTI VITHAL GHAG', 'kranti.ghag@sakec.ac.in', '9224640494', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1982-06-28', 'Regular', 'AKKPG8778R', '', 'teaching', 'user'),
+('N343', 'CHATURVEDI PRACHI P', '', '', 'ELECTRONICS', 'Lecturer', '1977-07-03', '', '', '', 'Regular', 'user'),
+('N344', 'BHAGWAT SMITA H.', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-06-10', '', 'AIOPB7786Q', '', 'Regular', 'user'),
+('N345', 'TAMBOLI SANTOSH P', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1981-04-17', '', '', '', 'Adhoc', 'user'),
+('N347', 'DOSHI HETAL M', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-08-17', '', '', '', 'Regular', 'user'),
+('N348', 'HEMALI M.SHAH', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1985-01-07', '', '', '', 'Adhoc', 'user'),
+('N349', 'MANISH V.OSWAL', '', '', 'COMPUTER', 'Lecturer', '1985-02-07', '', '', '', 'Adhoc', 'user'),
+('N350', 'PRATIK SHAH', '', '', 'COMPUTER', 'Lecturer', '1984-02-16', '', '', '', 'Adhoc', 'user'),
+('N351', 'ANAGHA KRISHNAMURTHY', '', '', 'COMPUTER', 'Lecturer', '1984-12-16', '', '', '', 'Adhoc', 'user'),
+('N352', 'PRIYA KEERTHIVASAN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1985-02-03', '', '', '', 'Adhoc', 'user'),
+('N353', 'JYOTI S.DESHMUKH', '', '9594079257', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1981-12-26', '', 'AHTPJ1089J', '2.49E+11', 'Regular', 'user'),
+('N354', 'SHITAL K.KADAM', '', '', 'COMPUTER', 'Lecturer', '1983-09-23', '', '', '', 'Adhoc', 'user'),
+('N355', 'GAWALI SNEHAL NILESH', 'snehal.gawali@sakec.ac.in', '9769353305', 'ELECTRONICS', 'Assistant Professor', '1981-01-21', '', 'AKZPG2748J', '', 'Regular', 'user'),
+('N356', 'GOPALKRISHNAN NARAYANAN', '', '', 'ELECTRONICS', 'Lecturer', '1981-10-20', '', '', '', 'Adhoc', 'user'),
+('N357', 'MENON AMBIKA OMANA', '', '', 'ELECTRONICS', 'Lecturer', '1973-09-16', '', 'AFHPM0584P', '', 'Regular', 'user'),
+('N358', 'DESHMUKH SHITAL B', '', '', 'COMPUTER', 'Lecturer', '1983-06-06', '', 'ALDPD5912A', '', 'Regular', 'user'),
+('N359', 'MOTEWAR SHUBHANGI D.', 'shubhangi.motewar@sakec.ac.in', '9833652186', 'ELECTRONICS', 'Assistant Professor', '1975-11-01', 'Regular', 'AKCPM8219P', '', 'teaching', 'user'),
+('N360', 'VIBHANSHU GUPTA', '', '', 'ELECTRONICS', 'Assistant Professor', '1965-11-21', '', 'AALPG2572N', '', 'Regular', 'user'),
+('N361', 'MORWADKAR SUCHITRA K', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1980-06-13', '', 'ASCPM2603H', '', 'Regular', 'user'),
+('N362', 'SHIMPI DARSHANA C', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1981-05-11', '', 'BFXPS0481N', '', 'Regular', 'user'),
+('N363', 'SAGVEKAR VIDYA R', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-10-04', '', '', '', 'Adhoc', 'user'),
+('N364', 'CHILLAL KASHINATH BASANNA', '', '', 'COMPUTER', 'Lecturer', '1984-03-31', '', 'AFXPC4638N', '', 'Regular', 'user'),
+('N365', 'SHOBHA  GOPALAKRISHANAN', '', '', 'ELECTRONICS', 'Lecturer', '1974-06-10', '', '', '', 'Regular', 'user'),
+('N366', 'BHOSALE ANITA B', 'anita.bhosale@sakec.ac.in', '9867601684', 'COMPUTER', 'Lab Asst.(C)', '1985-06-05', 'Regular', 'AQMPB9256B', '', 'non-teaching', 'user'),
+('N367', 'DHAPODKAR NITISH S', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1978-09-13', '', '', '', 'Regular', 'user'),
+('N368', 'SAWANT MANISHA  M', '', '', 'ELECTRONICS', 'Lecturer', '1979-07-03', '', 'BFNPS0270M', '', 'Regular', 'user'),
+('N369', 'RUPALI MANOJ PATIL', 'rupali.patil@sakec.ac.in', '9819154746', 'COMPUTER', 'Lab Asst.(C)', '1981-08-19', 'Regular', 'AVAPP7370F', '2.26E+11', 'non-teaching', 'user'),
+('N370', 'MANISHA V.MANE', 'manisha.mane@sakec.ac.in', '9860962216', 'ELECTRONICS', 'Assistant Professor', '1980-05-15', 'Regular', 'BEQPK8982Q', '', 'teaching', 'user'),
+('N372', 'RAJALAXMI A.DAS', '', '', 'PHYSICS', 'Assistant Professor', '1954-08-01', '', 'AADPD8717A', '', 'Regular', 'user'),
+('N373', 'DR.KARAMBELKAR R.V', '', '', 'ELECTRONICS', 'Principal(V)', '1949-07-26', '', 'AABPK7882K', '', 'Regular', 'user'),
+('N374', 'BHOR HARSH  N.', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1984-04-13', '', '', '', 'Regular', 'user'),
+('N375', 'ABIRAMI SIVAPRASAD', 'abirami.sivaprasad@sakec.ac.in', '9769721231', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1984-02-28', 'Regular', 'BOWPS9376G', '', 'teaching', 'user'),
+('N376', 'DEDHIA NILESH LAXMICHAND', '', '', 'ELECTRONICS', 'Lecturer', '1986-01-08', '', '', '', 'Adhoc', 'user'),
+('N377', 'KULKARNI MANJUSHA  PRAVIN', 'manjusha.kulkarni@sakec.ac.in', '8454848087', 'ELECTRONICS', 'Assistant Professor', '1978-06-02', 'Regular', 'ATSPK9831G', '', 'teaching', 'user'),
+('N378', 'DHANASHREE R.PUJAR ', '', '', 'ELECTRONICS', 'Lecturer', '1978-05-26', '', '', '', 'Regular', 'user'),
+('N379', 'SAYYAD MOHD.ABBAS', '', '', 'COMPUTER', 'Lecturer', '1985-08-25', '', '', '', 'Adhoc', 'user'),
+('N380', 'PALLAVI SHAILESH KHODKE', 'pallavi.deshmane@sakec.ac.in', '8425826206', 'COMPUTER', 'Assistant Professor', '1984-05-05', 'Regular', 'AMAPD3435C', '', 'teaching', 'user'),
+('N381', 'KHANNA NEHA ROHIT', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-11-29', '', 'AKSPA3639B', '', 'Regular', 'user'),
+('N382', 'MALPE VAISALI SAURABH', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1979-12-04', '', 'ADBPT8734C', '', 'Regular', 'user'),
+('N383', 'PATIL RACHNA RAMBHAHU', '', '', 'COMPUTER', 'Lecturer', '1978-08-02', '', 'ASGPP2255G', '', 'Regular', 'user'),
+('N384', 'SINGH YASHONANDA PARVAT', '', '', 'MATHS', 'Lecturer', '1984-03-28', '', '', '', 'Adhoc', 'user'),
+('N385', 'ARCHANA SATISH CHAUGULE', 'archana.chaugule@sakec.ac.in', '9324792870', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1982-05-30', 'Regular', 'BOVPS0217K', '4.50E+11', 'teaching', 'user'),
+('N386', 'DR.SATINDER KAUR,', '', '9892501787', 'CHEMISTRY', 'Assistant Professor', '1955-12-02', '', 'AADPK6899C', '', 'Regular', 'user'),
+('N387', 'CHAVAN VAISHALI V', 'vaishali.chavan@sakec.ac.in', '9820992838', 'COMPUTER', 'Assistant Professor', '1980-05-16', 'Regular', 'ADGPL3982P', '', 'teaching', 'user'),
+('N388', 'VED PINKI KIRITKUMAR', '', '', 'COMPUTER', 'Lecturer', '1985-09-15', '', '', '', 'Adhoc', 'user'),
+('N389', 'SINDHU K.K.SHIJU', '', '', 'COMPUTER', 'Assistant Professor', '1979-05-29', '', 'AZXPK7069H', '', 'Regular', 'user'),
+('N390', 'BARAI JITEN RAJENDRA ', '', '', 'COMPUTER', 'Lecturer', '1985-05-10', '', '', '', 'Adhoc', 'user'),
+('N391', 'KOKATE NAKUL SURESH', '', '', 'COMPUTER', 'Lecturer', '1985-10-12', '', '', '', 'Adhoc', 'user'),
+('N392', 'TICKOO RICHA RAVINDRA', '', '', 'COMPUTER', 'Lecturer', '1985-01-07', '', '', '', 'Adhoc', 'user'),
+('N393', 'PUJARA HANISHA PARESH', '', '', 'OTHERS', 'Lecturer', '1986-06-11', '', 'AMOPP7949K', '', 'Adhoc', 'user'),
+('N394', 'CHHADVA HEERAL HEMANT', '', '', 'OTHERS', 'Lecturer', '1985-09-11', '', '', '', 'Adhoc', 'user'),
+('N395', 'VISHWAKARMA PINKI', 'pinki.vishwakarma@sakec.ac.in', '9967440968', 'COMPUTER', 'Associate Professor', '1976-09-11', 'Regular', 'ADNPV1454B', '', 'teaching', 'user'),
+('N396', 'THOPPE GUGAN CHANDRASHEKHAR', '', '', 'COMPUTER', 'Lecturer', '1985-02-11', '', 'AFAPT8501N', '', 'Regular', 'user'),
+('N397', 'DILIP M.HARYAN', '', '', 'ADMINISTRATION', 'Clerk ', '1958-02-02', '', '', '', 'Adhoc', 'user'),
+('N399', 'WAGH PRANALI PRABHAKAR', 'pranali.wagh@sakec.ac.in', '9867795994', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-04-05', 'Regular', 'AAXPW6523H', '', 'teaching', 'user'),
+('N400', 'SARITA GAJANAN RATHOD', '', '9833718460', 'COMPUTER', 'Lecturer', '1984-03-12', '', 'AJAPC1199F', '2.57E+11', 'Adhoc', 'user'),
+('N401', 'SHAH RACHANA PARUL', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-07-28', '', 'BTLPS7526Q', '', 'Regular', 'user'),
+('N402', 'PANDIT PRAMOD SURESH', 'pramod.pandit@sakec.ac.in', '9594130993', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1985-05-02', 'Regular', 'ASCPP7735M', '4.62E+11', 'non-teaching', 'user'),
+('N403', 'YADAV URMILA NANASAHEB', '', '', 'COMPUTER', 'Lecturer', '1986-04-12', '', '', '', 'Regular', 'user'),
+('N404', 'DUBE SUCHITA AMRUT', '', '', 'COMPUTER', 'Lab Asst.(C)', '1983-06-20', '', '', '', 'Regular', 'user'),
+('N405', 'DHOKE PALLAVI R', '', '', 'LIBRARY', 'Asst.Librarian', '1982-01-10', '', '', '', 'Adhoc', 'user'),
+('N406', 'MANDE HARSHAD MANMOHAN', '', '', 'COMPUTER', 'Lecturer', '1983-10-29', '', 'AVNPM2496E', '', 'Regular', 'user'),
+('N408', 'SALUNKE SUNITA GANESH', '', '', 'MATHS', 'Lecturer', '1983-07-10', '', 'BQFPS5362H', '', 'Regular', 'user'),
+('N409', 'SONAL PRAVIN KATRE', 'sonal.sonal@sakec.ac.in', '8108531255', 'ADMINISTRATION', 'Junior Clerk', '1982-09-28', 'Regular', 'BDCPM7725G', '4.14E+11', 'non-teaching', 'user'),
+('N410', 'LINA SACHIN SHEJWAL', 'lina.shejwal@sakec.ac.in', '9769783103', 'ADMINISTRATION', 'Junior Clerk', '1984-05-31', 'Regular', 'CCPPS2244M', '5.92E+11', 'non-teaching', 'user'),
+('N411', 'CHATURVEDI DEEPSHIKHA A', 'deepshikha.chaturvedi@sakec.ac.in', '9833507773', 'COMPUTER', 'Assistant Professor', '1979-10-23', 'Regular', 'AHKPC0251G', '3.49E+11', 'teaching', 'user'),
+('N412', 'MEGHNA S.PATIL', '', '', 'COMPUTER', 'Lecturer', '1985-12-20', '', '', '', 'Adhoc', 'user'),
+('N413', 'SHETTY POOJA M', '', '', 'COMPUTER', 'Lecturer', '1979-09-29', '', '', '', 'Adhoc', 'user'),
+('N414', 'NAIR SINDHU S', '', '', 'COMPUTER', 'Assistant Professor', '1975-09-05', '', 'ABMPN0506H', '', 'Regular', 'user'),
+('N415', 'NANDA GOPAL HARIRAM', 'gopal.nanda@sakec.ac.in', '8080699043', 'ENGINEERING SCIENCE', 'Assistant Professor', '1983-06-21', 'Regular', 'AGQPN7622M', '', 'teaching', 'user'),
+('N416', 'BUKKAWAR SARIKA NAHUSH', 'sarika.bukkawar@sakec.ac.in', '9819669962', 'ELECTRONICS', 'Assistant Professor', '1977-02-18', 'Regular', 'AJXPB6711B', '', 'teaching', 'user'),
+('N417', 'JAYASHRI JAYWANT GAJARE', 'jayashree.bhole@sakec.ac.in', '9702282812', 'ELECTRONICS', 'Assistant Professor', '1982-08-31', 'Regular', 'AZPPB1977K', '', 'teaching', 'user'),
+('N418', 'VYAWAHARE VISHWESH A', '', '', 'ELECTRONICS', 'Lecturer (Sr. Scale)', '1975-04-11', '', '', '', 'Regular', 'user'),
+('N419', 'PAWAR KUNAL R', '', '', 'ELECTRONICS', 'Jr.Lab Asst.', '1987-01-13', '', '', '', 'Adhoc', 'user'),
+('N420', 'YADAV JITENDRA B', '', '', 'ELECTRONICS', 'Jr.Lab Asst.', '1986-04-03', '', '', '', 'Adhoc', 'user'),
+('N421', 'MORE NINAND N', '', '', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1983-12-29', '', '', '', 'Regular', 'user'),
+('N423', 'RAUT DIPALI P.', '', '', 'ELECTRONICS', 'Assistant Professor', '1981-11-08', '', 'ASEPR7736E', '', 'Regular', 'user'),
+('N424', 'SWATI BANDU MOHITE', '', '', 'ADMINISTRATION', 'Jr.Clek', '1985-05-11', '', '', '', 'Adhoc', 'user'),
+('N425', 'NALAWADE ANITA SUNIL', 'anita.nalawade@sakec.ac.in', '9004699747', 'ELECTRONICS', 'Assistant Professor', '1982-01-15', 'Regular', 'BOKPS6146E', '', 'teaching', 'user'),
+('N426', 'KALVANKAR SAKHARAM TUKARAM', '', '', 'ELECTRONICS', 'Lab Asst.Et', '1987-10-23', '', '', '', 'Adhoc', 'user'),
+('N427', 'SHAH CHINTAN BHARAT ', '', '', 'COMPUTER', 'Lecturer', '1986-08-24', '', '', '', 'Adhoc', 'user'),
+('N428', 'THAKKAR KHYATI YOGESH', '', '', 'COMPUTER', 'Lecturer', '1986-12-05', '', '', '', 'Adhoc', 'user'),
+('N429', 'NAIR ADITYA  RAVI', '', '', 'ELECTRONICS', 'Lecturer', '1986-03-13', '', '', '', 'Adhoc', 'user'),
+('N430', 'DEDHIA KARAN S', '', '', 'ELECTRONICS', 'Lecturer', '1986-09-27', '', '', '', 'Adhoc', 'user'),
+('N431', 'GALA SETU D', '', '', 'ELECTRONICS', 'Lecturer', '1986-08-21', '', '', '', 'Adhoc', 'user'),
+('N432', 'MARU TINA HIMANSHU', 'tina.maru@sakec.ac.in', '8454040291', 'COMPUTER', 'Assistant Professor', '1986-07-12', 'Regular', 'BBMPS4773G', '', 'teaching', 'user'),
+('N433', 'MALVANKAR RASHMI NILESH', 'rashmi.malvankar@sakec.ac.in', '8655517253', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-03-23', 'Regular', 'AKHPC4501F', '5.35E+11', 'teaching', 'user'),
+('N434', 'SHARMA TANU Y.P.', '', '', 'PHYSICS', 'Lecturer', '1982-09-04', '', '', '', 'Regular', 'user'),
+('N435', 'RATHOD DATTARAM UTTAMRAO', '', '', 'INFORMATION TECHNOLOGY', 'Lab Asst.Et', '1974-01-01', '', '', '', 'Regular', 'user'),
+('N436', 'ASABE MANISHA PANDURANG', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1987-07-28', '', '', '', 'Regular', 'user'),
+('N437', 'KHARADE DATTATRAY BABAN', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1983-06-28', '', '', '', 'Regular', 'user'),
+('N438', 'SHELAKE VIJAY MARUTI', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1984-03-12', '', '', '', 'Adhoc', 'user'),
+('N439', 'SHARMA ANKUR MAHENDRA', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1986-06-03', '', 'BEZPS8183J', '', 'Adhoc', 'user'),
+('N440', 'VAKKALANKA VARAHA SANJEEV MURTHY', '', '', 'ELECTRONICS', 'Lecturer', '1986-05-05', '', '', '', 'Adhoc', 'user'),
+('N441', 'JAGDALE NAMRATA PRAMOD', '', '', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1983-10-01', '', 'BCZPS7072N', '', 'Regular', 'user'),
+('N442', 'KALANTRI SHILPA PRASHANT', 'shilpa.kalantri@sakec.ac.in', '9892263629', 'COMPUTER', 'Assistant Professor', '1976-11-10', 'Regular', 'AJAPK0230B', '', 'teaching', 'user'),
+('N443', 'MANE VAISHALI DINESH', '', '', 'ELECTRONICS', 'Lab Asst.Et', '1979-09-20', '', '', '', 'Regular', 'user'),
+('N444', 'WANKHEDE ARCHANA P', '', '', 'COMPUTER', 'Lecturer', '1983-01-09', '', '', '', 'Regular', 'user'),
+('N445', 'PARAB MAYUR S', '', '', 'ENGINEERING SCIENCE', 'Lecturer', '1986-08-25', '', 'AXWPP1484G', '', 'Regular', 'user'),
+('N446', 'GAIKWAD PRIYANKA BABURAO', '', '', 'ELECTRONICS', 'Lab Asst.Et', '1984-09-11', '', '', '', 'Regular', 'user'),
+('N447', 'NAIK SANDEEP PRAKASH', '', '9987189010', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1988-02-28', '', '', '4.42E+11', 'Regular', 'user'),
+('N448', 'LATHA IYER', '', '', 'COMPUTER', 'Lecturer', '1984-03-27', '', 'AAQPI1162D', '', 'Regular', 'user'),
+('N449', 'VIGHNESH P.P.', '', '', 'COMPUTER', 'Lecturer', '1986-12-12', '', '', '', 'Regular', 'user'),
+('N450', 'POLADIA NAMRATA V.', '', '', 'COMPUTER', 'Lecturer', '1984-11-24', '', '', '', 'Adhoc', 'user'),
+('N451', 'RELE AKSHAY R.', '', '', 'COMPUTER', 'Lecturer', '1986-05-31', '', '', '', 'Adhoc', 'user'),
+('N452', 'DESHPANDE SANDHYA S', '', '', 'ELECTRONICS', 'Lecturer', '1972-06-15', '', 'AOLPD9990B', '', 'Adhoc', 'user'),
+('N453', 'MILIND J.KULKARNI', '', '', 'ENGINEERING SCIENCE', 'Lecturer', '1973-12-29', '', 'AETPK6941B', '', 'Regular', 'user'),
+('N454', 'AZAD SONIYA PREMCHAND', '', '', 'ELECTRONICS', 'Lecturer', '1985-09-07', '', '', '', 'Adhoc', 'user'),
+('N455', 'DHANJI MANASI MINANATH', '', '', 'ELECTRONICS', 'Lecturer', '1985-02-06', '', '', '', 'Adhoc', 'user'),
+('N456', 'TIKARIA MAMTA A.', 'mamta.tikaria@sakec.ac.in', '9969704064', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1978-12-01', 'Regular', 'AEKPT0136J', '', 'teaching', 'user'),
+('N457', 'SHENDE DIPALI P P', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1977-04-23', '', 'BGFPS8696L', '', 'Adhoc', 'user'),
+('N458', 'BORHADE KARUNA J.', 'karuna.borhade@sakec.ac.in', '7977512303', 'COMPUTER', 'Assistant Professor', '1979-05-08', 'Regular', 'ALVPB2071Q', '', 'teaching', 'user'),
+('N459', 'AMOL ATMARAM DHUMAL', 'amol.dhumal@sakec.ac.in', '8108274799', 'COMPUTER', 'Assistant Professor', '1979-11-23', 'Regular', 'AISPD3628B', '7.24E+11', 'teaching', 'user'),
+('N460', 'BARAVKAR MAYUR P.', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1987-06-29', '', '', '', 'Adhoc', 'user'),
+('N461', 'CHAVAN NEETA PANKAJ', '', '9967440974', 'ELECTRONICS', 'Assistant Professor', '1979-02-17', '', 'AIRPC1392G', '5.87E+11', 'Adhoc', 'user'),
+('N462', 'MANDALIK DIPALI SURESH', 'dipali.mandalik@sakec.ac.in', '9773078292', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1988-12-22', '', 'AYBPM8462F', '', 'Regular', 'user'),
+('N463', 'MANGRULKAR PALLAVI P', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1982-03-16', '', '', '', 'Adhoc', 'user'),
+('N464', 'JADHAV SUPRIYA VILAS', '', '', 'ELECTRONICS', 'Lecturer', '1987-02-17', '', 'ALHPJ9923D', '', 'Adhoc', 'user'),
+('N465', 'NAYAN NILKANTH PATIL', 'nayan.patil@sakec.ac.in', '9702464054', 'ADMINISTRATION', 'Clerk ', '1985-05-06', 'Regular', 'ASWPP1721B', '9.89E+11', 'non-teaching', 'user'),
+('N466', 'BHAGYASHREE YASHWANTRAO', '', '', 'ADMINISTRATION', 'Clerk ', '1988-04-09', '', '', '', 'Adhoc', 'user'),
+('N467', 'LATIKA VIKRANT NIKALJE', 'latika.nikalje@sakec.ac.in', '9768423799', 'ADMINISTRATION', 'Clerk ', '1983-08-25', 'Regular', 'ARSPB6081B', '8.23E+11', 'non-teaching', 'user'),
+('N468', 'GHADSHI SMITA VASANT', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1984-07-12', '', '', '', 'Adhoc', 'user'),
+('N469', 'NAIK PUSHPA SANTOSH', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1986-06-16', '', '', '', 'Adhoc', 'user'),
+('N470', 'THORAT DHANASHREE H', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1989-04-27', '', 'AJGPT5190B', '', 'Adhoc', 'user'),
+('N471', 'KALOLA DHARA HARDIK', 'dhara.kalola@sakec.ac.in', '9833767379', 'COMPUTER', 'Assistant Professor', '1984-12-23', '', 'ALXPP6180E', '', 'Regular', 'user'),
+('N473', 'MAISHERI CHINTAL G', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1986-10-19', '', '', '', 'Adhoc', 'user'),
+('N474', 'MAGAR ASHWINI T', '', '', 'COMPUTER', 'Lecturer', '1988-03-20', '', '', '', 'Adhoc', 'user'),
+('N475', 'PAI POOJA G', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1987-05-27', '', '', '', 'Adhoc', 'user'),
+('N476', 'MEHTA NISARG M', '', '', 'MECHANICALS', 'Lecturer', '1984-04-20', '', '', '', 'Adhoc', 'user'),
+('N477', 'KUMBHAR RAKESH J', '', '', 'MECHANICALS', 'Lecturer', '1985-04-10', '', '', '', 'Adhoc', 'user'),
+('N478', 'NAIR DEEPA SUKUMARAN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1987-10-24', '', '', '', 'Adhoc', 'user'),
+('N479', 'JAIN NILAKSHI S', 'nilakshi.jain@sakec.ac.in', '9967039388', 'INFORMATION TECHNOLOGY', 'Associate Professor', '1986-10-07', 'Regular', 'AGFPJ7903E', '', 'teaching', 'user'),
+('N480', 'WANDRE ASMITA A', '', '9930519242', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1980-09-08', '', '', '5.80E+11', 'Regular', 'user'),
+('N481', 'DHUMAL RAJSHREE AKSHAY', 'rajshree.pawar@sakec.ac.in', '8976230876', 'COMPUTER', 'Lab Asst.(C)', '1987-08-29', 'Regular', 'ARVPP4409Q', '', 'non-teaching', 'user'),
+('N482', 'CHAVAN SURESHKUMAR P', '', '9768084184', 'ELECTRONICS', 'Lab Asst.(C)', '1980-01-06', '', '', '4.44E+11', 'Regular', 'user'),
+('N483', 'BRAHAMDEO KUMAR RANA', '', '', 'ADMINISTRATION', 'Estate Manager', '1972-11-03', '', 'AHZPR0439G', '', 'Adhoc', 'user'),
+('N484', 'MADHURI KADU TAYADE', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1983-06-01', '', '', '', 'Adhoc', 'user'),
+('N485', 'RITIKA AGARWAL', '', '', 'ELECTRONICS', 'Lecturer', '1986-08-18', '', 'ANTPA6682N', '', 'Adhoc', 'user'),
+('N486', 'BIRARE SWATI', '', '', 'ELECTRONICS', 'Lecturer', '1984-08-24', '', '', '', 'Adhoc', 'user'),
+('N487', 'KILLARIKAR VAISHALI', '', '', 'ELECTRONICS', 'Lecturer', '1979-05-17', '', '', '', 'Adhoc', 'user'),
+('N488', 'APARNA J.KAMBLE', '', '', 'COMPUTER', 'Lecturer', '1986-06-04', '', '', '', 'Adhoc', 'user'),
+('N489', 'PRASHANT R KATKAR', '', '', 'COMPUTER', 'Lecturer', '1984-04-28', '', 'AYEPK0864G', '', 'Adhoc', 'user'),
+('N490', 'POONAM N.GHOLAP', '', '', 'COMPUTER', 'Lecturer', '1987-11-04', '', '', '', 'Adhoc', 'user'),
+('N491', 'RASHMI P.PATEL', '', '', 'COMPUTER', 'Lecturer', '1984-05-13', '', 'ANCPV4816G', '', 'Adhoc', 'user'),
+('N492', 'PAYAL R.GALA', '', '', 'COMPUTER', 'Lecturer', '1986-12-25', '', '', '', 'Adhoc', 'user'),
+('N493', 'PRANALI R.KAVALE', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1986-10-09', '', '', '', 'Adhoc', 'user'),
+('N494', 'LONDHE SONAL', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1986-06-04', '', '', '', 'Adhoc', 'user'),
+('N495', 'SHILPI UMESH AMAN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1987-11-15', '', '', '', 'Adhoc', 'user'),
+('N496', 'SEEMA NILESH BAWNERKAR', 'seema.bawnerkar@sakec.ac.in', '9850345493', 'ENGINEERING SCIENCE', 'Assistant Professor', '1982-05-16', 'Adhoc', 'BULPS0726F', '', 'teaching', 'user'),
+('N497', 'RADHARANI NARAYANRAO A', 'radharani.akkipedi@sakec.ac.in', '9969386444', 'ENGINEERING SCIENCE', 'Assistant Professor', '1969-05-28', 'Adhoc', 'AHFPA5611D', '', 'teaching', 'user'),
+('N498', 'SMITA P.BANSOD', 'smita.bansod@sakec.ac.in', '8097051188', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1981-07-08', 'Regular', 'ANHPB0508J', '', 'teaching', 'user'),
+('N499', 'THERES BEMILA JENET ', 'bemilajene.theres@sakec.ac.in', '9702209575', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-07-25', 'Regular', 'BAWPB0285K', '', 'teaching', 'user'),
+('N500', 'NAMRATAA JANMESH KKOMMINENI', 'namrata.manglani@sakec.ac.in', '9730608148', 'ENGINEERING SCIENCE', 'Assistant Professor', '1984-12-20', 'Regular', 'ARXPM4195N', '', 'teaching', 'user'),
+('N501', 'RAJESH SURESH GURAV', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1989-10-24', '', '', '6.46E+11', 'Adhoc', 'user'),
+('N502', 'R.PARVATHY', '', '', 'ADMINISTRATION', 'Jr.Clek', '1976-04-01', '', '', '', 'Adhoc', 'user');
+INSERT INTO `users` (`e_no`, `e_name`, `emailid`, `mobile`, `dept`, `designation`, `dob`, `type`, `panno`, `aadharno`, `etype`, `role`) VALUES
+('N503', 'VISMAY V.SINGH', '', '', 'MECHANICALS', 'Lecturer', '1988-07-18', '', '', '', 'Regular', 'user'),
+('N504', 'DR.BHAURAO K. LANDE', '', '', 'ELECTRONICS', 'Principal', '1950-10-14', '', 'AAAPL4917B', '4.77E+11', 'Regular', 'user'),
+('N505', 'TALOKAR SANJAY DEVIDAS', '', '', 'MECHANICALS', 'Assistant Professor', '1971-06-21', '', 'ADWPT8182H', '', 'Regular', 'user'),
+('N506', 'BHARATI V.KHATAWATE', '', '', 'ELECTRONICS', 'Assistant Professor', '1978-07-22', '', 'ADVPJ6563E', '', 'Adhoc', 'user'),
+('N508', 'NIBHA M DESAI', 'nibha.desai@sakec.ac.in', '9320210378', 'ELECTRONICS', 'Assistant Professor', '1983-04-29', 'Regular', 'AKYPD5887E', '', 'teaching', 'user'),
+('N509', 'GAURI RAKESH CHAVAN', 'gauri.chavan@sakec.ac.in', '8108877533', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1982-06-01', 'Regular', 'AJTPB9510C', '', 'teaching', 'user'),
+('N510', 'MADHULIKA MOHOD', '', '', 'COMPUTER', 'Lecturer', '1986-10-03', '', 'ASWPD4130A', '', 'Adhoc', 'user'),
+('N511', 'DEEPTI NITIN PAWAR', 'deepti.pawar@sakec.ac.in', '9867405412', 'COMPUTER', 'Assistant Professor', '1985-07-31', 'Regular', 'DIMPS5530L', '', 'teaching', 'user'),
+('N512', 'MANISHA MATUR', '', '', 'COMPUTER', 'Lecturer', '1969-12-17', '', 'AWBPM7161K', '', 'Adhoc', 'user'),
+('N513', 'R.NITYA LAKSHMANAN', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1986-10-29', '', 'APNPR1484D', '', 'Adhoc', 'user'),
+('N514', 'POONAM KADAM', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1984-05-31', '', '', '', 'Adhoc', 'user'),
+('N515', 'SONALI G DOIPHODE', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-06-10', '', 'ANFPD5266K', '', 'Adhoc', 'user'),
+('N516', 'OJHA  KALPANA', '', '', 'COMMUNICATION SKILLS', 'Lecturer', '1986-12-31', '', 'AAUPO9710H', '', 'Adhoc', 'user'),
+('N518', 'SANJAY RAMCHANDRA GARGE', '', '', 'MECHANICALS', 'Lecturer', '1954-11-20', '', 'AJZPG5207H', '', 'Adhoc', 'user'),
+('N519', 'SHUKLA PRITI S', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-06-25', '', 'AMRPD7400J', '', 'Adhoc', 'user'),
+('N520', 'RAJESH VILAS MANE', '', '', 'MECHANICALS', 'Lecturer', '1986-05-14', '', 'AWRPM3130C', '', 'Adhoc', 'user'),
+('N521', 'PATIL SHALINI PRAKASH', '', '', 'COMPUTER', 'Lecturer', '1988-04-29', '', 'BKWPP9963J', '', 'Adhoc', 'user'),
+('N522', 'BARIK RATNA ATANU', '', '', 'CHEMISTRY', 'Assistant Professor', '1976-06-25', '', 'AMFPB7398P', '', 'Adhoc', 'user'),
+('N523', 'CHAUDHARI ARCHANA A', '', '', 'COMPUTER', 'Lecturer', '1989-02-12', '', 'APEPC5667A', '', 'Adhoc', 'user'),
+('N524', 'JADHAV VAIBHAV D', '', '', 'ELECTRONICS', 'Assistant Professor', '1986-04-01', '', 'AKFPJ3313G', '8.05E+11', 'Adhoc', 'user'),
+('N525', 'CHOTAI KRUPA GAURAV', 'krupa.chotai@sakec.ac.in', '9619714086', 'COMPUTER', 'Assistant Professor', '1983-05-17', 'Adhoc', 'APLPP7986E', '', 'teaching', 'user'),
+('N526', '  SHETTY LATIKA AVIN', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1979-09-10', '', 'BVNPS3839N', '', 'Adhoc', 'user'),
+('N527', 'WANGUJARE SHRADDHA P', '', '', 'INFORMATION TECHNOLOGY', 'Lecturer', '1988-11-07', '', 'ANJPD2517K', '', 'Adhoc', 'user'),
+('N528', 'CHAINANI JITESH J', '', '', 'CHEMISTRY', 'Lecturer', '1985-09-04', '', 'AMYPC0693H', '', 'Adhoc', 'user'),
+('N529', 'KAMBLE GAURI DEEPAK', '', '8898913560', 'COMPUTER', 'Lab Asst.(C)', '1986-09-07', '', '', '', 'Adhoc', 'user'),
+('N530', 'SHINDE SNEHAL PRAKASH', '', '9768515282', 'ELECTRONICS', 'Lab Asst.(C)', '1990-03-08', '', '', '4.44E+11', 'Adhoc', 'user'),
+('N531', 'CHANDRAKANT PACHANGANE', '', '', 'COMPUTER', 'Lab Asst.(C)', '1977-05-05', '', '', '', 'Adhoc', 'user'),
+('N532', 'KALYANI R.BHOSALE', '', '', 'COMPUTER', 'Lecturer', '1988-09-26', '', '', '', 'Adhoc', 'user'),
+('N533', 'DEVARE BHUSHAN SURESH', '', '', 'ELECTRONICS', 'Assistant Professor', '1986-10-10', '', 'BAOPD7283D', '5.44E+11', 'Adhoc', 'user'),
+('N534', 'JOSHI PREMKUMAR P', '', '', 'MECHANICALS', 'Assistant Professor', '1982-08-19', '', '', '', 'Adhoc', 'user'),
+('N535', 'YADAV MAHESH B', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-12-03', '', '', '', 'Adhoc', 'user'),
+('N536', 'RANJIT NEETHU T. EAPEN', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-06-13', '', 'AVVPR6010R', '', 'Regular', 'user'),
+('N537', 'RANE KIMAYA R', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-07-23', '', '', '', 'Adhoc', 'user'),
+('N538', 'KALE RUPALI S', 'rupali.kale@sakec.ac.in', '9769721157', 'COMPUTER', 'Assistant Professor', '1982-02-07', 'Regular', 'ANRPK4060C', '', 'teaching', 'user'),
+('N539', 'PATIL DEEPALI C', '', '9833772588', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-07-20', '', 'AUNPP0151G', '', 'Regular', 'user'),
+('N540', 'DOSHI MITAL B', '', '', 'COMPUTER', 'Assistant Professor', '1986-01-02', '', '', '', 'Adhoc', 'user'),
+('N541', 'BIDAVE JYOTSNA D', '', '', 'COMMUNICATION SKILLS', 'Assistant Professor', '1984-05-22', '', 'ARCPB7479B', '', 'Adhoc', 'user'),
+('N542', 'MAYURKUMAR S NANDA', '', '', 'ELECTRONICS', 'Lecturer', '1990-01-14', '', 'AKUPN9355K', '', 'Adhoc', 'user'),
+('N543', 'JAYASHREE NILESH DHAWALE', 'jayashri.khose@sakec.ac.in', '9860005146', 'ENGINEERING SCIENCE', 'Assistant Professor', '1984-04-07', 'Regular', 'BHQPK7105J', '4.93E+11', 'teaching', 'user'),
+('N544', 'SOMAN ASHWIN SHRINIVAS', '', '', 'MECHANICALS', 'Lecturer', '1986-10-10', '', 'CANPS5817E', '', 'Adhoc', 'user'),
+('N545', 'TIWARI AMIT SATYANARAYAN', 'amit.tiwari@sakec.ac.in', '9769059121', 'ELECTRONICS', 'Assistant Professor', '1986-07-05', 'Regular', 'AHCPT4743J', '', 'teaching', 'user'),
+('N546', 'NIRMAL PRATIMA CHABBILAL', '', '', 'COMPUTER', 'Lecturer', '1990-03-05', '', '', '', 'Adhoc', 'user'),
+('N547', 'IYER UMA PARAMESHWARI', 'uma.iyer@sakec.ac.in', '9768875103', 'ENGINEERING SCIENCE', 'Assistant Professor', '1966-12-07', 'Adhoc', 'APJPP9674D', '5.35E+11', 'teaching', 'user'),
+('N548', 'KORE SOMESHWAR VISHWANATH', '', '', 'MECHANICALS', 'Lecturer', '1988-01-15', '', 'BNBPK2874B', '', 'Adhoc', 'user'),
+('N549', 'NATH ARCHANA SUKHENDU', 'archana.nath@sakec.ac.in', '9869202780', 'ENGINEERING SCIENCE', 'Assistant Professor', '1971-05-31', 'Regular', 'AMFPN0659M', '', 'teaching', 'user'),
+('N550', 'SMITA VERMA SRIVASTAVA', 'smita.srivastava@sakec.ac.in', '9869243435', 'ENGINEERING SCIENCE', 'Assistant Professor', '1970-06-14', 'Regular', 'BKHPS2541G', '', 'teaching', 'user'),
+('N551', 'BERA APRAJITA SIDDHARTH', 'aparajita.bera@sakec.ac.in', '9833748985', 'ELECTRONICS', 'Assistant Professor', '1987-01-12', 'Regular', 'ATVPD5542N', '', 'teaching', 'user'),
+('N552', 'RASKAR CHARUSHILA SANDEEP', '', '', 'ELECTRONICS', 'Lecturer', '1988-06-04', '', '', '', 'Adhoc', 'user'),
+('N553', 'DARSHAN ANIL CHINGLE', '', '', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1987-06-19', '', '', '', 'Adhoc', 'user'),
+('N554', 'POOJA DILIP SHIRKE', '', '', 'COMPUTER', 'Lab Asst.(C)', '1993-05-14', '', 'DDXPS8414K', '4.83E+11', 'Adhoc', 'user'),
+('N555', 'JAYA  AMIT ZALTE', 'jaya.zalte@sakec.ac.in', '9833176448', 'COMPUTER', 'Assistant Professor', '1986-12-06', 'Regular', 'ABAPF1166D', '', 'teaching', 'user'),
+('N556', 'LUKESH R KADU', 'lukesh.kadu@sakec.ac.in', '9867282852', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1982-09-12', 'Regular', 'AWYPK1629H', '', 'teaching', 'user'),
+('N557', 'AMIT S CHORGHE', '', '', 'MECHANICALS', 'Assistant Professor', '1990-04-14', '', 'AVZPC4465H', '', 'Adhoc', 'user'),
+('N558', 'SWAPNIL J.MORE', 'swapnil.more@sakec.ac.in', '9503553547', 'ENGINEERING SCIENCE', 'Assistant Professor', '1986-12-07', 'Adhoc', 'ASMPM2675F', '', 'teaching', 'user'),
+('N559', 'AJAY VISHNU INGLE', '', '', 'ELECTRONICS', 'Lab Asst.(C)', '1989-12-01', '', '', '', 'Adhoc', 'user'),
+('N560', 'NAMRATA PRAMOD JAGDALE', '', '', 'COMPUTER', 'Lab Asst.(C)', '1983-10-01', '', '', '', 'Adhoc', 'user'),
+('N561', 'MADHURIMA AMIT GHOSH', '', '9757153708', 'COMMUNICATION SKILLS', 'Assistant Professor', '1988-05-03', '', 'ARYPG5235C', '', 'Regular', 'user'),
+('N562', 'TEJAS SUKHDEO HIRVE', 'tejas.hirve@sakec.ac.in', '8879277441', 'COMPUTER', 'Assistant Professor', '1984-04-19', 'Regular', 'ACRPH1579C', '', 'teaching', 'user'),
+('N563', 'ATUL HARIBAHU KACHARE', 'atul.kachare@sakec.ac.in', '9867718014', 'COMPUTER', 'Assistant Professor', '1989-02-04', 'Regular', 'BWIPK3565K', '', 'teaching', 'user'),
+('N564', 'PERNA A PALIWAL', '', '', 'ELECTRONICS', 'Assistant Professor', '1988-07-10', '', 'ARRPP9592Q', '', 'Adhoc', 'user'),
+('N565', 'HIMALI KIRTHBHAI PARIKH', '', '9821933290', 'COMPUTER', 'Assistant Professor', '1984-07-27', '', 'AQIPP6659C', '', 'Adhoc', 'user'),
+('N566', 'LEKSHMI AJESH', '', '', 'ELECTRONICS', 'Assistant Professor', '1988-02-14', '', 'AGKPN2898M', '', 'Adhoc', 'user'),
+('N567', 'RICHA RAJESHKUMAR SHARMA', '', '', 'COMPUTER', 'Assistant Professor', '1976-05-28', '', 'AELPG3138E', '', 'Adhoc', 'user'),
+('N568', 'BHARGAVI BHAVESH DALAL', 'bhargavi.dalal@sakec.ac.in', '9819501957', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1983-04-14', 'Adhoc', 'ASXPD8713C', '', 'teaching', 'user'),
+('N569', 'SWATI KISHOR GAJBHIYE', 'swati.gajbhiye@sakec.ac.in', '7387159761', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1986-08-20', 'Adhoc', 'AUPPG7070H', '', 'teaching', 'user'),
+('N570', 'MANYA LALIT GIDWANI', 'manya.gidwani@sakec.ac.in', '8169003103', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-04-03', 'Regular', 'BGAPM1656F', '', 'teaching', 'user'),
+('N571', 'JAYMALA PRAVIN CHAVAN', '', '', 'COMPUTER', 'Assistant Professor', '1985-10-31', '', 'AJQPT6915Q', '', 'Adhoc', 'user'),
+('N572', 'UMA NILESH NAIK', '', '', 'ELECTRONICS', 'Assistant Professor', '1978-10-03', '', 'AEFPN7488A', '', 'Adhoc', 'user'),
+('N574', 'KHALIL AHMED IQBAL', '', '9867773864', 'MECHANICALS', 'Assistant Professor', '1987-03-21', '', 'DYGPS6057G', '', 'Adhoc', 'user'),
+('N575', 'PRAMILA P.SHINDE', 'pramila.shinde@sakec.ac.in', '9820056656', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1982-01-14', 'Regular', 'AIEPB6555D', '', 'teaching', 'user'),
+('N576', 'SURESHKUMAR NATARAJAN', '', '', 'ELECTRONICS', 'Assistant Professor', '1983-11-23', '', '', '', 'Adhoc', 'user'),
+('N577', 'SHEETAL BHAURAO WATH', '', '9987396444', 'ELECTRONICS', 'Lab Asst.(C)', '1986-10-08', '', '', '', 'Adhoc', 'user'),
+('N578', 'CHINTAL LALIT GALA', 'chintal.maisheri@sakec.ac.in', '9920788372', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1986-10-19', 'Regular', 'AZDPM1839K', '', 'teaching', 'user'),
+('N579', 'NAWALE TEJASWINI SURYAKANT', '', '8898674544', 'ELECTRONICS', 'Lab Asst.Et', '1994-06-26', '', 'ARGPN0412Q', '', 'Adhoc', 'user'),
+('N580', 'PRAJAKTA SHAMRAO PAWAR', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-11-27', '', 'AYRPP3937A', '', 'Adhoc', 'user'),
+('N581', 'JAHANVI RAJENDRA GUPTA', 'jahanv.gupta@sakec.ac.in', '9773175439', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1989-06-15', 'Adhoc', 'BATPG6861P', '', 'teaching', 'user'),
+('N582', 'DIVYA SHARADCHANDRA TIWARI', '', '', 'ENGINEERING SCIENCE', 'Assistant Professor', '1989-04-10', '', '', '', 'Adhoc', 'user'),
+('N583', ' VISHWANATH SUBHASHCHANDRA CHIKARAD', '', '', 'COMPUTER', 'Assistant Professor', '1988-02-24', '', 'ASEPC0236A', '', 'Adhoc', 'user'),
+('N584', 'SUDHIR SADASHIV DHEKANE', '', '7709266119', 'COMPUTER', 'Assistant Professor', '1987-05-31', '', 'AQSPD2829E', '', 'Adhoc', 'user'),
+('N585', 'MERLIN DANIEL RAJAN', '', '9920276115', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1989-08-07', '', 'BCMPR2551J', '', 'Adhoc', 'user'),
+('N586', 'CHINTAN LALIT SHAH', '', '9833607033', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-03-30', '', 'CEVPS2020H', '', 'Adhoc', 'user'),
+('N587', 'UMA RAJ', 'uma.raj@sakec.ac.in', '9892907203', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1985-09-01', 'Regular', 'ADFPU2086G', '', 'teaching', 'user'),
+('N588', 'VIDYA ASHISH INGLE', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1978-05-03', '', 'ADEPK7099M', '', 'Adhoc', 'user'),
+('N589', 'ARUN SHAMBHU SAKLANI', 'arun.saklani@sakec.ac.in', '8149757296', 'COMPUTER', 'Assistant Professor', '1985-03-11', '', 'CKYPS3885H', '', 'Adhoc', 'user'),
+('N590', 'PARIMALA VENKATA PATRI', 'parimala.patri@sakec.ac.in', '8691801383', 'ELECTRONICS', 'Assistant Professor', '1986-07-10', '', 'BACPP8366H', '', 'Regular', 'user'),
+('N591', 'AMIT ANAND BAGADE', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1984-01-26', '', 'AMZPB2851M', '', 'Adhoc', 'user'),
+('N592', 'SHWETA M.PATIL', 'shweta.patil@sakec.ac.in', '8693888700', 'COMPUTER', 'Assistant Professor', '1989-10-17', 'Adhoc', 'BSQPP7762M', '', 'teaching', 'user'),
+('N593', 'MALAY H KENIA', '', '', 'ELECTRONICS', 'Assistant Professor', '1984-09-23', '', 'BESPK7388J', '', 'Adhoc', 'user'),
+('N594', 'ASHWINI S SAWANT', 'ashwini.sawant@sakec.ac.in', '9096097218', 'ELECTRONICS', 'Lab Asst.(C)', '1990-06-01', 'Adhoc', 'DBLPS5837L', '5.17E+11', 'non-teaching', 'user'),
+('N595', 'MONIKA RAVISHANKAR KANOJIYA', 'monika.kanojiya@sakec.ac.in', '9022746476', 'COMPUTER', 'Assistant Professor', '1987-08-26', 'Regular', 'bqopk7529k', '', 'teaching', 'user'),
+('N596', 'ABHIJIT ANKUSH SARANGULE', '', '9821879110', 'COMPUTER', 'Lab Asst.(C)', '1986-03-05', '', 'CMLPS5185F', '', 'Adhoc', 'user'),
+('N597', 'MINAKSHI L.PATIL', '', '9870643536', 'COMPUTER', 'Assistant Professor', '1989-06-06', '', 'BVMPP9747B', '', 'Adhoc', 'user'),
+('N598', 'NITHYA RANJIT', '', '7506326013', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-06-13', '', 'AVWPR0861R', '', 'Adhoc', 'user'),
+('N599', 'DAYANAND M.PATIL', '', '9535357901', 'COMPUTER', 'Assistant Professor', '1986-06-05', '', 'beapp4659f', '', 'Adhoc', 'user'),
+('N600', 'DATTATRAYA THUVINAHALLI', '', '8105372529', 'COMPUTER', 'Assistant Professor', '1987-01-15', '', 'adfph5975b', '', 'Adhoc', 'user'),
+('N601', 'WAYKOLE KOMAL KAVID', '', '8097100095', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1991-02-25', '', 'ABMPW0689E', '', 'Adhoc', 'user'),
+('N602', 'SINGH SHIKHA PRADEEP', '', '9833651173', 'ELECTRONICS', 'Assistant Professor', '1984-09-04', '', 'CDSPS2708A', '', 'Adhoc', 'user'),
+('N603', '_KAMBLE DHWANIKET RAMESH', '', '9920050791', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1991-10-15', '', 'BLKPK6910K', '', 'Adhoc', 'user'),
+('N604', 'MARATHE PALLAVI NIMBA', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-12-13', '', 'AXTPM4163E', '', 'Adhoc', 'user'),
+('N605', 'RANE SARIKA PARESH', 'sarika.rane@sakec.ac.in', '9833625070', 'COMPUTER', 'Assistant Professor', '1985-06-02', 'Regular', 'BAWPP1822Q', '', 'teaching', 'user'),
+('N606', 'SAHU SHRIDHAR RAMKRISHNA', 'shridhar.sahu@sakec.ac.in', '9969988751', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1989-04-14', 'Regular', 'BNVPS3175F', '', 'teaching', 'user'),
+('N607', 'THALE KIRAN RAVINDRA', 'kiran.thale@sakec.ac.in', '9969147055', 'ELECTRONICS', 'Assistant Professor', '1986-10-23', '', 'ANNPT5169K', '', 'Adhoc', 'user'),
+('N608', 'BARVE ABHISHEK HEMANT', '', '9773565090', 'ELECTRONICS', 'Assistant Professor', '1985-08-10', '', 'ANUPB5197L', '', 'Regular', 'user'),
+('N609', 'PEDNEKAR MADHURA AMEY', 'madhura.pednekar@sakec.ac.in', '9920247530', 'ELECTRONICS', 'Assistant Professor', '1982-11-28', 'Adhoc', 'AWQPK1815K', '', 'teaching', 'user'),
+('N610', 'BORGALLI ROHAN APPASAHEB', 'rohan.borgali@sakec.ac.in', '9821057992', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1990-05-23', 'Regular', 'BXFPB2087P', '8.49E+11', 'teaching', 'user'),
+('N611', 'HADA BHANU PRATAP', '', '9820695865', 'MECHANICALS', 'Assistant Professor', '1987-06-13', '', 'AEMPH4378G', '93.93567734', 'Adhoc', 'user'),
+('N612', 'GARGADE ATUL APPAJI', 'atul.gargade@sakec.ac.in', '9022663377', 'ENGINEERING SCIENCE', 'Assistant Professor', '1986-04-29', 'Regular', 'ASMPG9112F', '9.60E+11', 'teaching', 'user'),
+('N613', 'BIRMANE SANDIP RAMCHANDRA', '', '9702382817', 'MECHANICALS', 'Assistant Professor', '1988-08-15', '', 'BGMPB1198R', '', 'Adhoc', 'user'),
+('N614', 'THAKUR DHANSHREE KASHINATH', 'dhanshree.thakur@sakec.ac.in', '7208716548', 'COMPUTER', 'Assistant Professor', '1986-11-06', 'Adhoc', 'AKNPT2501Q', '', 'teaching', 'user'),
+('N615', 'SARIKA BALKRISHNA.SHRIVASTAVA', 'sarika.shrivastava@sakec.ac.in', '9967134419', 'COMPUTER', 'Assistant Professor', '1979-11-03', '', 'AYHPS7614P', '', 'Adhoc', 'user'),
+('N616', 'NIKUMBH DEEPTI DEEPAK', 'deepti.nikumbh@sakec.ac.in', '9769973931', 'COMPUTER', 'Assistant Professor', '1986-07-27', 'Regular', 'AKHPJ9757E', '', 'teaching', 'user'),
+('N617', 'BHELANDE MANISH PRADIP', 'manish.bhelande@sakec.ac.in', '9619157881', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1981-08-01', 'Regular', 'ARWPB4258Q', '', 'teaching', 'user'),
+('N618', 'DESHMUKH ASHWINI ASHUTOSH', 'ashwini.deshmukh@sakec.ac.in', '9769414715', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-05-06', 'Regular', 'AWOPD9631N', '', 'teaching', 'user'),
+('N619', 'TANK ASHISH BABUBHAI', 'ashish.tank@sakec.ac.in', '9930997484', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1989-03-11', 'Adhoc', 'AKUPT9078P', '', 'teaching', 'user'),
+('N620', 'MANE PANJAB BHASKARRAO', 'panjab.mane@sakec.ac.in', '8097836168', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1989-05-27', 'Regular', 'BUYPM0982L', '', 'teaching', 'user'),
+('N621', 'CHAVAN PRIYANKA VINAYAK', '', '9819709530', 'ELECTRONICS', 'Lab Asst.(C)', '1984-09-11', '', 'AVHPG2895D', '4.68E+11', 'Adhoc', 'user'),
+('N622', 'SAWANT SUJATA DATTARAJ', 'sujata.sawant@sakec.ac.in', '7208226966', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1992-05-08', 'Adhoc', 'DSCPS8605G', '7.05E+11', 'non-teaching', 'user'),
+('N623', 'MITTAL CHANDAN DHARAM', '', '9869308311', 'ELECTRONICS', 'Lab Asst.(C)', '1993-01-02', '', 'BLZPM1093E', '6.98E+11', 'Adhoc', 'user'),
+('N624', 'BHANARKAR UJWALA RAMESHVAR,', '', '9763810543', 'COMPUTER', 'Assistant Professor', '1983-05-30', '', 'AYAPB9042R', '3.98E+11', 'Adhoc', 'user'),
+('N625', 'PARMAR PRAKASH JAWANMAL', 'prakash.parmar@sakec.ac.in', '9764546384', 'COMPUTER', 'Assistant Professor', '1983-07-11', '', 'BBBPP7044N', '8.52E+11', 'Adhoc', 'user'),
+('N626', 'HEGDE KAUSHIK HARSHVARDHAN', '', '8108866916', 'ADMINISTRATION', 'Junior Clerk', '1993-06-12', '', 'AHFPH6079J', '6.83E+11', 'Adhoc', 'user'),
+('N627', 'EKHANDE DEEPA BABAN', 'deepa.ekhande@sakec.ac.in', '9503984088', 'COMPUTER', 'Assistant Professor', '1990-04-25', 'Adhoc', 'AAXPE6781F', '', 'teaching', 'user'),
+('N628', 'LOHOT PRIYANKA MANIK', 'priyanka.lohot@sakec.ac.in', '9619719312', 'COMPUTER', 'Assistant Professor', '1989-03-30', '', 'AEJPL5629P', '', 'Adhoc', 'user'),
+('N629', 'SARODE SHRADDHA RAMESH', '', '', 'COMPUTER', 'Assistant Professor', '1988-12-12', '', 'COXPS1074P', '', 'Adhoc', 'user'),
+('N630', 'DESHPANDE SANJEEV SHRIKRISHNA', '', '', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1982-02-01', '', 'APDPD7171F', '', 'Adhoc', 'user'),
+('N631', 'MAHAJAN CHETAN BABURAO', 'chetan.mahajan@sakec.ac.in', '8097881002', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-03-31', 'Regular', 'AZDPM2153Q', '236354079867', 'teaching', 'user'),
+('N632', 'MAGAR ASHWINI TULSHIRAM', 'ashwini.magar@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-03-20', '', 'BAMPM3657A', '', 'Adhoc', 'user'),
+('N633', 'VASANI VAIBHAV PRAKASH', 'vaibhav.vasani@sakec.ac.in', '9096310052', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-11-08', '', 'AIYPV8648M', '', 'Adhoc', 'user'),
+('N634', 'CHAVAN JAYMALA PRAVIN', 'jaymala.chavan@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-10-31', '', 'AJQPT6915Q', '', 'Adhoc', 'user'),
+('N635', 'JAWRE NIDA ASLAM', 'nida.jawre@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-02-07', 'Adhoc', 'AMTPJ2970R', '', 'teaching', 'user'),
+('N636', 'RODE POOJA BAPURAO', 'pooja.rode@sakec.ac.in', '7719001408', 'COMPUTER', 'Lab Asst.(C)', '1991-12-23', 'Adhoc', 'BLHPR8916D', '', 'non-teaching', 'user'),
+('N637', 'KAMBLE APARNA JANARDAN', 'aparna.kamble@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1986-06-04', 'Adhoc', 'CCBPK7465A', '', 'teaching', 'user'),
+('N638', 'MAHAJAN TANUJA ARUN', 'tanuja.mahajan@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1981-11-24', '', 'CUXPM1284R', '', 'Adhoc', 'user'),
+('N639', 'PATHAK PRIYANKA JAGDISH', 'priyanka.pathak@sakec.ac.in', '', 'COMPUTER', 'Assistant Professor', '1985-03-23', '', 'AYIPP6520A', '', 'Adhoc', 'user'),
+('N640', 'APURVA DEEPAKRAO JOSHI', '', '', 'MECHANICALS', 'Assistant Professor', '1988-04-25', '', 'ARAPJ2835P', '', 'Adhoc', 'user'),
+('N641', 'BIRADAR SUNIL BHALCHANDRA', '', '', 'ELECTRONICS', 'Assistant Professor', '1985-05-14', '', 'ARCPB4932D', '', 'Adhoc', 'user'),
+('N642', 'KOKATE NIKHIL NARAYAN', '', '', 'ELECTRONICS', 'Assistant Professor', '1986-03-20', '', 'BIJPK2510B', '', 'Adhoc', 'user'),
+('N643', 'VERMA PALLAVI OMPRAKASH', 'pallavi.verma@sakec.ac.in', '', 'ELECTRONICS', 'Assistant Professor', '1988-11-24', '', 'AJYPV1161E', '', 'Adhoc', 'user'),
+('N644', 'SHARMA POOJA GURAV', 'pooja.sharma@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1987-07-02', '', 'BYCPS8930C', '', 'Adhoc', 'user'),
+('N645', 'JAIN KANCHAN ASHEESH', 'kanchan.jain@sakec.ac.in', '', 'ELECTRONICS', 'Assistant Professor', '1986-02-15', '', 'AMRPJ9798B', '', 'Adhoc', 'user'),
+('N646', 'DHOBALEY SWATI MAHADEORAO', 'swati.dhobaley@sakec.ac.in', '', 'ELECTRONICS', 'Assistant Professor', '1989-11-05', '', 'AXUPD0288Q', '', 'Adhoc', 'user'),
+('N647', 'KURUP SUJITHA SASIDHARA', 'sujitha.kurup@sakec.ac.in', '9833674927', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1988-01-05', 'Adhoc', 'BKTPK0166R', '', 'teaching', 'user'),
+('N648', 'SINGH RAVI RAJPATI', 'ravi.singh@sakec.ac.in', '7775996505', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1990-09-09', '', 'CNQPS9604D', '', 'Adhoc', 'user'),
+('N649', 'SARODE JAGDISH PRALHAD', 'jagdish.sarode@sakec.ac.in', '9373450831', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1970-07-19', 'Regular', 'BKMPS3549B', '3.67E+11', 'teaching', 'user'),
+('N650', 'VORUGANTI SARASWATHI VENKANNA', '', '', 'COMMUNICATION SKILLS', 'Assistant Professor', '1968-08-28', '', 'AHPPV8250R', '', 'Adhoc', 'user'),
+('N652', 'SANTOSH SOPAN WAGHAMRE', 'santosh.waghmare@sakec.ac.in', '9833499141', 'ADMINISTRATION', 'Technical Assistant(Jr)', '1987-01-24', 'Regular', 'ADIPW7589H', '7.21E+11', 'non-teaching', 'user'),
+('N653', 'SAXENA POOJA ABHISHEK', '', '', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1986-06-26', '', 'DBHPS6638K', '5.97E+11', 'Adhoc', 'user'),
+('N654', 'POOJ A AMOL POLSHETWAR', 'pooja.duddalwar@sakec.ac.in', '9892001660', 'ELECTRONICS', 'Assistant Professor', '1987-12-09', 'Adhoc', 'AYRPD2776P', '', 'teaching', 'user'),
+('N655', 'RAUT SONAL DILIP', 'sonal.raut@sakec.ac.in', '9768902040', 'COMPUTER', 'Assistant Professor', '1990-10-03', 'Adhoc', 'BDMPR7245G', '', 'teaching', 'user'),
+('N656', 'JAMBHULKAR SNEHA GAUTAM', '', '', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1987-04-23', '', 'AOYPJ0947B', '', 'Adhoc', 'user'),
+('N657', 'PADMAVATHI VARATHA RAJA PERUMAL', 'padmavathi.perumal@sakec.ac.in', '9920567010', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1987-05-05', '', 'BMSPP9789G', '', 'Adhoc', 'user'),
+('N658', 'SINGH PRIYANKA BHOPAL', 'priyanka.singh@sakec.ac.in', '9759949138', 'ELECTRONICS', 'Assistant Professor', '1988-08-26', 'Adhoc', 'CXRPS8098E', '', 'teaching', 'user'),
+('N659', 'GAIKWAD SHILPA SHAILESH', 'shilpa.gaikwad@sakec.ac.in', '', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1978-02-19', '', 'CCTPS2232K', '', 'Adhoc', 'user'),
+('N660', 'CHAUDHARY SURANGASHRI CHHOTULAL', 'shrungashri.chaudhary@sakec.ac.in', '8692040387', 'COMPUTER', 'Assistant Professor', '1991-05-10', '', 'APOPC9463J', '7.27E+11', 'Adhoc', 'user'),
+('N661', 'PRITHI KANAGA PAUL', 'prithi.paul@sakec.ac.in', '8655238554', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1990-11-21', '', 'BYTPP7950G', '', 'Adhoc', 'user'),
+('N662', 'KALAVALA VENKATA SUBRAMANYAM SUBBA RAO', 'venkata.kalavala@sakec.ac.in', '9699557584', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1984-06-13', '', 'BJBPK5874P', '9.68E+11', 'Adhoc', 'user'),
+('N663', 'WAGHMARE PRIYANKA CHANDRAKANT', '', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1984-09-17', '', 'ABGPW5085N', '', 'Adhoc', 'user'),
+('N664', 'SHIVAJI ARJUN KAKAD', '', '', 'COMPUTER', 'Assistant Professor', '1990-08-11', '', 'CSZPK1277Q', '6.28E+11', 'Adhoc', 'user'),
+('N665', 'REKHA GOVIND MORE', 'rekha.more@sakec.ac.in', '7045218437', 'COMPUTER', 'Assistant Professor', '1987-08-17', 'Adhoc', 'AZRPM3887H', '', 'teaching', 'user'),
+('N666', 'KETKI JAYDEEP GORE', '', '', 'MATHS', 'Assistant Professor', '1980-03-20', '', 'ANSPG4644D', '8.61E+11', 'Adhoc', 'user'),
+('N667', 'KAWALE SEEMA BHAGWAN', 'seema.kawale@sakec.ac.in', '9594258315', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1989-09-21', 'Adhoc', 'BKBPK4217M', '4.55E+11', 'teaching', 'user'),
+('N668', 'VINESH N.JETHVA', 'vinesh.jethva@sakec.ac.in', '9870256227', 'ADMINISTRATION', 'Junior Clerk', '1975-05-13', 'Adhoc', 'AFWPJ9749L', '9.95E+11', 'non-teaching', 'user'),
+('N669', 'DR.BHAVESH V.PATEL', 'bhavesh.patel@sakec.ac.in', '9820021466', 'COMPUTER', 'Principal', '1971-03-20', 'Regular', 'AFDPP5686B', '4.84E+11', 'teaching', 'user'),
+('N670', 'GAIKWAD ANIL JALBAJIRAO', 'anil.gaikwad@sakec.ac.in', '', 'ENGINEERING SCIENCE', 'Assistant Professor', '1971-04-03', '', 'AOHPG0210M', '4.15E+11', 'Adhoc', 'user'),
+('N671', 'PATKAR RUCHI PRIYANK', 'ruchi.pathak@sakec.ac.in', '9422659151', 'ENGINEERING SCIENCE', 'Assistant Professor', '1988-06-24', '', 'DUZPS0218E', '6.99E+11', 'Adhoc', 'user'),
+('N672', 'CHAITALI DEVIDAS AVHAD', 'chaitali.avhad@sakec.ac.in', '9833034414', 'ADMINISTRATION', 'Junior Clerk', '1984-09-14', 'Adhoc', 'AJQPA8625A', '6.74E+11', 'non-teaching', 'user'),
+('N673', 'NANDKISHORE L.BUNDELE', 'nandkishor.bundele@sakec.ac.in', '9323345011', 'ELECTRONICS', 'Lab.Instructor', '1973-10-04', 'Adhoc', 'AOIPB5042B', '4.42E+11', 'non-teaching', 'user'),
+('N674', 'FULZELE RADHIKA SUNIL', 'radhika.fulzele@sakec.ac.in', '7276473707', 'COMPUTER', 'Assistant Professor', '1990-08-13', 'Adhoc', 'ACNPF3690E', '7.92E+11', 'teaching', 'user'),
+('N675', 'SHEWALE SNEHAL MADHUKAR', 'snehalshewale2008@gmail.com', '9822806314', 'COMPUTER', 'Assistant Professor', '1987-10-21', 'Adhoc', 'DLAPS0742D', '9.64E+11', 'teaching', 'user'),
+('N676', 'KAMBLE DHWANIKET RAMESH', 'dhwaniket.kamble@sakec.ac.in', '9920050791', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1991-10-15', 'Adhoc', 'BLKPK6910K', '', 'teaching', 'user'),
+('N677', 'PRADIP SURESH MANE', 'pradip.mane@sakec.ac.in', '9167778911', 'COMPUTER', 'Assistant Professor', '1986-10-05', 'Adhoc', 'AYKPM4978R', '8.72E+11', 'teaching', 'user'),
+('N678', 'MORE RUTUJA VILAS', '', '9892536057', 'COMPUTER', 'Lab Asst.(C)', '1982-01-04', '', 'ASSPM5896L', '5.26E+11', 'Adhoc', 'user'),
+('N679', 'RANE NILESH SUDAM', 'nilesh.rane@sakec.ac.in', '7666666337', 'COMPUTER', 'Lab Asst.(C)', '1988-06-27', 'Adhoc', 'AKKPR7794L', '3.60E+11', 'non-teaching', 'user'),
+('N680', 'SHAIKH KHALIL AHMED IQBAL', '', '9867773864', 'ENGINEERING SCIENCE', 'Assistant Professor', '1987-03-21', '', 'DYGPS6057S', '7.21E+11', 'Adhoc', 'user'),
+('N681', 'MOTEKAR HARISH SADASHIV', 'harish.motekar@sakec.ac.in', '8108266799', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-03-26', 'Adhoc', 'BOEPM7640M', '6.81E+11', 'teaching', 'user'),
+('N682', 'PAWAR SHWETAMBARI RAJENDRA', 'shwetambari.pawar@sakec.ac.in', '8850200720', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1992-10-13', 'Adhoc', 'BVHPP5518D', '7.11E+11', 'teaching', 'user'),
+('N683', 'KHELURKAR ARCHANA NAMDEO', '', '8983261503', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1986-04-26', '', 'DYXPK9782B', '9.75E+11', 'Adhoc', 'user'),
+('N684', 'ADITYA GAJANAN MANJREKAR', 'aditya.manjrekar@sakec.ac.in', '7738290432', 'ADMINISTRATION', 'Audio Visual Aids Technician', '1993-02-07', 'Adhoc', 'BWSPM4188A', '7.44E+11', 'non-teaching', 'user'),
+('N685', 'GANESH SHANKAR PAGAR', '', '9222103291', 'ADMINISTRATION', 'PEONS', '1982-08-22', 'Regular', 'ALUPP8009M', '3.85E+11', 'non-teaching', 'user'),
+('N686', 'IYER RAMAJANAKI DORAISWAMY', '', '9967181076', 'OTHERS', 'Assistant Professor', '1974-03-23', '', 'AAPPI1695E', '9.89E+11', 'Regular', 'user'),
+('N687', 'SNEHA PRAMOD VALANJU', 'sneha.valanju@sakec.ac.in', '9819812222', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1979-08-29', 'Regular', 'APPPP8246P', '6.99E+11', 'non-teaching', 'user'),
+('N688', 'SREYASHI PRASENJIT GUPTA', 'sreyashi.gupta@sakec.ac.in', '9766487505', 'ENGINEERING SCIENCE', 'Assistant Professor', '1989-05-07', '', 'AZOPG2892F', '4.07E+11', 'Adhoc', 'user'),
+('N689', 'NEHETE AMRUTA LILADHAR', 'amruta.nehete@sakec.ac.in', '9923800408', 'ELECTRONICS', 'Assistant Professor', '1989-02-18', 'Adhoc', 'AOCPN2048B', '6.82E+11', 'teaching', 'user'),
+('N690', 'DESHPANDE GAURI GANGADHAR', 'gauri.deshpande@sakec.ac.in', '9665167387', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1991-11-20', 'Adhoc', 'ATVPD3824F', '9.48E+11', 'teaching', 'user'),
+('N691', 'BHATTACHARJEE SUMIT SACHINDRA KUMAR', 'sumit.bhattacharjee@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1971-09-01', '', 'AHQPB0429F', '3.70E+11', 'Adhoc', 'user'),
+('N692', 'PAWAR BHUSHAN DILIP', 'bhushan.pawar@sakec.ac.in', '7977144103', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1987-10-28', 'Adhoc', 'BCBPP0896B', '4.42E+11', 'teaching', 'user'),
+('N693', 'KAMBLE UDAYAN BABAN', 'udayan.kamble@sakec.ac.in', '9769750332', 'ELECTRONICS', 'Assistant Professor', '1983-08-12', 'Adhoc', 'AUCPK3402C', '4.32E+11', 'teaching', 'user'),
+('N694', 'MISHRA DEEPAK SHARMA', 'deepak.mishra@sakec.ac.in', '9891150272', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1990-01-11', 'Adhoc', 'CAQPM4231H', '8.92E+11', 'teaching', 'user'),
+('N695', 'SANAS MINAKSHI NILESH', 'minakshi.sanas@sakec.ac.in', '8169228445', 'ELECTRONICS & TELECOMMUNICATION', 'Lab Asst.(B)', '1990-06-07', 'Adhoc', 'DLLPS6659L', '3.09E+11', 'non-teaching', 'user'),
+('N696', 'SOLKAR SONAM DILIP', 'sonam.solkar@sakec.ac.in', '9082942619', 'ELECTRONICS', 'Lab Asst.(C)', '1992-11-22', '', 'DKEPS1090B', '8.46E+11', 'Adhoc', 'user'),
+('N697', 'RATHOD SANTOSH BABURAO', 'santosh.rathod@sakec.ac.in', '9663458990', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1988-01-02', 'Adhoc', 'AZYPR4227K', '7.44E+11', 'teaching', 'user'),
+('N698', 'JAMADAR IMRAN MUBARAK', 'imran.jamadar@sakec.ac.in', '9421991865', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1989-09-20', '', 'AYVPJ5442Q', '2.42E+11', 'Adhoc', 'user'),
+('N699', 'HAGAVANE RUPALI MILIND', 'rupali.hagavane@sakec.ac.in', '9969276332', 'COMPUTER', 'Lab Asst.(C)', '1980-02-07', 'Adhoc', 'CBBPS8273F', '3.48E+11', 'non-teaching', 'user'),
+('N700', 'SUBHASH RAMJEET YADAV', 'subhash.yadav@sakec.ac.in', '9819807379', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1974-08-05', '', 'ABQPY6797D', '3.95E+11', 'Adhoc', 'user'),
+('N701', 'CHOUDHARI TUSHAR JAGANNATH', 'tushar.chaudhari@sakec.ac.in', '7738313991', 'COMPUTER', 'Lab Asst.(C)', '1983-06-09', 'Adhoc', 'AOUPC2960F', '3.29E+11', 'non-teaching', 'user'),
+('N702', 'KRISHNA VINOD KORI', 'krishna.kori@sakec.ac.in', '9768175138', 'COMPUTER', 'Lab Asst.(C)', '1994-03-31', '', 'DKBPK09985E', '23755530172', 'Adhoc', 'user'),
+('N703', 'VIKRAM VASANTRAO DESHMUKH', '', '9158961067', 'MECHANICALS', 'Assistant Professor', '1978-06-16', '', 'AJSPD2360F', '6.33E+11', 'Adhoc', 'user'),
+('N704', 'OMKAR RAJENDRA DICHOLKAR', 'omkar.dicholkar@sakec.ac.in', '8767996193', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1991-07-31', 'Adhoc', 'ASNPD9908K', '8.80E+11', 'non-teaching', 'user'),
+('N705', 'TEJASWI ANIL BELWALKAR', '', '8879555138', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1993-06-09', '', 'CHMPB7426A', '4.56E+11', 'Adhoc', 'user'),
+('N706', 'ABHAY DATTATRAY NICHITE', 'abhay.nichite@sakec.ac.in', '9011862892', 'ENGINEERING SCIENCE', 'Assistant Professor', '1986-07-02', 'Adhoc', 'AJIPN7127Q', '9.37E+11', 'teaching', 'user'),
+('N707', 'ROHAN ASHOK PARAB', '', '9867180144', 'ELECTRONICS & TELECOMMUNICATION', 'Lab Asst.(B)', '1985-04-17', '', 'AYBPP4575C', '7.54E+11', 'Adhoc', 'user'),
+('N708', 'PRIYANKA SUNIL SHENDE', 'priyanka.shende@sakec.ac.in', '9665707255', 'COMPUTER', 'Assistant Professor', '1988-06-27', 'Adhoc', 'CLSPS1613Q', '8.39E+11', 'teaching', 'user'),
+('N709', 'PRIYANKA  ANIL GHULE', 'priyanka.ghule@sakec.ac.in', '9422314435', 'COMPUTER', 'Assistant Professor', '1987-12-10', 'Adhoc', 'AUWPB0513H', '2.24E+11', 'teaching', 'user'),
+('N710', 'PRADNYA PANDHARINATH MHATRE', 'pradnya.mhatre@sakec.ac.in', '9930696494', 'INFORMATION TECHNOLOGY', 'Lab Asst.(C)', '1998-07-22', 'Adhoc', 'DHTPM4701B', '3.08E+11', 'non-teaching', 'user'),
+('N711', 'ARCHANA KAMLAKANT SALASKAR', 'archana.salaskar@sakec.ac.in', '9619519468', 'COMPUTER', 'Assistant Professor', '1981-07-01', 'Adhoc', 'BJKPS5556F', '6.34E+11', 'teaching', 'user'),
+('N712', 'BHUSHAN RAMCHANDRA JADHAV', 'bhushan.jadhav@sakec.ac.in', '8976329399', 'ADMINISTRATION', 'Deputy Registrar', '1979-11-23', 'Adhoc', 'AJMPJ5961C', '3.29E+11', 'non-teaching', 'user'),
+('N713', 'SONALI SAGAR BAPTE', 'sonali.bapte@sakec.ac.in', '', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1992-01-10', 'Adhoc', 'BNWPK4251P', '4.73E+11', 'teaching', 'user'),
+('N714', 'SHRUTIKA TULARAM KHOBRAGADE', 'shrutika.khobragade@sakec.ac.in', '9987041896', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1989-04-06', '', 'COYPK8093R', '3.36E+11', 'Adhoc', 'user'),
+('N715', 'PRIYANKA YASHODHAN ABHYANKAR', 'priyanka.abhyankar@sakec.ac.in', '9619467127', 'COMPUTER', 'Assistant Professor', '1990-10-28', 'Adhoc', 'ANIPJ9649K', '3.49E+11', 'teaching', 'user'),
+('N716', 'ASMITA DNYANESHWAR SALUNKHE', 'asmita.salunkhe@sakec.ac.in', '9082079421', 'COMPUTER', 'Lab Asst.(C)', '1997-05-24', '', 'HGMPS1788E', '4.34E+11', 'Adhoc', 'user'),
+('N717', 'ASHWIN PUNA KAMBLE', 'ashwin.kamble@sakec.ac.in', '8793569561', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1989-09-20', 'Adhoc', 'CCMPK5188B', '4.37E+11', 'teaching', 'user'),
+('N718', 'AKSHATA SATYAWAN PATIL', 'akshata.patil@sakec.ac.in', '7021614601', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1990-02-28', 'Adhoc', 'CFTPP3644F', '', 'teaching', 'user'),
+('N719', 'KHUSHBOO SINGH', 'khushboo.singh@sakec.ac.in', '9969358041', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1986-11-19', 'Adhoc', 'AVWPS0274R', '4.05E+11', 'teaching', 'user'),
+('N720', 'NEELAM MUKUND JAGTAP', 'neelam.jagtap@sakec.ac.in', '9833642271', 'ENGINEERING SCIENCE', 'Assistant Professor', '1971-12-26', 'Regular', 'AEFPJ0915A', '4.31E+11', 'teaching', 'user'),
+('N721', 'MANRAL JAGAT SINGH', 'jagat.manral@sakec.ac.in', '9821403823', 'ENGINEERING SCIENCE', 'Assistant Professor', '1966-12-27', 'Regular', 'AKVPM7269G', '6.58E+11', 'teaching', 'user'),
+('N722', 'MUNESHKUMAR BHIMRAO SUTE', 'muneshkumar.sute@sakec.ac.in', '7718876410', 'ADMINISTRATION', 'Senior Clerk', '1974-01-04', 'Regular', 'BVLPS2378L', '8.02E+11', 'non-teaching', 'user'),
+('N723', 'PRAKASH J YEWALE', 'prakash.yewale@sakec.ac.in', '9004982899', 'ADMINISTRATION', 'Senior Clerk', '1966-06-01', 'Regular', 'ABBPY6925G', '5.23E+11', 'non-teaching', 'user'),
+('N724', 'PARSHURAM V.MANE', '', '9892530507', 'ADMINISTRATION', 'PEON', '1962-06-01', 'Regular', 'AUHPM3623L', '9.08E+11', 'non-teaching', 'user'),
+('N725', 'TANUJA PRADEEP MAHAJAN', 'tanujap.mahajan@sakec.ac.in', '8355826710', 'ELECTRONICS & TELECOMMUNICATION', 'Lab Asst.(C)', '1993-07-26', 'Adhoc', 'CTIPM6881J', '8.06E+11', 'non-teaching', 'user'),
+('N726', 'DIPTI MAHESH MUKADAM', 'dipti.mukadam@sakec.ac.in', '9594435210', 'COMPUTER', 'Assistant Professor', '1985-02-15', 'Adhoc', 'AXKPP5884C', '3.07E+11', 'teaching', 'user'),
+('N727', 'VIDYA ROSHAN KOTTARI', 'vidya.kottari@sakec.ac.in', '7738177004', 'COMPUTER', 'Assistant Professor', '1987-08-25', 'Adhoc', 'DIWPK8375P', '8.19E+11', 'teaching', 'user'),
+('N728', 'KIRAN ASHOK GUNJAL', '', '7715803305', 'COMPUTER', 'Assistant Professor', '1986-03-03', 'Adhoc', 'AOLPG4669Q', '3.26E+11', 'teaching', 'user'),
+('N729', 'TUKARAM R.CHAVAN', 'tukaram.chavan@sakec.ac.in', '9867890682', 'ELECTRONICS & TELECOMMUNICATION', 'Lab Asst.(A)', '1968-01-17', '', 'ALSPC0105B', '8.57E+11', 'Regular', 'user'),
+('N730', 'VAISHALI B.KOSAMKAR', 'vaishali.kosamkar@sakec.ac.in', '9004013795', 'COMPUTER', 'Assistant Professor', '1972-10-28', '', 'ANGPK3552L', '5.33E+11', 'Regular', 'user'),
+('N731', 'KALPANA  L.CHAUDHARI', 'KALPANA.CHAUDHARI@SAKEC.AC.IN', '9930281646', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1971-10-20', '', 'AEWPC2778M', '2.26E+11', 'Regular', 'user'),
+('N732', 'JYOTI VIJAY BANSODE', 'jyoti.bansode@sakec.ac.in', '9594999496', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1969-02-01', '', 'AJHPB6558J', '4.88E+11', 'Regular', 'user'),
+('N733', 'PRADEEP S.MANE', 'pradeep.mane@sakec.ac.in', '7506954550', 'ADMINISTRATION', 'Clerk ', '1985-03-17', '', 'AZHPM0257B', '9.93E+11', 'Regular', 'user'),
+('N734', 'SHRADDHA S. AVACHAT', '', '', 'ELECTRONICS & TELECOMMUNICATION', 'Lab Asst.(A)', '1967-05-01', '', 'AIMPA7588F', '6.44E+11', 'Regular', 'user'),
+('N735', 'JYOTI V.DEOGIRIKAR', 'jyoti.deogirikar@sakec.ac.in', '8082545174', 'COMPUTER', 'Assistant Professor', '1994-01-14', '', 'BVWPD2708P', '2.32E+11', 'Adhoc', 'user'),
+('N736', 'SHWETHA  C.SHETTY', 'shweta.shetty@sakec.ac.in', '9867656080', 'ELECTRONICS & TELECOMMUNICATION', 'Assistant Professor', '1991-05-28', '', 'FOAPS8076H', '9.42E+11', 'Adhoc', 'user'),
+('N737', 'SAMUNDISWARY SRINIVASAN', 'SAMUNDISWARY.SRINIVASAN@sakec.ac.in', '9969854620', 'INFORMATION TECHNOLOGY', 'Assistant Professor', '1985-08-29', '', 'BSZPS2164M', '3.99E+11', 'Adhoc', 'user'),
+('N738', 'JHANAVI J.AMBRE', '', '9769341585', 'ELECTRONICS', 'Lab Asst.Et', '1973-03-28', '', 'AGIPA8660J', '5.64E+11', 'Regular', 'user'),
+('N739', 'SUNIL DAMODAR KHANDAGALE', '', '9923541216', 'ADMINISTRATION', 'PEON', '1973-12-06', '', 'AYHPK8383P', '7.37E+11', 'Regular', 'user'),
+('N740', 'VIJAY RAJARAM MANE', '', '9820879330', 'ADMINISTRATION', 'Attendent', '1970-06-03', '', 'BJLPM9469E', '9.03E+11', 'Regular', 'user'),
+('N741', 'MANGESH S CHAVAN', '', '', 'ADMINISTRATION', 'PEON', '1975-06-07', '', 'AJAPC8623Q', '6.72E+11', 'Regular', 'user'),
+('N742', 'MANGESH LAXMAN JADHAV', '', '9867517646', 'ADMINISTRATION', 'PEON', '1966-11-28', '', 'AKGPJ5171M', '3.37E+11', 'Regular', 'user'),
+('N743', 'PRAKASH P.PURABIYA', '', '', 'ADMINISTRATION', 'Library Attandent', '1968-04-11', '', 'APVPP3271L', '3.61E+11', 'Regular', 'user'),
+('N744', 'VISHNU G.MANDAVKAR', '', '', 'ADMINISTRATION', 'Attendant', '1963-06-01', '', 'ASKPM8212G', '6.99E+11', 'Regular', 'user'),
+('N745', 'VINOD DAULAT PAWAR', 'VINOD.PAWAR@SAKEC.AC.IN', '', 'ADMINISTRATION', 'Clerk ', '1969-04-22', '', 'ALEPP7616A', '5.27E+11', 'Regular', 'admin'),
+('N746', 'RAHUL N.KHANDARE', 'RAHUL.KHANDARE@SAKEC.AC.IN', '8828041949', 'ENGINEERING SCIENCE', 'Assistant Professor', '1989-03-02', '', 'BHIPK0385E', '5.02E+11', 'Adhoc', 'user'),
+('N747', 'SANTOSH A .KAMBLE', 'SANTOSH.KAMBLE@SAKEC.AC.IN', '', 'ELECTRONICS', 'Assistant Professor', '1980-07-15', '', 'APHPK8408A', '5.11E+11', 'Adhoc', 'user'),
+('N748', 'PRIYANAKA GOVIND JAGTAP', 'PRIYANKA.ZIRPE@SAKEC.AC.IN', '7020043197', 'COMPUTER', 'Assistant Professor', '1991-09-30', '', 'AVTPJ0894R', '9.45E+11', 'Adhoc', 'user');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `course_am`
+--
+ALTER TABLE `course_am`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `course_ic`
+--
+ALTER TABLE `course_ic`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `co_am`
+--
+ALTER TABLE `co_am`
+  ADD PRIMARY KEY (`co_id`);
+
+--
+-- Indexes for table `domain`
+--
+ALTER TABLE `domain`
+  ADD PRIMARY KEY (`domain_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`e_no`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
