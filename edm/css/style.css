@@ -8516,6 +8516,9 @@ h4.asd label {
   width:30px;
 }
 
-.table_row1 td {
-  width:auto;
+.table_row1 {
+  width:10px;
+}
+#psoid {
+  width:60px;
 }

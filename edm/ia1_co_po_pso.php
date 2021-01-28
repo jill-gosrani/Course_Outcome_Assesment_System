@@ -75,7 +75,7 @@ input:invalid {
 			<h3 class="title1"><b>CO - Internal Assesment Mapping</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
 				<div class="form-three widget-shadow">
 				<div class=" panel-body-inputin">
-				<form id="co_am_form" onsubmit="return checkTotal()" action="ia_co_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
+				<form id="co_am_form" onsubmit="return checkTotal()" action="ia1_co_po_pso_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
 				<div class="table-responsive bs-example widget-shadow" data-example-id="contextual-table">
 				<table class="table table-bordered">				 
                 
@@ -115,16 +115,16 @@ input:invalid {
 				<th><center>Marks<Br>Allotted to<Br>each Question</center></th>
                 <th><center>Blooms Taxonomy<Br>Level of Question</center></th>
 				<th><center>Course Outcome</center></th>
-                <th><center>PSOs</center></th>
+                <th id='psoid'><center>PSOs</center></th>
                 <th><center>Performance<Br>Indicator(PI) of<Br>PO</center></th>
 				</thead>
                 <tbody id="co_am">
                     <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1a" class="form-control1" value="<?php echo "IA1_1a";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1a";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -136,7 +136,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -148,7 +148,7 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                     </tr>
 
 
@@ -156,11 +156,11 @@ input:invalid {
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1b" class="form-control1" value="<?php echo "IA1_1b";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1b";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -172,7 +172,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -184,7 +184,7 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                     </tr>
 
 
@@ -192,11 +192,11 @@ input:invalid {
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1c" class="form-control1" value="<?php echo "IA1_1c";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1c";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -208,7 +208,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -220,18 +220,18 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1d" class="form-control1" value="<?php echo "IA1_1d";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1d";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -243,7 +243,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -255,81 +255,7 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
-                </tr>
-
-
-
-
-
-
-
-                <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1e" class="form-control1" value="<?php echo "IA1_1e";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
-				<?php
-				for ($b = 0; $b < sizeof($co); $b++)
-				{
-					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
-				}
-				?>	
-				</select>
-				</div>
-                        	
-                        </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
-				<?php
-				for ($a = 0; $a < sizeof($pso); $a++)
-				{
-					$pso_no=$a+1;
-					echo "<option value='".$pso[$a]['pso_id']."'>PSO".$pso_no."</option>";
-				}
-				?>	
-				</select>
-				</div>
-				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
-                </tr>
-
-
-
-
-
-                <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_1f" class="form-control1" value="<?php echo "IA1_1f";?>" readonly></center></td>
-                        <td><center><input type="text" name="2" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
-				<?php
-				for ($b = 0; $b < sizeof($co); $b++)
-				{
-					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
-				}
-				?>	
-				</select>
-				</div>
-                        	
-                        </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
-				<?php
-				for ($a = 0; $a < sizeof($pso); $a++)
-				{
-					$pso_no=$a+1;
-					echo "<option value='".$pso[$a]['pso_id']."'>PSO".$pso_no."</option>";
-				}
-				?>	
-				</select>
-				</div>
-				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 
@@ -339,11 +265,11 @@ input:invalid {
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_2a" class="form-control1" value="<?php echo "IA1_2a";?>" readonly></center></td>
-                        <td><center><input type="text" name="5" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1e";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -355,7 +281,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -367,7 +293,43 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+                </tr>
+
+
+
+
+
+                <tr class='table_row1'>
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1f";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
+				<?php
+				for ($b = 0; $b < sizeof($co); $b++)
+				{
+					$co_no=$b+1;
+					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+				}
+				?>	
+				</select>
+				</div>
+                        	
+                        </td>
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
+				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+				<?php
+				for ($a = 0; $a < sizeof($pso); $a++)
+				{
+					$pso_no=$a+1;
+					echo "<option value='".$pso[$a]['pso_id']."'>PSO".$pso_no."</option>";
+				}
+				?>	
+				</select>
+				</div>
+				</td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 
@@ -377,11 +339,11 @@ input:invalid {
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_2b" class="form-control1" value="<?php echo "IA1_2b";?>" readonly></center></td>
-                        <td><center><input type="text" name="5" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_2a";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -393,7 +355,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -405,7 +367,7 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 
@@ -415,11 +377,11 @@ input:invalid {
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_3a" class="form-control1" value="<?php echo "IA1_3a";?>" readonly></center></td>
-                        <td><center><input type="text" name="5" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_2b";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -431,7 +393,7 @@ input:invalid {
 				</div>
                         	
                         </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -443,18 +405,56 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+                </tr>
+
+
+
+
+
+
+
+                <tr class='table_row1'>
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_3a";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
+				<?php
+				for ($b = 0; $b < sizeof($co); $b++)
+				{
+					$co_no=$b+1;
+					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+				}
+				?>	
+				</select>
+				</div>
+                        	
+                        </td>
+                        <td id='psoid'><div class="form-group1 col-md-7 ">
+				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+				<?php
+				for ($a = 0; $a < sizeof($pso); $a++)
+				{
+					$pso_no=$a+1;
+					echo "<option value='".$pso[$a]['pso_id']."'>PSO".$pso_no."</option>";
+				}
+				?>	
+				</select>
+				</div>
+				</td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 
 
 
                 <tr class='table_row1'>
-                        <td><center><input type="text" name="IA1_3b" class="form-control1" value="<?php echo "IA1_3b";?>" readonly></center></td>
-                        <td><center><input type="text" name="5" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='bl' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+                        <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_3b";?>" readonly></center></td>
+                        <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><div class="form-group1 col-md-8">
+				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
@@ -465,8 +465,8 @@ input:invalid {
 				</select>
 				</div>
                         	
-                        </td>
-                        <td><div class="form-group1 col-md-12 col-lg-12 col-sm-12">
+                </td>
+                <td id='psoid'><div class="form-group1 col-md-7 ">
 				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
@@ -478,7 +478,7 @@ input:invalid {
 				</select>
 				</div>
 				</td>
-				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
+				<td><div class='form-group'><div class="col-md-12"><div class="input-group"><textarea name="pi_no[]" id="txtarea1" cols="50" rows="4" class="form-control1" required='required'></textarea></div></div></div></td>
                 </tr>
 
 

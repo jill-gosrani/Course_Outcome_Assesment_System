@@ -90,7 +90,7 @@ input:invalid {
 				$co_qry="SELECT * FROM `co_list` WHERE `co_id` LIKE '$course_id%'";
 				$ia_qry="SELECT `IA1_1a`,`IA1_1b`,	`IA1_1c`,`IA1_1d`,`IA1_1e`,`IA1_1f`,`IA1_2a`,`IA1_2b`,`IA1_3a`,`IA1_3b`,	`IA2_1a`,`IA2_1b`,`IA2_1c`,`IA2_1d`,`IA2_1e`,`IA2_1f`,`IA2_2a`,`IA2_2b`,`IA2_3a`,`IA2_3b` FROM `ia_co` WHERE `course_id`='$course_id'";
 				$co_ia_qry="SELECT * FROM `ia_co` WHERE `course_id`='$course_id'";
-				//echo $ia_qry;
+				// echo $ia_qry;
 
 				$co_ia_result = mysqli_query($conn,$co_ia_qry);
 				
@@ -104,7 +104,7 @@ input:invalid {
 
 					$fieldinfo = $ia_result -> fetch_fields();
 					foreach ($fieldinfo as $val) {
-
+							// echo($val -> name);
     						$am_nm[]=$val -> name;
    							
   						}
