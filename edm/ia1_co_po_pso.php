@@ -122,14 +122,14 @@ input:invalid {
                     <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1a";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -158,14 +158,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1b";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -194,14 +194,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1c";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -229,14 +229,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1d";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -267,14 +267,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1e";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -303,14 +303,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_1f";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "2";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -341,14 +341,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_2a";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -379,14 +379,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_2b";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -417,14 +417,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_3a";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
@@ -452,14 +452,14 @@ input:invalid {
                 <tr class='table_row1'>
                         <td><center><input type="text" name="IA1_q[]" class="form-control1" value="<?php echo "IA1_3b";?>" readonly></center></td>
                         <td><center><input type="text" name="marks[]" class="form-control1" value="<?php echo "5";?>" readonly></center></td>
-                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='1'>BL1</option><option value='2'>BL2</option><option value='3'>BL3</option><option value='4'>BL4</option><option value='5'>BL5</option><option value='6'>BL6</option></center></td>
+                        <td><center><div class='form-group'><div class='col-md-8'><select name='b[]' class='form-control1' required='required'><option value=''>Select</option><option value='BL1'>BL1</option><option value='BL2'>BL2</option><option value='BL3'>BL3</option><option value='BL4'>BL4</option><option value='BL5'>BL5</option><option value='BL6'>BL6</option></center></td>
                         <td><div class="form-group1 col-md-8">
 				<select id="pso_select" name="co[]" class='form-control1' required="required"><option value=''>Select</option>
 				<?php
 				for ($b = 0; $b < sizeof($co); $b++)
 				{
 					$co_no=$b+1;
-					echo "<option value='".$co[$b]['co_id']."'>CO".$co_no."</option>";
+					echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
 				}
 				?>	
 				</select>
