@@ -137,7 +137,7 @@ input:invalid {
                         	
                         </td>
                         <td id='psoid'><div class="form-group1 col-md-7 ">
-				<select id="pso_select" name="pso[]" class="selectpicker form-control" multiple required="required">
+				<select id="pso_select" name="pso[]" class="selectpicker form-control"  multiple required="required">
 				<?php
 				for ($a = 0; $a < sizeof($pso); $a++)
 				{

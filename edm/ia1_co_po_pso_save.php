@@ -54,7 +54,7 @@ if(isset($_POST['pi_no']))
 
 $co_id_array=array();
 for($a=0;$a<sizeof($co);$a++){
-$qry="SELECT * FROM `co_list` WHERE `co_no` LIKE '$co[$a]'";
+$qry="SELECT * FROM `co_list` WHERE `co_no` LIKE '$co[$a]' AND `course_id` LIKE '$course_id'";
 if($co_res=mysqli_query($conn, $qry)){
 	$row=mysqli_fetch_assoc($co_res);
 	$co_id_array[] =$row['co_id'];	

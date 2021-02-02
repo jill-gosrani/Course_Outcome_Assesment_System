@@ -1,6 +1,6 @@
  <?php
 include 'login_config.php';
-session_start();
+session_start(); 
 $co_id=$_POST['co_id'];
 $term=$_SESSION['term'];
 $course_id=$_SESSION['course_id'];

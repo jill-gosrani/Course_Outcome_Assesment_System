@@ -52,7 +52,7 @@ if(isset($_POST['am9']))
 	$am.=",`am9`";
 }
 
-echo $am;
+// echo $am;
 
 
 $sql="";
