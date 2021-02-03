@@ -72,10 +72,10 @@ input:invalid {
 		<!-- main content start-->
 		<div id="page-wrapper">
 		<div class="row">
-			<h3 class="title1"><b>CO - Quiz Mapping</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
+			<h3 class="title1"><b>COURSE EXIT FORM</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
 				<div class="form-three widget-shadow">
 				<div class=" panel-body-inputin">
-				<form id="co_am_form" onsubmit="return checkTotal()" action="co_quiz_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
+				<form id="co_am_form" onsubmit="return checkTotal()" action="co_exit_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
 				<div class="table-responsive bs-example widget-shadow" data-example-id="contextual-table">
 				<table class="table table-bordered">
 				<?php
@@ -85,30 +85,36 @@ input:invalid {
 				$course_id=$_SESSION['course_id'];
 				$term=$_SESSION['term'];
 				$dept=$_SESSION["dept"];
-				$quiz=array();
-				$quiz_nm=array();
+				$exit=array();
+                $exit_nm=array();
+                $co=array();
 				$co_qry="SELECT * FROM `co_list` WHERE `co_id` LIKE '$course_id%'";
-				$quiz_qry="SELECT `quiz_1`,`quiz_2`,`quiz_3`,`quiz_4`,`quiz_5` FROM `quiz_co` WHERE `course_id`='$course_id'";
-				$co_quiz_qry="SELECT * FROM `quiz_co` WHERE `course_id`='$course_id'";
+				$exit_qry="SELECT `question_no`,`questions`,`co_no` FROM `course_exit` WHERE `course_id`='$course_id'";
+				$co_exit_qry="SELECT * FROM `course_exit` WHERE `course_id`='$course_id'";
 				//echo $co_am_qry;
 
-				$co_quiz_result = mysqli_query($conn,$co_quiz_qry);
+				$co_exit_result = mysqli_query($conn,$co_exit_qry);
 				
 				$co_result = mysqli_query($conn,$co_qry);
 				$x=0;
 				
 				if (mysqli_num_rows($co_result) > 0) 
 				{
-					$quiz_result = mysqli_query($conn,$quiz_qry);
+					$exit_result = mysqli_query($conn,$exit_qry);
 
-					$fieldinfo = $quiz_result -> fetch_fields();
+					$fieldinfo = $exit_result -> fetch_fields();
 					foreach ($fieldinfo as $val) {
-    					$quiz[]=$val -> name;  							
-  					}
-					// echo $am_result;
-					if(mysqli_num_rows($quiz_result)>0)
+    					$exit[]=$val -> name;  							
+                      }                  
+					while($co_row = mysqli_fetch_assoc($co_result))
 					{
-						$row = mysqli_fetch_assoc($quiz_result);
+						$co[]=$co_row;
+					}
+                
+					// echo $am_result;
+					if(mysqli_num_rows($exit_result)>0)
+					{
+						$row = mysqli_fetch_assoc($exit_result);
 						// for($x = 0; x < sizeof($quiz); $x++)
 						// {
 						// 	if(!is_null($row[$quiz[$x]]))
@@ -121,54 +127,65 @@ input:invalid {
 				}
 				?>
 				<thead>
-				<th>CO No.</th><th>CO Unique No.</th>
-				<?php
-					for($y=0;$y<sizeof($quiz);$y++)
-					{
-						echo "<th>".$quiz[$y]."</th>";
-					}
-				?>
-				<th>Total</th>
+				<th>Question No.</th>
+                <th>Questions</th>
+				<th>CO No.</th>
+				
 				</thead>		
 				<tbody id="co_am">
 				<?php
 				$no=1;
-				if (mysqli_num_rows($co_quiz_result) > 0) 
+				if (mysqli_num_rows($co_exit_result) > 0) 
 				{
-					while($co_quiz_row = mysqli_fetch_assoc($co_quiz_result))
+					while($co_exit_row = mysqli_fetch_assoc($co_exit_result))
 					{
-						$sum=0;
-						echo "<tr>";
-						echo "<td>CO".$no."</td>";
-						$no=$no+1;
-						echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='text' name='co_id[]' class='form-control1' value=".$co_quiz_row['co_id']." readonly></div></div></div></td>";
-						for($y=0;$y<sizeof($quiz);$y++)
+						// echo implode(',',$exit);
+						// echo "<br>";
+						for($y=0;$y<sizeof($exit);$y++)
 						{
-							echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='number' name='".$quiz[$y]."[]' value='".$co_quiz_row[$quiz[$y]]."' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);' readonly style='background-color:#dfdfdf;'></div></div></div></td>";
-							$sum+=$co_quiz_row[$quiz[$y]];
+							// echo $co_exit_row[$exit[$y]];
+							
+							echo "<td><input type='text' name='".$exit[$y]."[]' value='".$co_exit_row[$exit[$y]]."' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);' readonly style='background-color:#dfdfdf;'></td>";
+											
+							
 						}
-						echo "<td><div class='form-group'><div class='col-md-6'><input type='number' name='total[]' class='form-control1' value='".$sum."' max='100' min='100' readonly style='background-color:#C0C0C0;'></div><div class='col-md-6'></div></div></td>";
-						/*echo "<td><div class='form-group'><div class='col-lg-6'><input type='number' name='total[]' value='".$sum."' class='form-control1' value=0 max='100' min='100' readonly style='background-color:#C0C0C0;'></div><div class='col-lg-6'><button type='button' class=\"btn btn-success\" onclick=\"editRow(this)\"><i class=\"fa fa-pencil-square-o\"></i></button></div></div></td>";*/
+						
 						echo "</tr>";
 					}
 				}
 				else
 				{
-					if (mysqli_num_rows($co_result) > 0) 
-					{
-						while($co_row = mysqli_fetch_assoc($co_result))
-						{
-							echo "<tr>";
-							echo "<td>".$co_row['co_no']."</td>";
-							echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='text' name='co_id[]' class='form-control1' value=".$co_row['co_id']." readonly></div></div></div></td>";
-							for($y=0;$y<sizeof($quiz);$y++)
-							{
-								echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='number' name='".$quiz[$y]."[]' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);'></div></div></div></td>";
-							}
-							echo "<td><div class='form-group'><div class='col-md-6'><input type='number' name='total[]' class='form-control1' value='0' max='100' min='100' readonly style='background-color:#C0C0C0;'></div><div class='col-md-6'></div></div></td>";
-							echo "</tr>";
-						}
-					}
+
+                    for($i=1;$i<13;$i++){
+                        echo "<tr>";
+                        echo "<td>".$i."</td>";
+                        echo "<td><textarea name='questions[]' id='txtarea1' cols='50' rows='4' class='form-control1' required='required'></textarea></td>";
+                        echo'<td><div class="form-group1 col-md-8">';
+				        echo'<select id="pso_select" name="co[]" class="form-control1" required="required"><option value="">Select</option>';
+				        
+				        for ($b = 0; $b < sizeof($co); $b++)
+				        {
+					        $co_no=$b+1;
+					        echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
+				        }
+                        echo"</select></div></td>";
+                        echo "</tr>";
+                    }
+					// if (mysqli_num_rows($co_result) > 0) 
+					// {
+					// 	while($co_row = mysqli_fetch_assoc($co_result))
+					// 	{
+					// 		echo "<tr>";
+					// 		echo "<td>".$co_row['co_no']."</td>";
+					// 		echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='text' name='co_id[]' class='form-control1' value=".$co_row['co_id']." readonly></div></div></div></td>";
+					// 		for($y=0;$y<sizeof($quiz);$y++)
+					// 		{
+					// 			echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='number' name='".$quiz[$y]."[]' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);'></div></div></div></td>";
+					// 		}
+					// 		echo "<td><div class='form-group'><div class='col-md-6'><input type='number' name='total[]' class='form-control1' value='0' max='100' min='100' readonly style='background-color:#C0C0C0;'></div><div class='col-md-6'></div></div></td>";
+							
+					// 	}
+					// }
 				}
 				?>
 				</tbody></table>
