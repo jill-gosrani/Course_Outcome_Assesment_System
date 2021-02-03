@@ -19,21 +19,6 @@ if(isset($_POST['co']))
 	$exit.=",`co`";
 }
 
-// echo(sizeof($pso));
-// echo $IA1;
-// echo '<br>';
-// echo implode(',',$IA1_q);
-// echo '<br>';
-// echo implode(',',$marks);
-// echo '<br>'; 
-// echo implode(',',$b);
-// echo '<br>';
-// echo implode(',',$co);
-// echo '<br>';
- 
-// echo '<br>';
-// echo implode(',',$pi_no);
-
 $co_id_array=array();
 for($a=0;$a<sizeof($co);$a++){
 $qry="SELECT * FROM `co_list` WHERE `co_no` LIKE '$co[$a]' AND `course_id` LIKE '$course_id'";
