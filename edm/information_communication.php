@@ -72,10 +72,10 @@ input:invalid {
 		<!-- main content start-->
 		<div id="page-wrapper">
 		<div class="row">
-			<h3 class="title1"><b>GAP IDENTIFICATION</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
+			<h3 class="title1"><b>INFORMATION & COMMUNICATION TECHNOLOGY - CO</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
 				<div class="form-three widget-shadow">
 				<div class=" panel-body-inputin">
-				<form id="co_am_form" onsubmit="return checkTotal()" action="co_gap_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
+				<form id="co_am_form" onsubmit="return checkTotal()" action="information_communication_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
 				<div class="table-responsive bs-example widget-shadow" data-example-id="contextual-table">
 				<table class="table table-bordered">
 				<?php
@@ -89,14 +89,14 @@ input:invalid {
                 $gap_nm=array();
                 $co=array();
 				$co_qry="SELECT * FROM `co_list` WHERE `co_id` LIKE '$course_id%'";
-				$gap_qry="SELECT `sr_no`,`module_no`,`module_name`,`gap_identification`,`co_no`,`po` FROM `gap_identification` WHERE `course_id`='$course_id'";
-				$co_gap_qry="SELECT * FROM `gap_identification` WHERE `course_id`='$course_id'";
+				$gap_qry="SELECT `sr_no`,`category`,`details`,`module_no`,`no_hours`,`co_no`,`po` FROM `information_commtechnology` WHERE `course_id`='$course_id'";
+				$co_gap_qry="SELECT * FROM `information_commtechnology` WHERE `course_id`='$course_id'";
 				//echo $co_am_qry;
 
 				$co_gap_result = mysqli_query($conn,$co_gap_qry);
 				
 				$co_result = mysqli_query($conn,$co_qry);
-				$x=0;
+				
 				
 				if (mysqli_num_rows($co_result) > 0) 
 				{
@@ -114,9 +114,10 @@ input:invalid {
 				?>
 				<thead>
 				<th>Sr No.</th>
+                <th>Category</th>
+                <th>Details</th>
                 <th>Module no.</th>
-                <th>Module name</th>
-                <th>Gap Identification</th>
+                <th>No. of Hours</th>
                 <th>CO No.</th>
 				<th>PO</th>
 				
@@ -145,12 +146,13 @@ input:invalid {
 				else
 				{
 
-                    for($i=1;$i<3;$i++){
+                    for($i=1;$i<7;$i++){
                         echo "<tr>";
                         echo "<td>".$i."</td>";
+                        echo "<td><textarea name='category[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='details[]' id='txtarea1'  class='form-control1' ></textarea></td>";
                         echo"<td><input type='number' name='syll_module[]' class='form-control1' min='1' max='20' step='1'></td>";
-                        echo "<td><textarea name='module_name[]' id='txtarea1'  class='form-control1' ></textarea></td>";
-                        echo "<td><textarea name='gap_identification[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo"<td><input type='number' name='no_hours[]' class='form-control1' min='1' max='24' step='0.5'></td>";
                         echo'<td><div class="form-group1 col-md-8">';
 				        echo'<select id="pso_select" name="co[]" class="form-control1" required="required"><option value="">Select</option>';
 				        
@@ -163,21 +165,7 @@ input:invalid {
                         echo "<td><textarea name='po[]' id='txtarea1'  class='form-control1' ></textarea></td>";
                         echo "</tr>";
                     }
-					// if (mysqli_num_rows($co_result) > 0) 
-					// {
-					// 	while($co_row = mysqli_fetch_assoc($co_result))
-					// 	{
-					// 		echo "<tr>";
-					// 		echo "<td>".$co_row['co_no']."</td>";
-					// 		echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='text' name='co_id[]' class='form-control1' value=".$co_row['co_id']." readonly></div></div></div></td>";
-					// 		for($y=0;$y<sizeof($quiz);$y++)
-					// 		{
-					// 			echo "<td><div class='form-group'><div class='col-md-10'><div class='input-group'><input type='number' name='".$quiz[$y]."[]' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);'></div></div></div></td>";
-					// 		}
-					// 		echo "<td><div class='form-group'><div class='col-md-6'><input type='number' name='total[]' class='form-control1' value='0' max='100' min='100' readonly style='background-color:#C0C0C0;'></div><div class='col-md-6'></div></div></td>";
-							
-					// 	}
-					// }
+
 				}
 				?>
 				</tbody></table>
