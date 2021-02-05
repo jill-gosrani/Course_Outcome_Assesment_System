@@ -44,7 +44,7 @@ $_SESSION['branch_code']=$branch_code;
 </head>
 <body>
 <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
-<aside class="sidebar-left">
+<aside class="sidebar-left" id="scroll">
       <nav class="navbar navbar-inverse">
           <div class="navbar-header">
             <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
@@ -79,7 +79,7 @@ $_SESSION['branch_code']=$branch_code;
               </li>
               <li class="treeview">
                 <a href="ia_mapping.php">
-                <i class="fa fa-clipboard"></i> <span>CO - Internal Assesment Mapping</span>
+                <i class="fa fa-clipboard"></i> <span>CO - IA Mapping</span>
                 </a>
               </li>
               <li class="treeview">
@@ -87,6 +87,61 @@ $_SESSION['branch_code']=$branch_code;
                 <i class="fa fa-clipboard"></i> <span>CO - Quiz Mapping</span>
                 </a>
               </li>
+			  <li class="treeview">
+                <a href="assignment_mapping.php">
+                <i class="fa fa-clipboard"></i> <span>CO - Assignment Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="tutorial_mapping.php">
+                <i class="fa fa-clipboard"></i> <span>CO - Tutorial Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="ia1_co_po_pso.php">
+                <i class="fa fa-clipboard"></i> <span>PO - IA-1 Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="ia2_co_po_pso.php">
+                <i class="fa fa-clipboard"></i> <span>PO - IA-2 Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="assignment_co_po_pso.php">
+                <i class="fa fa-clipboard"></i> <span>PO - Assignment Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="co_po_pso_mapping.php">
+                <i class="fa fa-clipboard"></i> <span>CO –PO and PSO Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="po_pso_mapping.php">
+                <i class="fa fa-clipboard"></i> <span>PO - PSO Mapping</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="co_exit.php">
+                <i class="fa fa-clipboard"></i> <span>Course Exit Form</span>
+                </a>
+			  </li>
+			  <li class="treeview">
+                <a href="gap_identification.php">
+                <i class="fa fa-clipboard"></i> <span>GAP Identification</span>
+                </a>
+			  </li>
+			  <li class="treeview">
+                <a href="gap_action.php">
+                <i class="fa fa-clipboard"></i> <span>GAP Action</span>
+                </a>
+			  </li>
+			  <li class="treeview">
+                <a href="information_communication.php">
+                <i class="fa fa-clipboard"></i> <span>Informatin & Communcation Technology</span>
+                </a>
+			  </li>
 			  </ul>
       </nav>
     </aside>
@@ -150,7 +205,7 @@ $_SESSION['branch_code']=$branch_code;
 								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
 								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+								<li> <a href="http://localhost/Course_Outcome_Assesment_System/edm/logout.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
