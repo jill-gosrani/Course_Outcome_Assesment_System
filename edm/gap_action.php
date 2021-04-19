@@ -72,25 +72,25 @@ input:invalid {
 		<!-- main content start-->
 		<div id="page-wrapper">
 		<div class="row">
-			<h3 class="title1"><b>GAP IDENTIFICATION</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
+			<h3 class="title1"><b>GAP ACTION</b> (<?php echo $_SESSION['course_id']; ?>):</h3>
 				<div class="form-three widget-shadow">
 				<div class=" panel-body-inputin">
-				<form id="co_am_form" onsubmit="return checkTotal()" action="co_gap_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
+				<form id="co_am_form" onsubmit="return checkTotal()" action="gap_action_save.php" class="form-horizontal" enctype="multipart/form-data" method="POST">
 				<div class="table-responsive bs-example widget-shadow" data-example-id="contextual-table">
 				<table class="table table-bordered">
 				<?php
 				include 'login_config.php';
 				//session_start();
 				$branch_code=$_SESSION['branch_code'];
-				$course_id=$_SESSION['course_id'];
+				$course_id=$_SESSION['course_id'];	
 				$term=$_SESSION['term'];
 				$dept=$_SESSION["dept"];
 				$gap=array();
                 $gap_nm=array();
                 $co=array();
 				$co_qry="SELECT * FROM `co_list` WHERE `co_id` LIKE '$course_id%'";
-				$gap_qry="SELECT `sr_no`,`module_no`,`module_name`,`gap_identification`,`co_no`,`po` FROM `gap_identification` WHERE `course_id`='$course_id'";
-				$co_gap_qry="SELECT * FROM `gap_identification` WHERE `course_id`='$course_id'";
+				$gap_qry="SELECT `sr_no`,`gap`,`action_taken`,`date_month_year`,`name_designation`,`p_of_students`, `relevance_po_pso` FROM `gap_action` WHERE `course_id`='$course_id'";
+				$co_gap_qry="SELECT * FROM `gap_action` WHERE `course_id`='$course_id'";
 				//echo $co_am_qry;
 
 				$co_gap_result = mysqli_query($conn,$co_gap_qry);
@@ -106,61 +106,105 @@ input:invalid {
 					foreach ($fieldinfo as $val) {
     					$gap[]=$val -> name;  							
                       }                  
-					while($co_row = mysqli_fetch_assoc($co_result))
+					// while($co_row = mysqli_fetch_assoc($co_result))
+					// {
+					// 	$co[]=$co_row;
+					// }
+                
+					// echo $am_result;
+					if(mysqli_num_rows($co_gap_result)>0)
 					{
-						$co[]=$co_row;
+						$row = mysqli_fetch_assoc($co_gap_result);
+						// for($x = 0; x < sizeof($quiz); $x++)
+						// {
+						// 	if(!is_null($row[$quiz[$x]]))
+						// 	{
+						// 		$quiz_nm[]=$row[$quiz[$x]];
+						// 	}
+						// }
+						
 					}
 				}
 				?>
 				<thead>
 				<th>Sr No.</th>
-                <th>Module no.</th>
-                <th>Module name</th>
-                <th>Gap Identification</th>
-                <th>CO No.</th>
-				<th>PO</th>
-				
+                <th>GAP</th>
+                <th>Action Taken</th>
+                <th>Date-Month-Year</th>
+                <!-- <th>CO No.</th> -->
+				<th>Resource Person Name with Designation</th>
+				<th>% of Students</th>
+				<th>Relevance to POs and PSOs</th>
 				</thead>		
 				<tbody id="co_am">
 				<?php
 				$no=1;
-				if (mysqli_num_rows($co_gap_result) > 0) 
-				{
-					while($co_gap_row = mysqli_fetch_assoc($co_gap_result))
-					{
-						// echo implode(',',$exit);
-						// echo "<br>";
-						for($y=0;$y<sizeof($gap);$y++)
-						{
-							// echo $co_exit_row[$exit[$y]];
+				// if (mysqli_num_rows($co_gap_result) > 0) 
+					
+				// {
+				// 	#echo (mysqli_num_rows($co_gap_result));
+				// 	while($co_gap_row = mysqli_fetch_assoc($co_gap_result))
+				// 	{
+				// 		// echo implode(',',$co_gap_row);
+				// 		// echo "<br>";
+
+						
+				// 		for($y=0;$y<sizeof($gap);$y++)
+				// 		{	
+				// 			 echo "<br>";
+				// 			 echo $co_gap_row[$gap[$y]];
 							
-							echo "<td><input type='text' name='".$gap[$y]."[]' value='".$co_gap_row[$gap[$y]]."' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);' readonly style='background-color:#dfdfdf;'></td>";
+				// 			echo "<td><input type='text' name='".$gap[$y]."[]' value='".$co_gap_row[$gap[$y]]."' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);' readonly style='background-color:#dfdfdf;'></td>";
 											
 							
-						}
+				// 		}
 						
-						echo "</tr>";
-					}
-				}
+				// 		echo "</tr>";
+				// 	}
+				// }
+
+				if (mysqli_num_rows($co_gap_result) > 0) 
+                {
+                    while($co_gap_row = mysqli_fetch_assoc($gap_result))
+                    {
+                        // echo implode(',',$exit);
+                        // echo "<br>";
+                        for($y=0;$y<sizeof($gap);$y++)
+                        {
+                            // echo $co_exit_row[$exit[$y]];
+                            
+                            echo "<td><input type='text' name='".$gap[$y]."[]' value='".$co_gap_row[$gap[$y]]."' class='form-control1' value=0 max='100' min='0' onchange='calculateSum(this)' oninput='validity.valid || (value=0);' readonly style='background-color:#dfdfdf;'></td>";
+                                            
+                            
+                        }
+                        
+                        echo "</tr>";
+                    }
+                }
+
+
 				else
 				{
-
                     for($i=1;$i<3;$i++){
                         echo "<tr>";
                         echo "<td>".$i."</td>";
-                        echo"<td><input type='number' name='syll_module[]' class='form-control1' min='1' max='20' step='1'></td>";
-                        echo "<td><textarea name='module_name[]' id='txtarea1'  class='form-control1' ></textarea></td>";
-                        echo "<td><textarea name='gap_identification[]' id='txtarea1'  class='form-control1' ></textarea></td>";
-                        echo'<td><div class="form-group1 col-md-8">';
-				        echo'<select id="pso_select" name="co[]" class="form-control1" required="required"><option value="">Select</option>';
+                        echo "<td><textarea name='gap[]'  id='txtarea1' class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='action_taken[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='date_month_year[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='name_designation[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='p_of_students[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        echo "<td><textarea name='relevance_po_pso[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+                        #echo'<td><div class="form-group1 col-md-8">';
+
+				        // echo'<select id="pso_select" name="co[]" class="form-control1" required="required"><option value="">Select</option>';
 				        
-				        for ($b = 0; $b < sizeof($co); $b++)
-				        {
-					        $co_no=$b+1;
-					        echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
-				        }
-                        echo"</select></div></td>";
-                        echo "<td><textarea name='po[]' id='txtarea1'  class='form-control1' ></textarea></td>";
+				        // for ($b = 0; $b < sizeof($co); $b++)
+				        // {
+					    //     $co_no=$b+1;
+					    //     echo "<option value='".$co[$b]['co_no']."'>CO".$co_no."</option>";
+				        // }
+                        // echo"</select></div></td>";
+                        #echo "<td><textarea name='po[]' id='txtarea1'  class='form-control1' ></textarea></td>";
                         echo "</tr>";
                     }
 					// if (mysqli_num_rows($co_result) > 0) 
@@ -198,7 +242,7 @@ input:invalid {
 	<div class="footer">
 	   <p>&copy; 2020 <a target="_blank" href="http://shahandanchor.com/">Shah & Anchor Kutchhi Engineering College.</a> All Rights Reserved </p>		
 	</div>
-    <!--//footer-->
+    <!--//footer--> 	
 	</div>
 	<!-- Classie --><!-- for toggle left push menu script -->
 		<script src="js/classie.js"></script>
